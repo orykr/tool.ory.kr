@@ -331,6 +331,11 @@
 			href: "/stats",
 			title: "Statistics Calculator",
 			description: "Mean, median, stdev, quartiles, and more for a list of numbers."
+		},
+		{
+			href: "/num-words",
+			title: "Number → Words",
+			description: "Convert numbers to English cardinal and ordinal words."
 		}
 	];
 </script>
