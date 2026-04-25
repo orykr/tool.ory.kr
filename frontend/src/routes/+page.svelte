@@ -491,6 +491,11 @@
 			href: "/tw-colors",
 			title: "Tailwind Color Reference",
 			description: "Tailwind 3.x default palette swatches with click-to-copy class names."
+		},
+		{
+			href: "/palette",
+			title: "Color Palette Generator",
+			description: "Generate harmonic palettes (analogous, triadic, tetradic, …)."
 		}
 	];
 </script>
