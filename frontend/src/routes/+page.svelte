@@ -556,6 +556,11 @@
 			href: "/csv-md",
 			title: "CSV → Markdown Table",
 			description: "Convert CSV into a Markdown table with alignment and padding."
+		},
+		{
+			href: "/md-links",
+			title: "Markdown Link Extractor",
+			description: "Pull inline, reference, autolink, and bare URLs from Markdown."
 		}
 	];
 </script>
