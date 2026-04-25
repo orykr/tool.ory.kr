@@ -521,6 +521,11 @@
 			href: "/html-md",
 			title: "HTML → Markdown",
 			description: "Convert HTML to Markdown via Turndown."
+		},
+		{
+			href: "/json5",
+			title: "JSON5 ↔ JSON",
+			description: "Convert between JSON5 (comments, trailing commas) and strict JSON."
 		}
 	];
 </script>

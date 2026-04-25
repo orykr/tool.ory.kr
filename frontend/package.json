@@ -46,6 +46,7 @@
 		"cropperjs": "^1.6.2",
 		"dompurify": "^3.4.1",
 		"gif.js": "^0.2.0",
+		"json5": "^2.2.3",
 		"marked": "^18.0.2",
 		"mode-watcher": "^1.1.0",
 		"qrcode": "^1.5.4",
