@@ -336,6 +336,11 @@
 			href: "/num-words",
 			title: "Number → Words",
 			description: "Convert numbers to English cardinal and ordinal words."
+		},
+		{
+			href: "/pomodoro",
+			title: "Pomodoro Timer",
+			description: "Focus and break intervals with audible chime."
 		}
 	];
 </script>
