@@ -81,6 +81,11 @@
 			href: "/regex",
 			title: "Regex Tester",
 			description: "Test JavaScript regex with live match highlighting and replace."
+		},
+		{
+			href: "/lorem",
+			title: "Lorem Ipsum Generator",
+			description: "Generate placeholder paragraphs, sentences, or words."
 		}
 	];
 </script>
