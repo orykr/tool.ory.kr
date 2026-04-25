@@ -216,6 +216,11 @@
 			href: "/curl",
 			title: "cURL Command Builder",
 			description: "Build a portable cURL command from form inputs (no request is sent)."
+		},
+		{
+			href: "/sql",
+			title: "SQL Formatter",
+			description: "Pretty-print SQL for many dialects (PostgreSQL, MySQL, BigQuery, ...)."
 		}
 	];
 </script>
