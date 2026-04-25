@@ -436,6 +436,11 @@
 			href: "/pkce",
 			title: "OAuth PKCE Generator",
 			description: "Generate code_verifier/code_challenge, state, and nonce for OAuth/OIDC."
+		},
+		{
+			href: "/resistor",
+			title: "Resistor Color Decoder",
+			description: "Decode 3-, 4-, 5-, and 6-band axial resistor color codes."
 		}
 	];
 </script>
