@@ -106,6 +106,11 @@
 			href: "/html-entities",
 			title: "HTML Entities",
 			description: "Encode and decode named or numeric HTML entities."
+		},
+		{
+			href: "/slugify",
+			title: "Slugify",
+			description: "Turn any text into a URL-friendly slug with Unicode normalization."
 		}
 	];
 </script>
