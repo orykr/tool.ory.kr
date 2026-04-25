@@ -716,6 +716,11 @@
 			href: "/md5",
 			title: "MD5 Hash",
 			description: "Compute MD5 digest of text or files (non-cryptographic)."
+		},
+		{
+			href: "/ascii85",
+			title: "Ascii85 (Base85)",
+			description: "Adobe Ascii85 encode/decode with wrappers and z shorthand."
 		}
 	];
 </script>
