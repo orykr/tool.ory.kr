@@ -426,6 +426,11 @@
 			href: "/unicode",
 			title: "Unicode Inspector",
 			description: "Inspect code points, UTF-8/16 encoding, HTML/JS escapes per character."
+		},
+		{
+			href: "/date-math",
+			title: "Date Math",
+			description: "Add or subtract years, months, days, and time from a base date."
 		}
 	];
 </script>
