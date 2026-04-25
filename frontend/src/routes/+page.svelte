@@ -576,6 +576,11 @@
 			href: "/robots",
 			title: "robots.txt Builder",
 			description: "Build robots.txt with User-agent groups and Sitemap."
+		},
+		{
+			href: "/sitemap",
+			title: "Sitemap.xml Builder",
+			description: "Build Sitemap 0.9 XML from a URL list."
 		}
 	];
 </script>
