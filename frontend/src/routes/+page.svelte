@@ -191,6 +191,11 @@
 			href: "/mime",
 			title: "MIME Type Lookup",
 			description: "Searchable reference for file extensions and MIME types."
+		},
+		{
+			href: "/latlon",
+			title: "Lat/Lon Converter",
+			description: "Convert between decimal degrees and DMS notation."
 		}
 	];
 </script>
