@@ -121,6 +121,11 @@
 			href: "/markdown",
 			title: "Markdown Preview",
 			description: "Live GitHub-flavored Markdown preview with DOMPurify sanitization."
+		},
+		{
+			href: "/cron",
+			title: "Cron Parser",
+			description: "Translate cron expressions to English and preview upcoming runs."
 		}
 	];
 </script>
