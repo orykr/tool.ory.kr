@@ -61,6 +61,11 @@
 			href: "/timestamp",
 			title: "Unix Timestamp Converter",
 			description: "Convert between Unix epoch (s/ms) and human-readable dates."
+		},
+		{
+			href: "/password",
+			title: "Password Generator",
+			description: "Generate strong random passwords with configurable character sets."
 		}
 	];
 </script>
