@@ -7,22 +7,24 @@
 	import Check from "@lucide/svelte/icons/check";
 	import DOMPurify from "dompurify";
 
-	const SAMPLE = `<h1>Hello, world!</h1>
-<p>This is a <strong>preview</strong> with <em>some</em> formatting.</p>
-<ul>
-  <li>Item one</li>
-  <li>Item <a href="https://example.com">two</a></li>
-</ul>
-<p>Inline <code>code</code> example:</p>
-<pre><code>const x = 1;</code></pre>
-<blockquote>A quoted block.</blockquote>
-<table>
-  <thead><tr><th>A</th><th>B</th></tr></thead>
-  <tbody><tr><td>1</td><td>2</td></tr></tbody>
-</table>
-<!-- The following script is stripped by DOMPurify -->
-<script>alert("xss")</script>
-<img src="x" onerror="alert('xss')" alt="broken">`;
+	const SAMPLE = [
+		'<h1>Hello, world!</h1>',
+		'<p>This is a <strong>preview</strong> with <em>some</em> formatting.</p>',
+		'<ul>',
+		'  <li>Item one</li>',
+		'  <li>Item <a href="https://example.com">two</a></li>',
+		'</ul>',
+		'<p>Inline <code>code</code> example:</p>',
+		'<pre><code>const x = 1;</code></pre>',
+		'<blockquote>A quoted block.</blockquote>',
+		'<table>',
+		'  <thead><tr><th>A</th><th>B</th></tr></thead>',
+		'  <tbody><tr><td>1</td><td>2</td></tr></tbody>',
+		'</table>',
+		'<!-- The following script is stripped by DOMPurify -->',
+		'<scr' + 'ipt>alert("xss")</scr' + 'ipt>',
+		'<p>Scripts and on-attribute handlers above are stripped on render.</p>'
+	].join('\n');
 
 	let input = $state(SAMPLE);
 	let strict = $state(true);
