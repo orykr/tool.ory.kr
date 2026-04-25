@@ -1,14 +1,19 @@
+// Deterministic for n < 3,317,044,064,679,887,385,961,981 with these 13 witnesses.
+const DETERMINISTIC_BOUND = 3_317_044_064_679_887_385_961_981n;
+const DET_WITNESSES = [2n, 3n, 5n, 7n, 11n, 13n, 17n, 19n, 23n, 29n, 31n, 37n, 41n];
+
 export function isPrime(n: bigint): boolean {
 	if (n < 2n) return false;
 	if (n < 4n) return true;
 	if (n % 2n === 0n) return false;
-	const witnesses = [2n, 3n, 5n, 7n, 11n, 13n, 17n, 19n, 23n, 29n, 31n, 37n];
 	let d = n - 1n;
 	let r = 0n;
 	while (d % 2n === 0n) {
 		d /= 2n;
 		r++;
 	}
+	const witnesses =
+		n < DETERMINISTIC_BOUND ? DET_WITNESSES : DET_WITNESSES.concat(randomWitnesses(20, n));
 	for (const a of witnesses) {
 		if (a >= n) continue;
 		let x = modPow(a, d, n);
@@ -24,6 +29,27 @@ export function isPrime(n: bigint): boolean {
 		if (composite) return false;
 	}
 	return true;
+}
+
+function randomWitnesses(count: number, n: bigint): bigint[] {
+	const out: bigint[] = [];
+	const range = n - 4n;
+	if (range <= 0n) return out;
+	for (let i = 0; i < count; i++) {
+		out.push(2n + randomBigInt(range));
+	}
+	return out;
+}
+
+function randomBigInt(max: bigint): bigint {
+	const bytes = Math.ceil(max.toString(2).length / 8);
+	const buf = new Uint8Array(bytes);
+	while (true) {
+		crypto.getRandomValues(buf);
+		let v = 0n;
+		for (const b of buf) v = (v << 8n) | BigInt(b);
+		if (v < max) return v;
+	}
 }
 
 function modPow(base: bigint, exp: bigint, mod: bigint): bigint {
