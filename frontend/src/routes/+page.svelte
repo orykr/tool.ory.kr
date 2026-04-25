@@ -746,6 +746,11 @@
 			href: "/html-format",
 			title: "HTML Formatter",
 			description: "Pretty-print or minify HTML; preserves pre/script/style."
+		},
+		{
+			href: "/crc",
+			title: "Checksum Tools",
+			description: "CRC-32, Adler-32, FNV-1a, and DJB2 (non-cryptographic)."
 		}
 	];
 </script>
