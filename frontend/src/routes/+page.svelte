@@ -626,6 +626,11 @@
 			href: "/frontmatter",
 			title: "Markdown Frontmatter",
 			description: "Extract YAML, TOML, or JSON frontmatter from Markdown documents."
+		},
+		{
+			href: "/html-strip",
+			title: "HTML Stripper",
+			description: "Extract plain text from HTML; strips script/style."
 		}
 	];
 </script>
