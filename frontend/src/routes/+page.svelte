@@ -566,6 +566,16 @@
 			href: "/meta-tags",
 			title: "Meta Tags Generator",
 			description: "Build SEO, Open Graph, and Twitter Card meta tags."
+		},
+		{
+			href: "/strftime",
+			title: "strftime Cheatsheet",
+			description: "Format codes for POSIX strftime with a live preview."
+		},
+		{
+			href: "/robots",
+			title: "robots.txt Builder",
+			description: "Build robots.txt with User-agent groups and Sitemap."
 		}
 	];
 </script>
