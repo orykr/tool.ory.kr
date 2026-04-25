@@ -846,6 +846,11 @@
 			href: "/backslash-escape",
 			title: "Backslash Escape / Unescape",
 			description: "Escape or unescape \\n, \\t, \\xNN, \\uNNNN, \\u{...}."
+		},
+		{
+			href: "/css-triangle",
+			title: "CSS Triangle",
+			description: "Generate CSS arrows with the transparent-border technique."
 		}
 	];
 </script>
