@@ -446,6 +446,11 @@
 			href: "/dotenv",
 			title: "Dotenv Parser",
 			description: "Parse .env files into JSON or shell export with quote/escape handling."
+		},
+		{
+			href: "/csv-sql",
+			title: "CSV → SQL INSERT",
+			description: "Convert CSV rows into SQL INSERT statements with type inference."
 		}
 	];
 </script>
