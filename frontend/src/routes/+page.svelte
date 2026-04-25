@@ -511,6 +511,11 @@
 			href: "/whitespace",
 			title: "Whitespace Visualizer",
 			description: "Reveal hidden whitespace, line endings, and zero-width characters."
+		},
+		{
+			href: "/csv-cols",
+			title: "CSV Column Extractor",
+			description: "Pick columns and filter rows from CSV; output is also CSV."
 		}
 	];
 </script>
