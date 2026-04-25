@@ -246,6 +246,11 @@
 			href: "/ini",
 			title: "INI ↔ JSON Converter",
 			description: "Convert between INI config and JSON."
+		},
+		{
+			href: "/headers",
+			title: "HTTP Headers Reference",
+			description: "Searchable reference for request, response, and security headers."
 		}
 	];
 </script>
