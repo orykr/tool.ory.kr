@@ -196,6 +196,11 @@
 			href: "/latlon",
 			title: "Lat/Lon Converter",
 			description: "Convert between decimal degrees and DMS notation."
+		},
+		{
+			href: "/word-counter",
+			title: "Word Counter",
+			description: "Live text statistics, reading time, and top word frequency."
 		}
 	];
 </script>
