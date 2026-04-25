@@ -651,6 +651,11 @@
 			href: "/vector",
 			title: "Vector Calculator",
 			description: "Add, subtract, dot, cross, normalize, and project 2D/3D vectors."
+		},
+		{
+			href: "/basic-auth",
+			title: "HTTP Basic Auth",
+			description: "Build and decode HTTP Basic Authorization headers."
 		}
 	];
 </script>
