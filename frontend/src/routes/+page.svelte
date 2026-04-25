@@ -341,6 +341,11 @@
 			href: "/pomodoro",
 			title: "Pomodoro Timer",
 			description: "Focus and break intervals with audible chime."
+		},
+		{
+			href: "/counter",
+			title: "Tally Counter",
+			description: "Track multiple counts with adjustable step size."
 		}
 	];
 </script>
