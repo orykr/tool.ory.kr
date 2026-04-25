@@ -291,6 +291,11 @@
 			href: "/emoji",
 			title: "Emoji Picker",
 			description: "Search and copy emojis by name or keyword."
+		},
+		{
+			href: "/chmod",
+			title: "chmod Calculator",
+			description: "Convert between octal and symbolic Unix file permissions."
 		}
 	];
 </script>
