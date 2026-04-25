@@ -781,6 +781,11 @@
 			href: "/stopwatch",
 			title: "Stopwatch",
 			description: "Sub-second precision stopwatch with lap tracking."
+		},
+		{
+			href: "/js-to-json",
+			title: "JS Object → JSON",
+			description: "Convert relaxed JS / JSON5 objects to strict JSON."
 		}
 	];
 </script>
