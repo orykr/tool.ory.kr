@@ -66,6 +66,11 @@
 			href: "/password",
 			title: "Password Generator",
 			description: "Generate strong random passwords with configurable character sets."
+		},
+		{
+			href: "/color",
+			title: "Color Converter",
+			description: "Convert HEX/RGB/HSL and check WCAG contrast ratios."
 		}
 	];
 </script>
