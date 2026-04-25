@@ -461,6 +461,11 @@
 			href: "/ics",
 			title: "iCalendar (.ics) Event",
 			description: "Build VEVENT files for Google/Apple/Outlook calendars."
+		},
+		{
+			href: "/css-spec",
+			title: "CSS Specificity",
+			description: "Compute CSS selector specificity (a, b, c) for any selector."
 		}
 	];
 </script>
