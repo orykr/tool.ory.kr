@@ -726,6 +726,11 @@
 			href: "/trig",
 			title: "Trigonometry Calculator",
 			description: "sin/cos/tan/inverse with degrees or radians."
+		},
+		{
+			href: "/right-tri",
+			title: "Right Triangle Solver",
+			description: "Solve a right triangle from any two known values."
 		}
 	];
 </script>
