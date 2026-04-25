@@ -851,6 +851,11 @@
 			href: "/css-triangle",
 			title: "CSS Triangle",
 			description: "Generate CSS arrows with the transparent-border technique."
+		},
+		{
+			href: "/html-table-json",
+			title: "HTML Table → JSON",
+			description: "Extract <table> rows as JSON objects."
 		}
 	];
 </script>
