@@ -401,6 +401,11 @@
 			href: "/math-eval",
 			title: "Math Expression Evaluator",
 			description: "Evaluate math expressions safely with built-in functions and constants."
+		},
+		{
+			href: "/mac",
+			title: "MAC Address Tools",
+			description: "Validate, format, and inspect Ethernet MAC addresses."
 		}
 	];
 </script>
