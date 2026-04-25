@@ -501,6 +501,11 @@
 			href: "/json-graphql",
 			title: "JSON → GraphQL Types",
 			description: "Infer GraphQL type definitions from a sample JSON document."
+		},
+		{
+			href: "/diceware",
+			title: "Diceware Passphrase",
+			description: "Generate memorable passphrases with crypto-grade entropy."
 		}
 	];
 </script>
