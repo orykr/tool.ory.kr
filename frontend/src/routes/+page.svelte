@@ -666,6 +666,11 @@
 			href: "/social-count",
 			title: "Social Character Counter",
 			description: "Count characters and check limits across social platforms."
+		},
+		{
+			href: "/csv-schema",
+			title: "CSV → SQL Schema",
+			description: "Infer CREATE TABLE from CSV across PostgreSQL/MySQL/SQLite/MSSQL."
 		}
 	];
 </script>
