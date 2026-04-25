@@ -761,6 +761,16 @@
 			href: "/cache-header",
 			title: "HTTP Cache Header Analyzer",
 			description: "Parse Cache-Control / Expires / ETag and explain caching behavior."
+		},
+		{
+			href: "/csv-table",
+			title: "CSV → ASCII Table",
+			description: "Render CSV as aligned text tables (box, double, ASCII, RST)."
+		},
+		{
+			href: "/cidr-table",
+			title: "CIDR Subnet Cheatsheet",
+			description: "IPv4 prefixes with subnet masks, wildcards, and host counts."
 		}
 	];
 </script>
