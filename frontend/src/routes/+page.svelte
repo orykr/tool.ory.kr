@@ -231,6 +231,11 @@
 			href: "/nato",
 			title: "NATO Phonetic Alphabet",
 			description: "Spell text aloud using NATO/ICAO phonetic alphabet."
+		},
+		{
+			href: "/ascii-table",
+			title: "ASCII Table",
+			description: "All 128 ASCII codes in dec/hex/oct/binary with control names."
 		}
 	];
 </script>
