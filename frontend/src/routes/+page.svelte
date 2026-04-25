@@ -661,6 +661,11 @@
 			href: "/random-hex",
 			title: "Random Bytes Generator",
 			description: "Generate crypto-grade random bytes in hex, base64, integer."
+		},
+		{
+			href: "/social-count",
+			title: "Social Character Counter",
+			description: "Count characters and check limits across social platforms."
 		}
 	];
 </script>
