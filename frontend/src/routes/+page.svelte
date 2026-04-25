@@ -136,6 +136,11 @@
 			href: "/mock-data",
 			title: "Mock Data Generator",
 			description: "Generate fake JSON or CSV records with a custom schema."
+		},
+		{
+			href: "/unit",
+			title: "Unit Converter",
+			description: "Convert length, weight, temperature, data size, and time units."
 		}
 	];
 </script>
