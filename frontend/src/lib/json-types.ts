@@ -90,7 +90,10 @@ function mergeSchemas(a: Schema, b: Schema): Schema {
 
 function collectObjects(schema: Schema, name: string, out: Map<string, Schema>) {
 	if (schema.kind === "object") {
-		out.set(name, schema);
+		let unique = name;
+		let counter = 2;
+		while (out.has(unique) && out.get(unique) !== schema) unique = `${name}${counter++}`;
+		out.set(unique, schema);
 		for (const [k, v] of Object.entries(schema.properties ?? {})) {
 			collectObjects(v, capitalize(singularize(k)), out);
 		}
@@ -116,8 +119,9 @@ function renderObject(
 	lines.push(`${keyword}${open}`);
 	const indent = "\t";
 	for (const [key, prop] of Object.entries(schema.properties ?? {})) {
-		const optional =
-			opts.optionalNullable && (prop.hasNull || !schema.required?.has(key));
+		const missing = !schema.required?.has(key);
+		const nullable = prop.hasNull;
+		const optional = missing || (opts.optionalNullable && nullable);
 		const typeStr = renderType(prop, capitalize(singularize(key)), opts, all);
 		if (opts.style === "zod") {
 			let line = `${indent}${safeKey(key)}: ${zodFromSchema(prop, capitalize(singularize(key)))}`;

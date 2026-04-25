@@ -42,9 +42,16 @@
 	}
 
 	function rgba(hex: string, alpha: number): string {
-		const m = hex.match(/^#?([0-9a-f]{6})$/i);
-		if (!m) return `rgba(0,0,0,${alpha})`;
-		const n = parseInt(m[1], 16);
+		const cleaned = hex.replace(/^#/, "");
+		let h = cleaned;
+		if (/^[0-9a-f]{3}$/i.test(cleaned)) {
+			h = cleaned
+				.split("")
+				.map((c) => c + c)
+				.join("");
+		}
+		if (!/^[0-9a-f]{6}$/i.test(h)) return `rgba(0,0,0,${alpha})`;
+		const n = parseInt(h, 16);
 		const r = (n >> 16) & 0xff;
 		const g = (n >> 8) & 0xff;
 		const b = n & 0xff;
