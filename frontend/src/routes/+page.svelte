@@ -546,6 +546,11 @@
 			href: "/hangul",
 			title: "Hangul Tools",
 			description: "Korean Hangul ↔ Romaja, Jamo split, and Sino-Korean numerals."
+		},
+		{
+			href: "/geometry",
+			title: "Geometry Calculator",
+			description: "Areas, perimeters, and volumes for circles, triangles, spheres, ..."
 		}
 	];
 </script>
