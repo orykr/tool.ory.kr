@@ -29,12 +29,23 @@
 		return d;
 	});
 
+	function lastDayOf(year: number, month: number): number {
+		return new Date(year, month + 1, 0).getDate();
+	}
+
 	let result = $derived.by(() => {
 		if (!parsed) return null;
 		const sign = op === "add" ? 1 : -1;
 		const d = new Date(parsed.getTime());
-		d.setFullYear(d.getFullYear() + sign * years);
-		d.setMonth(d.getMonth() + sign * months);
+
+		const totalMonths = sign * (years * 12 + months);
+		if (totalMonths !== 0) {
+			const day = d.getDate();
+			d.setDate(1);
+			d.setMonth(d.getMonth() + totalMonths);
+			d.setDate(Math.min(day, lastDayOf(d.getFullYear(), d.getMonth())));
+		}
+
 		d.setDate(d.getDate() + sign * (weeks * 7 + days));
 		d.setHours(d.getHours() + sign * hours);
 		d.setMinutes(d.getMinutes() + sign * minutes);

@@ -21,10 +21,17 @@
 	const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~";
 
 	function randomVerifier(len: number): string {
-		const buf = new Uint8Array(len);
-		crypto.getRandomValues(buf);
+		const limit = Math.floor(256 / ALPHABET.length) * ALPHABET.length;
 		let out = "";
-		for (const b of buf) out += ALPHABET[b % ALPHABET.length];
+		const buf = new Uint8Array(len * 2);
+		while (out.length < len) {
+			crypto.getRandomValues(buf);
+			for (const b of buf) {
+				if (b >= limit) continue;
+				out += ALPHABET[b % ALPHABET.length];
+				if (out.length === len) break;
+			}
+		}
 		return out;
 	}
 

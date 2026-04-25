@@ -12,23 +12,24 @@
 		digit: number | null;
 		multiplier: number;
 		tolerance: number | null;
+		tempCoeff: number | null;
 		hex: string;
 		text: string;
 	};
 
 	const COLORS: Color[] = [
-		{ name: "Black", digit: 0, multiplier: 1, tolerance: null, hex: "#000000", text: "#fff" },
-		{ name: "Brown", digit: 1, multiplier: 10, tolerance: 1, hex: "#8B4513", text: "#fff" },
-		{ name: "Red", digit: 2, multiplier: 100, tolerance: 2, hex: "#dc2626", text: "#fff" },
-		{ name: "Orange", digit: 3, multiplier: 1_000, tolerance: null, hex: "#f97316", text: "#000" },
-		{ name: "Yellow", digit: 4, multiplier: 10_000, tolerance: null, hex: "#fde047", text: "#000" },
-		{ name: "Green", digit: 5, multiplier: 100_000, tolerance: 0.5, hex: "#16a34a", text: "#fff" },
-		{ name: "Blue", digit: 6, multiplier: 1_000_000, tolerance: 0.25, hex: "#2563eb", text: "#fff" },
-		{ name: "Violet", digit: 7, multiplier: 10_000_000, tolerance: 0.1, hex: "#7c3aed", text: "#fff" },
-		{ name: "Grey", digit: 8, multiplier: 100_000_000, tolerance: 0.05, hex: "#64748b", text: "#fff" },
-		{ name: "White", digit: 9, multiplier: 1_000_000_000, tolerance: null, hex: "#ffffff", text: "#000" },
-		{ name: "Gold", digit: null, multiplier: 0.1, tolerance: 5, hex: "#ca8a04", text: "#fff" },
-		{ name: "Silver", digit: null, multiplier: 0.01, tolerance: 10, hex: "#94a3b8", text: "#000" }
+		{ name: "Black", digit: 0, multiplier: 1, tolerance: null, tempCoeff: 250, hex: "#000000", text: "#fff" },
+		{ name: "Brown", digit: 1, multiplier: 10, tolerance: 1, tempCoeff: 100, hex: "#8B4513", text: "#fff" },
+		{ name: "Red", digit: 2, multiplier: 100, tolerance: 2, tempCoeff: 50, hex: "#dc2626", text: "#fff" },
+		{ name: "Orange", digit: 3, multiplier: 1_000, tolerance: null, tempCoeff: 15, hex: "#f97316", text: "#000" },
+		{ name: "Yellow", digit: 4, multiplier: 10_000, tolerance: null, tempCoeff: 25, hex: "#fde047", text: "#000" },
+		{ name: "Green", digit: 5, multiplier: 100_000, tolerance: 0.5, tempCoeff: 20, hex: "#16a34a", text: "#fff" },
+		{ name: "Blue", digit: 6, multiplier: 1_000_000, tolerance: 0.25, tempCoeff: 10, hex: "#2563eb", text: "#fff" },
+		{ name: "Violet", digit: 7, multiplier: 10_000_000, tolerance: 0.1, tempCoeff: 5, hex: "#7c3aed", text: "#fff" },
+		{ name: "Grey", digit: 8, multiplier: 100_000_000, tolerance: 0.05, tempCoeff: 1, hex: "#64748b", text: "#fff" },
+		{ name: "White", digit: 9, multiplier: 1_000_000_000, tolerance: null, tempCoeff: null, hex: "#ffffff", text: "#000" },
+		{ name: "Gold", digit: null, multiplier: 0.1, tolerance: 5, tempCoeff: null, hex: "#ca8a04", text: "#fff" },
+		{ name: "Silver", digit: null, multiplier: 0.01, tolerance: 10, tempCoeff: null, hex: "#94a3b8", text: "#000" }
 	];
 
 	let bandCount = $state<3 | 4 | 5 | 6>(4);
@@ -76,7 +77,7 @@
 			digits = c1.digit * 100 + c2.digit * 10 + c3.digit;
 			multiplier = c4.multiplier;
 			tolerance = c5.tolerance;
-			tempCoeff = c6.tolerance;
+			tempCoeff = c6.tempCoeff;
 		}
 
 		const ohms = digits * multiplier;
@@ -140,6 +141,10 @@
 		return COLORS.filter((c) => c.tolerance !== null);
 	}
 
+	function tempCoeffColors(): Color[] {
+		return COLORS.filter((c) => c.tempCoeff !== null);
+	}
+
 	function colorsForBand(i: number): Color[] {
 		const lastDigitBand = bandCount === 5 || bandCount === 6 ? 3 : 2;
 		const multBand = lastDigitBand + 1;
@@ -147,7 +152,7 @@
 		if (i <= lastDigitBand) return digitColors();
 		if (i === multBand) return multiplierColors();
 		if (i === tolBand && bandCount > 3) return toleranceColors();
-		if (i === 6) return toleranceColors();
+		if (i === 6) return tempCoeffColors();
 		return COLORS;
 	}
 </script>
