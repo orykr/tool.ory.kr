@@ -506,6 +506,11 @@
 			href: "/diceware",
 			title: "Diceware Passphrase",
 			description: "Generate memorable passphrases with crypto-grade entropy."
+		},
+		{
+			href: "/whitespace",
+			title: "Whitespace Visualizer",
+			description: "Reveal hidden whitespace, line endings, and zero-width characters."
 		}
 	];
 </script>
