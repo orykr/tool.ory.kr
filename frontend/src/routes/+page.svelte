@@ -101,6 +101,11 @@
 			href: "/csv",
 			title: "CSV ↔ JSON Converter",
 			description: "Convert between CSV and JSON with quote-aware parsing."
+		},
+		{
+			href: "/html-entities",
+			title: "HTML Entities",
+			description: "Encode and decode named or numeric HTML entities."
 		}
 	];
 </script>
