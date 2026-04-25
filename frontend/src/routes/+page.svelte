@@ -156,6 +156,11 @@
 			href: "/cipher",
 			title: "Classical Ciphers",
 			description: "Caesar, ROT13, Atbash, and Vigenère for puzzles and CTFs."
+		},
+		{
+			href: "/morse",
+			title: "Morse Code",
+			description: "Translate between text and international Morse code."
 		}
 	];
 </script>
