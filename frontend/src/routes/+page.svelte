@@ -21,6 +21,11 @@
 			href: "/video-to-gif",
 			title: "Video to GIF",
 			description: "Convert video files to optimized animated GIFs directly in your browser."
+		},
+		{
+			href: "/base64",
+			title: "Base64 Encoder / Decoder",
+			description: "Encode and decode Base64 text or files entirely in your browser."
 		}
 	];
 </script>
