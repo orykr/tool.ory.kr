@@ -381,6 +381,11 @@
 			href: "/json-schema",
 			title: "JSON Schema Generator",
 			description: "Infer a JSON Schema (Draft 2020-12) from a sample document."
+		},
+		{
+			href: "/css-unit",
+			title: "CSS Unit Converter",
+			description: "Convert px to rem/em/pt/vw/vh and physical units."
 		}
 	];
 </script>
