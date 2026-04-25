@@ -251,6 +251,11 @@
 			href: "/headers",
 			title: "HTTP Headers Reference",
 			description: "Searchable reference for request, response, and security headers."
+		},
+		{
+			href: "/date-diff",
+			title: "Date Difference",
+			description: "Calculate duration between two timestamps in many units."
 		}
 	];
 </script>
