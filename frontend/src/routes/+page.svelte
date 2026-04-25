@@ -346,6 +346,11 @@
 			href: "/counter",
 			title: "Tally Counter",
 			description: "Track multiple counts with adjustable step size."
+		},
+		{
+			href: "/html-preview",
+			title: "HTML Preview",
+			description: "Render HTML live with DOMPurify sanitization."
 		}
 	];
 </script>
