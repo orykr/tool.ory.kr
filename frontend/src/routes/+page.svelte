@@ -201,6 +201,11 @@
 			href: "/word-counter",
 			title: "Word Counter",
 			description: "Live text statistics, reading time, and top word frequency."
+		},
+		{
+			href: "/json-xml",
+			title: "JSON ↔ XML Converter",
+			description: "Convert between JSON and XML with attribute support."
 		}
 	];
 </script>
