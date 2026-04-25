@@ -466,6 +466,11 @@
 			href: "/css-spec",
 			title: "CSS Specificity",
 			description: "Compute CSS selector specificity (a, b, c) for any selector."
+		},
+		{
+			href: "/md-toc",
+			title: "Markdown TOC Generator",
+			description: "Generate a table of contents from Markdown headings."
 		}
 	];
 </script>
