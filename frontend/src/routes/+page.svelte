@@ -586,6 +586,11 @@
 			href: "/json-ld",
 			title: "JSON-LD Generator",
 			description: "Schema.org structured data (Person/Org/Product/Article/FAQ)."
+		},
+		{
+			href: "/list-sort",
+			title: "List Sort & Shuffle",
+			description: "Sort, shuffle, dedupe, or trim a line-based list."
 		}
 	];
 </script>
