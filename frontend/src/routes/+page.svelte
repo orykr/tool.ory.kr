@@ -111,6 +111,11 @@
 			href: "/slugify",
 			title: "Slugify",
 			description: "Turn any text into a URL-friendly slug with Unicode normalization."
+		},
+		{
+			href: "/yaml",
+			title: "YAML ↔ JSON Converter",
+			description: "Convert between YAML 1.2 and JSON in your browser."
 		}
 	];
 </script>
