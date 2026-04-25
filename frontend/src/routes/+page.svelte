@@ -771,6 +771,11 @@
 			href: "/cidr-table",
 			title: "CIDR Subnet Cheatsheet",
 			description: "IPv4 prefixes with subnet masks, wildcards, and host counts."
+		},
+		{
+			href: "/image-format",
+			title: "Image Format Converter",
+			description: "Convert PNG ↔ JPEG ↔ WebP via canvas, with quality and resize."
 		}
 	];
 </script>
