@@ -306,6 +306,11 @@
 			href: "/json-diff",
 			title: "JSON Diff",
 			description: "Structurally compare two JSON documents (added/removed/changed)."
+		},
+		{
+			href: "/set-ops",
+			title: "Set Operations",
+			description: "Union, intersection, and difference of two line-based lists."
 		}
 	];
 </script>
