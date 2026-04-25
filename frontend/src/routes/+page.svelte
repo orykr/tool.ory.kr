@@ -316,6 +316,11 @@
 			href: "/cookie",
 			title: "Cookie Parser & Builder",
 			description: "Parse Cookie headers or build a Set-Cookie value with attributes."
+		},
+		{
+			href: "/iso-duration",
+			title: "ISO 8601 Duration",
+			description: "Parse and build ISO 8601 duration strings (P1Y2DT3H)."
 		}
 	];
 </script>
