@@ -826,6 +826,11 @@
 			href: "/hsv-conv",
 			title: "HSV / HSL / RGB / HEX",
 			description: "Bidirectional color converter with sliders."
+		},
+		{
+			href: "/json-ts",
+			title: "JSON → TypeScript",
+			description: "Infer TypeScript interfaces from a JSON sample."
 		}
 	];
 </script>
