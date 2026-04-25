@@ -28,9 +28,11 @@
 	}
 
 	function jsObfuscate(s: string): string {
-		return Array.from(s)
-			.map((ch) => "\\u" + ch.codePointAt(0)!.toString(16).padStart(4, "0"))
-			.join("");
+		let out = "";
+		for (let i = 0; i < s.length; i++) {
+			out += "\\u" + s.charCodeAt(i).toString(16).padStart(4, "0");
+		}
+		return out;
 	}
 
 	let outputs = $derived({

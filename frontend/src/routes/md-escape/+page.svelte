@@ -10,7 +10,7 @@
 	let mode = $state<"escape" | "unescape">("escape");
 	let input = $state("Use _underscores_ and **asterisks** for emphasis. Hash header: # Title");
 
-	const ESCAPE_CHARS = ["\\", "`", "*", "_", "{", "}", "[", "]", "(", ")", "#", "+", "-", ".", "!", "|", ">", "<"];
+	const ESCAPE_CHARS = ["\\", "`", "*", "_", "{", "}", "[", "]", "(", ")", "#", "+", "-", ".", "!", "|"];
 
 	function escapeMd(s: string): string {
 		let out = "";
@@ -22,7 +22,7 @@
 	}
 
 	function unescapeMd(s: string): string {
-		return s.replace(/\\([\\`*_{}\[\]()#+\-.!|><])/g, "$1");
+		return s.replace(/\\([\\`*_{}\[\]()#+\-.!|])/g, "$1");
 	}
 
 	let output = $derived(mode === "escape" ? escapeMd(input) : unescapeMd(input));
