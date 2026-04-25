@@ -126,6 +126,11 @@
 			href: "/cron",
 			title: "Cron Parser",
 			description: "Translate cron expressions to English and preview upcoming runs."
+		},
+		{
+			href: "/xml",
+			title: "XML Formatter",
+			description: "Pretty-print or minify XML using the browser's DOMParser."
 		}
 	];
 </script>
