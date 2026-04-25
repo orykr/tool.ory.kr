@@ -831,6 +831,11 @@
 			href: "/json-ts",
 			title: "JSON → TypeScript",
 			description: "Infer TypeScript interfaces from a JSON sample."
+		},
+		{
+			href: "/hex-dump",
+			title: "Hex Dump",
+			description: "View text or files as a side-by-side hex / ASCII dump."
 		}
 	];
 </script>
