@@ -140,3 +140,5 @@ vite.config.ts.timestamp-*
 
 # Local agent state
 .claude/*.local.md
+.codex
+.codex.md
