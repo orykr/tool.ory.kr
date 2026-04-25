@@ -321,6 +321,11 @@
 			href: "/iso-duration",
 			title: "ISO 8601 Duration",
 			description: "Parse and build ISO 8601 duration strings (P1Y2DT3H)."
+		},
+		{
+			href: "/semver",
+			title: "Semver Tools",
+			description: "Compare, bump, sort, and check Semantic Versioning ranges."
 		}
 	];
 </script>
