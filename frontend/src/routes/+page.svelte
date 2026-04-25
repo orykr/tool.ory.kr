@@ -646,6 +646,11 @@
 			href: "/bpm",
 			title: "BPM / Tempo Tools",
 			description: "Tap to find BPM, compute note delays, and play a metronome."
+		},
+		{
+			href: "/vector",
+			title: "Vector Calculator",
+			description: "Add, subtract, dot, cross, normalize, and project 2D/3D vectors."
 		}
 	];
 </script>
