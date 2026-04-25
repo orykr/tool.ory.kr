@@ -371,6 +371,11 @@
 			href: "/haversine",
 			title: "Haversine Distance",
 			description: "Great-circle distance and bearing between two coordinates."
+		},
+		{
+			href: "/ports",
+			title: "TCP/UDP Port Reference",
+			description: "Searchable list of common TCP/UDP port numbers and services."
 		}
 	];
 </script>
