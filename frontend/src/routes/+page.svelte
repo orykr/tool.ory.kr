@@ -696,6 +696,16 @@
 			href: "/email-obfuscate",
 			title: "Email Obfuscator",
 			description: "Hide an email from scrapers via HTML entities and ROT13."
+		},
+		{
+			href: "/md-escape",
+			title: "Markdown Escape",
+			description: "Escape Markdown special characters to display them literally."
+		},
+		{
+			href: "/identifier",
+			title: "Identifier Validator",
+			description: "Check identifier validity and reserved-word status (JS/Py/Java/SQL)."
 		}
 	];
 </script>
