@@ -706,6 +706,11 @@
 			href: "/identifier",
 			title: "Identifier Validator",
 			description: "Check identifier validity and reserved-word status (JS/Py/Java/SQL)."
+		},
+		{
+			href: "/sequences",
+			title: "Number Sequences",
+			description: "Fibonacci, primes, squares, factorials, AP/GP, and more (BigInt)."
 		}
 	];
 </script>
