@@ -606,6 +606,11 @@
 			href: "/md-images",
 			title: "Markdown Image Extractor",
 			description: "Extract inline, reference, and HTML images from Markdown."
+		},
+		{
+			href: "/word-diff",
+			title: "Word-level Diff",
+			description: "Compare two text snippets word by word for prose changes."
 		}
 	];
 </script>
