@@ -756,6 +756,11 @@
 			href: "/url-builder",
 			title: "URL Builder",
 			description: "Compose URLs from parts with auto-encoded query parameters."
+		},
+		{
+			href: "/cache-header",
+			title: "HTTP Cache Header Analyzer",
+			description: "Parse Cache-Control / Expires / ETag and explain caching behavior."
 		}
 	];
 </script>
