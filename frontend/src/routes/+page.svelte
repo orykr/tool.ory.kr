@@ -96,6 +96,11 @@
 			href: "/qr",
 			title: "QR Code Generator",
 			description: "Generate QR codes from text or URLs and download as PNG or SVG."
+		},
+		{
+			href: "/csv",
+			title: "CSV ↔ JSON Converter",
+			description: "Convert between CSV and JSON with quote-aware parsing."
 		}
 	];
 </script>
