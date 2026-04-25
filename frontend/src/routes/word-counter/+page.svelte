@@ -43,7 +43,8 @@
 
 	let topWords = $derived.by(() => {
 		const counts = new Map<string, number>();
-		for (const word of text.toLowerCase().match(/\p{L}[\p{L}\p{N}'-]*/gu) ?? []) {
+		const re = /\p{L}(?:[\p{L}\p{N}]|['-](?=[\p{L}\p{N}]))*/gu;
+		for (const word of text.toLowerCase().match(re) ?? []) {
 			counts.set(word, (counts.get(word) ?? 0) + 1);
 		}
 		return Array.from(counts.entries())

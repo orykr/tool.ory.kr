@@ -35,6 +35,21 @@ export function parseDmsString(input: string, axis: "lat" | "lon"): number {
 	const min = m[2] ? parseFloat(m[2]) : 0;
 	const sec = m[3] ? parseFloat(m[3]) : 0;
 	let hem = (m[4] ?? "").toUpperCase() as "N" | "S" | "E" | "W" | "";
+
+	if (min < 0 || min >= 60) throw new Error("Minutes must be in [0, 60).");
+	if (sec < 0 || sec >= 60) throw new Error("Seconds must be in [0, 60).");
+
+	const expectedAxis = axis === "lat" ? ["N", "S"] : ["E", "W"];
+	if (hem && !expectedAxis.includes(hem)) {
+		throw new Error(`Hemisphere ${hem} not valid for ${axis === "lat" ? "latitude" : "longitude"}.`);
+	}
+	if (hem && deg < 0) {
+		throw new Error("Conflicting sign and hemisphere.");
+	}
 	if (!hem) hem = axis === "lat" ? (deg < 0 ? "S" : "N") : deg < 0 ? "W" : "E";
-	return dmsToDecimal(deg, min, sec, hem);
+
+	const value = dmsToDecimal(deg, min, sec, hem);
+	const limit = axis === "lat" ? 90 : 180;
+	if (Math.abs(value) > limit) throw new Error(`Value out of range (|${axis}| ≤ ${limit}).`);
+	return value;
 }

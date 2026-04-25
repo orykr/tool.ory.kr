@@ -23,9 +23,9 @@ function encodeDigit(digit: number): string {
 }
 
 function decodeDigit(codePoint: number): number {
-	if (codePoint - 48 < 10) return codePoint - 22;
-	if (codePoint - 65 < 26) return codePoint - 65;
-	if (codePoint - 97 < 26) return codePoint - 97;
+	if (codePoint >= 48 && codePoint <= 57) return codePoint - 22;
+	if (codePoint >= 65 && codePoint <= 90) return codePoint - 65;
+	if (codePoint >= 97 && codePoint <= 122) return codePoint - 97;
 	return BASE;
 }
 
@@ -130,6 +130,6 @@ export function encodeIdn(domain: string): string {
 export function decodeIdn(domain: string): string {
 	return domain
 		.split(".")
-		.map((label) => (label.startsWith("xn--") ? punyDecode(label.slice(4)) : label))
+		.map((label) => (/^xn--/i.test(label) ? punyDecode(label.slice(4)) : label))
 		.join(".");
 }
