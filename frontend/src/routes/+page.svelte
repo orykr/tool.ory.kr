@@ -131,6 +131,11 @@
 			href: "/xml",
 			title: "XML Formatter",
 			description: "Pretty-print or minify XML using the browser's DOMParser."
+		},
+		{
+			href: "/mock-data",
+			title: "Mock Data Generator",
+			description: "Generate fake JSON or CSV records with a custom schema."
 		}
 	];
 </script>
