@@ -836,6 +836,11 @@
 			href: "/hex-dump",
 			title: "Hex Dump",
 			description: "View text or files as a side-by-side hex / ASCII dump."
+		},
+		{
+			href: "/jwt-sign",
+			title: "JWT Signer",
+			description: "Build and sign HS256 / 384 / 512 JWTs locally."
 		}
 	];
 </script>
