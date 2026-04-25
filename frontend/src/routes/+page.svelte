@@ -641,6 +641,11 @@
 			href: "/perm-comb",
 			title: "Permutations & Combinations",
 			description: "Factorials, P(n,r), C(n,r) with and without repetition (BigInt)."
+		},
+		{
+			href: "/bpm",
+			title: "BPM / Tempo Tools",
+			description: "Tap to find BPM, compute note delays, and play a metronome."
 		}
 	];
 </script>
