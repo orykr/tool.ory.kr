@@ -396,6 +396,11 @@
 			href: "/base32-58",
 			title: "Base32 / Base58",
 			description: "Encode and decode text via RFC 4648 Base32 or Bitcoin Base58."
+		},
+		{
+			href: "/math-eval",
+			title: "Math Expression Evaluator",
+			description: "Evaluate math expressions safely with built-in functions and constants."
 		}
 	];
 </script>
