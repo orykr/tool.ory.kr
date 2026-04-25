@@ -421,6 +421,11 @@
 			href: "/clamp",
 			title: "CSS clamp() Generator",
 			description: "Build fluid CSS clamp() values that scale between viewports."
+		},
+		{
+			href: "/unicode",
+			title: "Unicode Inspector",
+			description: "Inspect code points, UTF-8/16 encoding, HTML/JS escapes per character."
 		}
 	];
 </script>
