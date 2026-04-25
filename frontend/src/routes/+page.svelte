@@ -226,6 +226,11 @@
 			href: "/luhn",
 			title: "Luhn Validator",
 			description: "Validate or compute Luhn checksums for credit cards, IMEI, etc."
+		},
+		{
+			href: "/nato",
+			title: "NATO Phonetic Alphabet",
+			description: "Spell text aloud using NATO/ICAO phonetic alphabet."
 		}
 	];
 </script>
