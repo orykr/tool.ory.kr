@@ -301,6 +301,11 @@
 			href: "/gradient",
 			title: "CSS Gradient Generator",
 			description: "Build linear, radial, or conic CSS gradients with color stops."
+		},
+		{
+			href: "/json-diff",
+			title: "JSON Diff",
+			description: "Structurally compare two JSON documents (added/removed/changed)."
 		}
 	];
 </script>
