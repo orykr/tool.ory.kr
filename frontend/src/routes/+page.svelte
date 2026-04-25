@@ -631,6 +631,11 @@
 			href: "/html-strip",
 			title: "HTML Stripper",
 			description: "Extract plain text from HTML; strips script/style."
+		},
+		{
+			href: "/csv-stats",
+			title: "CSV Column Statistics",
+			description: "Per-column counts, unique values, and numeric statistics."
 		}
 	];
 </script>
