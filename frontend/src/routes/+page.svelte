@@ -796,6 +796,11 @@
 			href: "/user-agent",
 			title: "User Agent Strings",
 			description: "Reference of common browser, mobile, bot, and CLI UAs."
+		},
+		{
+			href: "/md-to-csv",
+			title: "Markdown Table → CSV",
+			description: "Convert Markdown pipe tables into properly quoted CSV."
 		}
 	];
 </script>
