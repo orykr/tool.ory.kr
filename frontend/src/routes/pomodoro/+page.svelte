@@ -87,9 +87,11 @@
 	}
 
 	$effect(() => {
-		if (!running) {
-			secondsLeft = total;
-		}
+		void phase;
+		void focusMin;
+		void shortMin;
+		void longMin;
+		if (!running) secondsLeft = total;
 	});
 
 	onDestroy(() => {

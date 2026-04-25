@@ -81,15 +81,23 @@ function threeDigitToWords(n: number): string {
 
 export function numberToOrdinal(input: string): string {
 	const words = numberToWords(input);
-	if (words.endsWith("y")) return words.slice(0, -1) + "ieth";
 	const map: Record<string, string> = {
-		one: "first", two: "second", three: "third", five: "fifth", eight: "eighth",
-		nine: "ninth", twelve: "twelfth"
+		one: "first", two: "second", three: "third", four: "fourth", five: "fifth",
+		six: "sixth", seven: "seventh", eight: "eighth", nine: "ninth", ten: "tenth",
+		eleven: "eleventh", twelve: "twelfth", thirteen: "thirteenth", fourteen: "fourteenth",
+		fifteen: "fifteenth", sixteen: "sixteenth", seventeen: "seventeenth", eighteen: "eighteenth",
+		nineteen: "nineteenth", twenty: "twentieth", thirty: "thirtieth", forty: "fortieth",
+		fifty: "fiftieth", sixty: "sixtieth", seventy: "seventieth", eighty: "eightieth",
+		ninety: "ninetieth", hundred: "hundredth", thousand: "thousandth", million: "millionth",
+		billion: "billionth", trillion: "trillionth"
 	};
-	const lastWord = words.split(/[\s-]/).pop() ?? "";
-	if (map[lastWord]) {
-		const idx = words.lastIndexOf(lastWord);
-		return words.slice(0, idx) + map[lastWord];
+	const tokens = words.split(/([\s-])/);
+	for (let i = tokens.length - 1; i >= 0; i--) {
+		const w = tokens[i];
+		if (map[w]) {
+			tokens[i] = map[w];
+			return tokens.join("");
+		}
 	}
 	return words + "th";
 }
