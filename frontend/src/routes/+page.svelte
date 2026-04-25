@@ -146,6 +146,11 @@
 			href: "/http-status",
 			title: "HTTP Status Codes",
 			description: "Searchable reference for common HTTP status codes."
+		},
+		{
+			href: "/md-table",
+			title: "Markdown Table Generator",
+			description: "Build Markdown tables interactively with alignment options."
 		}
 	];
 </script>
