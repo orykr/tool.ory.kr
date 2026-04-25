@@ -411,6 +411,16 @@
 			href: "/totp",
 			title: "TOTP Generator",
 			description: "RFC 6238 time-based one-time passwords (Google Authenticator-compatible)."
+		},
+		{
+			href: "/pluralize",
+			title: "English Pluralizer",
+			description: "Convert English nouns between singular and plural with irregulars."
+		},
+		{
+			href: "/clamp",
+			title: "CSS clamp() Generator",
+			description: "Build fluid CSS clamp() values that scale between viewports."
 		}
 	];
 </script>
