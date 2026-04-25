@@ -821,6 +821,11 @@
 			href: "/data-url",
 			title: "Data URL",
 			description: "Encode files to data: URLs and decode them back to bytes."
+		},
+		{
+			href: "/hsv-conv",
+			title: "HSV / HSL / RGB / HEX",
+			description: "Bidirectional color converter with sliders."
 		}
 	];
 </script>
