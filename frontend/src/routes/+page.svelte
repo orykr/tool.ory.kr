@@ -51,6 +51,11 @@
 			href: "/uuid",
 			title: "UUID Generator",
 			description: "Generate UUID v4, time-ordered v7, or NanoID via your browser's CSPRNG."
+		},
+		{
+			href: "/hash",
+			title: "Hash Generator",
+			description: "Compute SHA-1/256/384/512 of text or files using the Web Crypto API."
 		}
 	];
 </script>
