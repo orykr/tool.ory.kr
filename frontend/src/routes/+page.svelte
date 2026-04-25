@@ -351,6 +351,11 @@
 			href: "/html-preview",
 			title: "HTML Preview",
 			description: "Render HTML live with DOMPurify sanitization."
+		},
+		{
+			href: "/aspect-ratio",
+			title: "Aspect Ratio Calculator",
+			description: "Compute aspect ratios and resize dimensions while preserving them."
 		}
 	];
 </script>
