@@ -441,6 +441,11 @@
 			href: "/resistor",
 			title: "Resistor Color Decoder",
 			description: "Decode 3-, 4-, 5-, and 6-band axial resistor color codes."
+		},
+		{
+			href: "/dotenv",
+			title: "Dotenv Parser",
+			description: "Parse .env files into JSON or shell export with quote/escape handling."
 		}
 	];
 </script>
