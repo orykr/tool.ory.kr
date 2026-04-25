@@ -681,6 +681,11 @@
 			href: "/md-strip",
 			title: "Markdown Stripper",
 			description: "Strip Markdown formatting to get plain text."
+		},
+		{
+			href: "/matrix",
+			title: "Matrix Calculator",
+			description: "2×2 and 3×3 matrix det, transpose, inverse, multiply."
 		}
 	];
 </script>
