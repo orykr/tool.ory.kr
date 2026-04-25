@@ -671,6 +671,16 @@
 			href: "/csv-schema",
 			title: "CSV → SQL Schema",
 			description: "Infer CREATE TABLE from CSV across PostgreSQL/MySQL/SQLite/MSSQL."
+		},
+		{
+			href: "/box-draw",
+			title: "Box Drawing Characters",
+			description: "Click to copy Unicode box-drawing, block, and shape characters."
+		},
+		{
+			href: "/md-strip",
+			title: "Markdown Stripper",
+			description: "Strip Markdown formatting to get plain text."
 		}
 	];
 </script>
