@@ -776,6 +776,11 @@
 			href: "/image-format",
 			title: "Image Format Converter",
 			description: "Convert PNG ↔ JPEG ↔ WebP via canvas, with quality and resize."
+		},
+		{
+			href: "/stopwatch",
+			title: "Stopwatch",
+			description: "Sub-second precision stopwatch with lap tracking."
 		}
 	];
 </script>
