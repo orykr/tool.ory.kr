@@ -386,6 +386,11 @@
 			href: "/css-unit",
 			title: "CSS Unit Converter",
 			description: "Convert px to rem/em/pt/vw/vh and physical units."
+		},
+		{
+			href: "/string-sim",
+			title: "String Similarity",
+			description: "Levenshtein, Jaro-Winkler, Dice, and Hamming distance."
 		}
 	];
 </script>
