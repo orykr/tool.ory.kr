@@ -25,13 +25,19 @@
 				return { ok: false as const, error: "Enter integers." };
 			}
 			if (N < 0 || R < 0) return { ok: false as const, error: "n and r must be ≥ 0." };
-			if (R > N) return { ok: false as const, error: "r must be ≤ n." };
 			if (N > 1000) return { ok: false as const, error: "n too large (≤ 1000)." };
+			if (R > 1000) return { ok: false as const, error: "r too large (≤ 1000)." };
 			const factorial = factorialBig(N);
-			let permutation = 1n;
-			for (let i = N; i > N - R; i--) permutation *= BigInt(i);
-			let combination = permutation;
-			for (let i = 1; i <= R; i++) combination /= BigInt(i);
+			let permutation: bigint | null = null;
+			let combination: bigint | null = null;
+			if (R <= N) {
+				let p = 1n;
+				for (let i = N; i > N - R; i--) p *= BigInt(i);
+				permutation = p;
+				let c = p;
+				for (let i = 1; i <= R; i++) c /= BigInt(i);
+				combination = c;
+			}
 			const repPerm = BigInt(N) ** BigInt(R);
 			let repComb = 1n;
 			for (let i = 0; i < R; i++) repComb = (repComb * BigInt(N + R - 1 - i)) / BigInt(i + 1);
@@ -41,7 +47,8 @@
 				permutation,
 				combination,
 				repPerm,
-				repComb
+				repComb,
+				warnTooSmall: R > N
 			};
 		} catch (e) {
 			return { ok: false as const, error: (e as Error).message };
@@ -92,24 +99,59 @@
 		<Card.Root>
 			<Card.Header><Card.Title class="text-base">Results</Card.Title></Card.Header>
 			<Card.Content>
+				{#if result.warnTooSmall}
+					<p class="text-muted-foreground mb-2 text-xs">
+						Without repetition, P(n,r) and C(n,r) require r ≤ n; only repetition variants shown.
+					</p>
+				{/if}
 				<dl class="space-y-2 text-sm">
-					{#each [
-						{ k: `n! (${n}!)`, v: result.factorial.toString(), key: "f" },
-						{ k: `P(n, r) — permutations`, v: result.permutation.toString(), key: "p" },
-						{ k: `C(n, r) — combinations`, v: result.combination.toString(), key: "c" },
-						{ k: `Permutations with repetition (n^r)`, v: result.repPerm.toString(), key: "pr" },
-						{ k: `Combinations with repetition (n+r-1 C r)`, v: result.repComb.toString(), key: "cr" }
-					] as item (item.key)}
+					<div class="bg-muted flex items-center justify-between rounded-md p-3">
+						<div class="min-w-0 flex-1">
+							<dt class="text-muted-foreground text-xs">n! ({n}!)</dt>
+							<dd class="font-mono text-sm break-all">{result.factorial.toString()}</dd>
+						</div>
+						<Button variant="ghost" size="sm" onclick={() => copy("f", result.factorial.toString())}>
+							{#if copied === "f"}<Check />{:else}<Copy />{/if}
+						</Button>
+					</div>
+					{#if result.permutation !== null && result.combination !== null}
 						<div class="bg-muted flex items-center justify-between rounded-md p-3">
 							<div class="min-w-0 flex-1">
-								<dt class="text-muted-foreground text-xs">{item.k}</dt>
-								<dd class="font-mono text-sm break-all">{item.v}</dd>
+								<dt class="text-muted-foreground text-xs">P(n, r) — permutations</dt>
+								<dd class="font-mono text-sm break-all">{result.permutation.toString()}</dd>
 							</div>
-							<Button variant="ghost" size="sm" onclick={() => copy(item.key, item.v)}>
-								{#if copied === item.key}<Check />{:else}<Copy />{/if}
+							<Button variant="ghost" size="sm" onclick={() => copy("p", result.permutation!.toString())}>
+								{#if copied === "p"}<Check />{:else}<Copy />{/if}
 							</Button>
 						</div>
-					{/each}
+						<div class="bg-muted flex items-center justify-between rounded-md p-3">
+							<div class="min-w-0 flex-1">
+								<dt class="text-muted-foreground text-xs">C(n, r) — combinations</dt>
+								<dd class="font-mono text-sm break-all">{result.combination.toString()}</dd>
+							</div>
+							<Button variant="ghost" size="sm" onclick={() => copy("c", result.combination!.toString())}>
+								{#if copied === "c"}<Check />{:else}<Copy />{/if}
+							</Button>
+						</div>
+					{/if}
+					<div class="bg-muted flex items-center justify-between rounded-md p-3">
+						<div class="min-w-0 flex-1">
+							<dt class="text-muted-foreground text-xs">Permutations with repetition (n^r)</dt>
+							<dd class="font-mono text-sm break-all">{result.repPerm.toString()}</dd>
+						</div>
+						<Button variant="ghost" size="sm" onclick={() => copy("pr", result.repPerm.toString())}>
+							{#if copied === "pr"}<Check />{:else}<Copy />{/if}
+						</Button>
+					</div>
+					<div class="bg-muted flex items-center justify-between rounded-md p-3">
+						<div class="min-w-0 flex-1">
+							<dt class="text-muted-foreground text-xs">Combinations with repetition (n+r-1 C r)</dt>
+							<dd class="font-mono text-sm break-all">{result.repComb.toString()}</dd>
+						</div>
+						<Button variant="ghost" size="sm" onclick={() => copy("cr", result.repComb.toString())}>
+							{#if copied === "cr"}<Check />{:else}<Copy />{/if}
+						</Button>
+					</div>
 				</dl>
 			</Card.Content>
 		</Card.Root>

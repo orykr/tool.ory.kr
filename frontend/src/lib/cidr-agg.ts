@@ -3,8 +3,9 @@ function ipToInt(ip: string): bigint {
 	if (parts.length !== 4) throw new Error(`Invalid IPv4: ${ip}`);
 	let result = 0n;
 	for (const p of parts) {
+		if (!/^\d+$/.test(p)) throw new Error(`Invalid octet '${p}' in ${ip}`);
 		const n = Number(p);
-		if (!Number.isInteger(n) || n < 0 || n > 255) throw new Error(`Invalid octet in ${ip}`);
+		if (n < 0 || n > 255) throw new Error(`Octet out of range in ${ip}`);
 		result = (result << 8n) | BigInt(n);
 	}
 	return result;
@@ -30,10 +31,17 @@ export function parseEntry(input: string): ParsedRange {
 	if (!trimmed) throw new Error("Empty entry.");
 
 	if (trimmed.includes("/")) {
-		const [ipStr, prefixStr] = trimmed.split("/");
-		const prefix = Number(prefixStr);
-		if (!Number.isInteger(prefix) || prefix < 0 || prefix > 32) {
+		const slashParts = trimmed.split("/");
+		if (slashParts.length !== 2) {
+			throw new Error(`Invalid CIDR: ${trimmed}`);
+		}
+		const [ipStr, prefixStr] = slashParts;
+		if (!/^\d+$/.test(prefixStr)) {
 			throw new Error(`Invalid prefix: ${prefixStr}`);
+		}
+		const prefix = Number(prefixStr);
+		if (prefix < 0 || prefix > 32) {
+			throw new Error(`Prefix out of range: ${prefixStr}`);
 		}
 		const ipNum = ipToInt(ipStr);
 		const mask = prefix === 0 ? 0n : (~0n << BigInt(32 - prefix)) & 0xffffffffn;

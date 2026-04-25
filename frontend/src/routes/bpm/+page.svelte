@@ -31,8 +31,13 @@
 		tappedBpm = null;
 	}
 
-	let beatsPerSec = $derived(Number(bpm) / 60);
-	let msPerBeat = $derived(60000 / Number(bpm));
+	function safeBpm(): number {
+		const n = Number(bpm);
+		return Number.isFinite(n) && n > 0 ? n : 120;
+	}
+
+	let beatsPerSec = $derived(safeBpm() / 60);
+	let msPerBeat = $derived(60000 / safeBpm());
 
 	const noteValues: Array<{ name: string; mult: number }> = [
 		{ name: "Whole (4 beats)", mult: 4 },

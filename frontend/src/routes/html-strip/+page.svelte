@@ -21,6 +21,33 @@
 	let preserveLinks = $state(false);
 	let collapseSpaces = $state(true);
 
+	const BLOCK_TAGS = new Set([
+		"address", "article", "aside", "blockquote", "br", "div", "dl", "dt", "dd",
+		"figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6",
+		"header", "hr", "li", "main", "nav", "ol", "p", "pre", "section", "table",
+		"tbody", "thead", "tr", "td", "th", "ul"
+	]);
+
+	function extractText(node: Node): string {
+		let out = "";
+		for (const child of Array.from(node.childNodes)) {
+			if (child.nodeType === 3) {
+				out += child.nodeValue ?? "";
+			} else if (child.nodeType === 1) {
+				const el = child as Element;
+				const tag = el.tagName.toLowerCase();
+				if (tag === "br") {
+					out += "\n";
+				} else if (BLOCK_TAGS.has(tag)) {
+					out += "\n" + extractText(el) + "\n";
+				} else {
+					out += extractText(el);
+				}
+			}
+		}
+		return out;
+	}
+
 	let stripped = $derived.by(() => {
 		try {
 			if (typeof DOMParser === "undefined") return input;
@@ -35,7 +62,7 @@
 				});
 			}
 
-			let text = doc.body?.textContent ?? "";
+			let text = doc.body ? extractText(doc.body) : "";
 			if (collapseSpaces) {
 				text = text.replace(/[ \t]+/g, " ").replace(/\n\s*\n\s*\n+/g, "\n\n").trim();
 			}

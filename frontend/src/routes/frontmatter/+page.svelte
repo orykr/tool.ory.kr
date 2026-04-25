@@ -58,19 +58,45 @@ This is the body of the document.`;
 				return { ok: false as const, error: `TOML parse error: ${(e as Error).message}` };
 			}
 		}
-		// JSON frontmatter ({})
-		const jsonMatch = text.match(/^(\{[\s\S]*?\})\r?\n([\s\S]*)$/);
-		if (jsonMatch && text.startsWith("{")) {
-			try {
-				const data = JSON.parse(jsonMatch[1]);
-				return {
-					ok: true as const,
-					format: "JSON",
-					data,
-					content: jsonMatch[2]
-				};
-			} catch (e) {
-				return { ok: false as const, error: `JSON parse error: ${(e as Error).message}` };
+		// JSON frontmatter ({}) — balanced brace match (string-aware)
+		if (text.startsWith("{")) {
+			let depth = 0;
+			let inString = false;
+			let escape = false;
+			let end = -1;
+			for (let i = 0; i < text.length; i++) {
+				const ch = text[i];
+				if (escape) {
+					escape = false;
+					continue;
+				}
+				if (inString) {
+					if (ch === "\\") escape = true;
+					else if (ch === '"') inString = false;
+					continue;
+				}
+				if (ch === '"') inString = true;
+				else if (ch === "{") depth++;
+				else if (ch === "}") {
+					depth--;
+					if (depth === 0) {
+						end = i + 1;
+						break;
+					}
+				}
+			}
+			if (end > 0) {
+				try {
+					const data = JSON.parse(text.slice(0, end));
+					return {
+						ok: true as const,
+						format: "JSON",
+						data,
+						content: text.slice(end).replace(/^\r?\n/, "")
+					};
+				} catch (e) {
+					return { ok: false as const, error: `JSON parse error: ${(e as Error).message}` };
+				}
 			}
 		}
 		return { ok: true as const, format: null, data: null, content: text };
