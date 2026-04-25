@@ -406,6 +406,11 @@
 			href: "/mac",
 			title: "MAC Address Tools",
 			description: "Validate, format, and inspect Ethernet MAC addresses."
+		},
+		{
+			href: "/totp",
+			title: "TOTP Generator",
+			description: "RFC 6238 time-based one-time passwords (Google Authenticator-compatible)."
 		}
 	];
 </script>
