@@ -431,6 +431,11 @@
 			href: "/date-math",
 			title: "Date Math",
 			description: "Add or subtract years, months, days, and time from a base date."
+		},
+		{
+			href: "/pkce",
+			title: "OAuth PKCE Generator",
+			description: "Generate code_verifier/code_challenge, state, and nonce for OAuth/OIDC."
 		}
 	];
 </script>
