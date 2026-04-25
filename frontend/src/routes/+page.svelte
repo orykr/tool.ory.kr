@@ -526,6 +526,16 @@
 			href: "/json5",
 			title: "JSON5 ↔ JSON",
 			description: "Convert between JSON5 (comments, trailing commas) and strict JSON."
+		},
+		{
+			href: "/num-format",
+			title: "Number Formatter",
+			description: "Format numbers with locale, currency, percent, or unit (Intl)."
+		},
+		{
+			href: "/note-freq",
+			title: "Musical Note ↔ Frequency",
+			description: "Convert between note names, MIDI numbers, and Hz."
 		}
 	];
 </script>
