@@ -46,6 +46,11 @@
 			href: "/url-codec",
 			title: "URL Encoder / Decoder",
 			description: "Encode, decode, and parse URLs with query parameter inspection."
+		},
+		{
+			href: "/uuid",
+			title: "UUID Generator",
+			description: "Generate UUID v4, time-ordered v7, or NanoID via your browser's CSPRNG."
 		}
 	];
 </script>
