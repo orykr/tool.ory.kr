@@ -311,6 +311,11 @@
 			href: "/set-ops",
 			title: "Set Operations",
 			description: "Union, intersection, and difference of two line-based lists."
+		},
+		{
+			href: "/cookie",
+			title: "Cookie Parser & Builder",
+			description: "Parse Cookie headers or build a Set-Cookie value with attributes."
 		}
 	];
 </script>
