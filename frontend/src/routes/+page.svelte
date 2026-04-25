@@ -86,6 +86,11 @@
 			href: "/lorem",
 			title: "Lorem Ipsum Generator",
 			description: "Generate placeholder paragraphs, sentences, or words."
+		},
+		{
+			href: "/diff",
+			title: "Text Diff",
+			description: "Compare two text snippets line-by-line with LCS diff."
 		}
 	];
 </script>
