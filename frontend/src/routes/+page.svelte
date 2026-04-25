@@ -476,6 +476,11 @@
 			href: "/fraction",
 			title: "Decimal → Fraction",
 			description: "Convert decimals to exact fractions or best rational approximation."
+		},
+		{
+			href: "/url-params",
+			title: "URL Params ↔ Object",
+			description: "Convert query strings to JSON objects and back."
 		}
 	];
 </script>
