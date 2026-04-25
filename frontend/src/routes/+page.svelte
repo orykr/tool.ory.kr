@@ -391,6 +391,11 @@
 			href: "/string-sim",
 			title: "String Similarity",
 			description: "Levenshtein, Jaro-Winkler, Dice, and Hamming distance."
+		},
+		{
+			href: "/base32-58",
+			title: "Base32 / Base58",
+			description: "Encode and decode text via RFC 4648 Base32 or Bitcoin Base58."
 		}
 	];
 </script>
