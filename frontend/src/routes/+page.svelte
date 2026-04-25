@@ -31,6 +31,11 @@
 			href: "/json",
 			title: "JSON Formatter",
 			description: "Pretty-print, minify, validate, and sort keys in JSON documents."
+		},
+		{
+			href: "/jwt",
+			title: "JWT Decoder",
+			description: "Inspect JWT header, payload, and claims locally without verification."
 		}
 	];
 </script>
