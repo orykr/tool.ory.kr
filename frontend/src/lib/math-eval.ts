@@ -69,25 +69,16 @@ export function evaluate(expr: string): number {
 		return v;
 	}
 	function parseMulDiv(): number {
-		let v = parsePow();
+		let v = parseUnary();
 		while (
 			peek()?.type === "op" &&
 			(peek()!.value === "*" || peek()!.value === "/" || peek()!.value === "%")
 		) {
 			const op = consume().value;
-			const r = parsePow();
+			const r = parseUnary();
 			if (op === "*") v *= r;
 			else if (op === "/") v /= r;
 			else v -= Math.floor(v / r) * r;
-		}
-		return v;
-	}
-	function parsePow(): number {
-		const v = parseUnary();
-		if (peek()?.type === "op" && peek()!.value === "^") {
-			consume();
-			const r = parsePow();
-			return Math.pow(v, r);
 		}
 		return v;
 	}
@@ -97,7 +88,16 @@ export function evaluate(expr: string): number {
 			const v = parseUnary();
 			return op === "-" ? -v : v;
 		}
-		return parsePrimary();
+		return parsePow();
+	}
+	function parsePow(): number {
+		const base = parsePrimary();
+		if (peek()?.type === "op" && peek()!.value === "^") {
+			consume();
+			const exp = parseUnary();
+			return Math.pow(base, exp);
+		}
+		return base;
 	}
 	function parsePrimary(): number {
 		const tok = peek();
@@ -159,12 +159,16 @@ function tokenize(expr: string): Token[] {
 			continue;
 		}
 		if (/[\d.]/.test(ch)) {
-			let s = "";
-			while (i < expr.length && /[\d.eE+-]/.test(expr[i])) {
-				if ((expr[i] === "+" || expr[i] === "-") && !/[eE]$/.test(s)) break;
-				s += expr[i++];
-			}
-			tokens.push({ type: "num", value: s, pos: i - s.length });
+			const start = i;
+			const re = /\d+(\.\d*)?([eE][+-]?\d+)?|\.\d+([eE][+-]?\d+)?/y;
+			re.lastIndex = i;
+			const match = re.exec(expr);
+			if (!match) throw new Error(`Invalid number at position ${i}.`);
+			const s = match[0];
+			i += s.length;
+			const num = Number(s);
+			if (!Number.isFinite(num)) throw new Error(`Invalid number "${s}" at position ${start}.`);
+			tokens.push({ type: "num", value: s, pos: start });
 			continue;
 		}
 		if (/[a-zA-Z_]/.test(ch)) {

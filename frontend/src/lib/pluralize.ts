@@ -92,11 +92,14 @@ function preserveCase(original: string, replacement: string): string {
 	return replacement;
 }
 
+const ALREADY_SINGULAR = /[^aeiouy]is$|^.{1,3}is$|us$|sis$|ss$|^men$|^children$|^people$|^feet$|^teeth$|^mice$|^geese$|^oxen$|^cacti$|^foci$|^radii$|^fungi$|^nuclei$|^syllabi$|^analyses$|^diagnoses$|^theses$|^crises$|^phenomena$|^criteria$|^data$|^media$|^alumni$|^alumnae$/i;
+
 export function pluralize(word: string): string {
 	if (!word) return word;
 	if (UNCOUNTABLE.has(lower(word))) return word;
 	for (const [s, p] of IRREGULAR) {
 		if (lower(word) === s) return preserveCase(word, p);
+		if (lower(word) === p) return word;
 	}
 	for (const [pattern, replacement] of PLURAL_RULES) {
 		if (pattern.test(word)) return word.replace(pattern, replacement);
@@ -109,7 +112,9 @@ export function singularize(word: string): string {
 	if (UNCOUNTABLE.has(lower(word))) return word;
 	for (const [s, p] of IRREGULAR) {
 		if (lower(word) === p) return preserveCase(word, s);
+		if (lower(word) === s) return word;
 	}
+	if (ALREADY_SINGULAR.test(word)) return word;
 	for (const [pattern, replacement] of SINGULAR_RULES) {
 		if (pattern.test(word)) return word.replace(pattern, replacement);
 	}
