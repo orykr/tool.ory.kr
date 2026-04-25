@@ -32,10 +32,12 @@ function walk(a: unknown, b: unknown, path: string, out: DiffEntry[]): void {
 		const aObj = a as Record<string, unknown>;
 		const bObj = b as Record<string, unknown>;
 		const keys = new Set([...Object.keys(aObj), ...Object.keys(bObj)]);
+		const has = (obj: Record<string, unknown>, k: string) =>
+			Object.prototype.hasOwnProperty.call(obj, k);
 		for (const k of keys) {
 			const childPath = `${path}.${k}`;
-			if (!(k in aObj)) out.push({ kind: "added", path: childPath, value: bObj[k] });
-			else if (!(k in bObj)) out.push({ kind: "removed", path: childPath, value: aObj[k] });
+			if (!has(aObj, k)) out.push({ kind: "added", path: childPath, value: bObj[k] });
+			else if (!has(bObj, k)) out.push({ kind: "removed", path: childPath, value: aObj[k] });
 			else walk(aObj[k], bObj[k], childPath, out);
 		}
 		return;
@@ -47,6 +49,7 @@ function walk(a: unknown, b: unknown, path: string, out: DiffEntry[]): void {
 function deepEqual(a: unknown, b: unknown): boolean {
 	if (a === b) return true;
 	if (typeof a !== typeof b || a === null || b === null) return false;
+	if (Array.isArray(a) !== Array.isArray(b)) return false;
 	if (Array.isArray(a) && Array.isArray(b)) {
 		if (a.length !== b.length) return false;
 		for (let i = 0; i < a.length; i++) if (!deepEqual(a[i], b[i])) return false;

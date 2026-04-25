@@ -12,21 +12,35 @@
 	let user = $state<Triplet>({ r: true, w: true, x: false });
 	let group = $state<Triplet>({ r: true, w: false, x: false });
 	let other = $state<Triplet>({ r: true, w: false, x: false });
+	let setuid = $state(false);
+	let setgid = $state(false);
+	let sticky = $state(false);
 
 	let octalInput = $state("644");
 	let octalError = $state<string | null>(null);
 
 	let trips = $derived([user, group, other]);
 
-	let octal = $derived(
-		trips
+	let specialDigit = $derived((setuid ? 4 : 0) + (setgid ? 2 : 0) + (sticky ? 1 : 0));
+
+	let octal = $derived.by(() => {
+		const base = trips
 			.map((t) => (t.r ? 4 : 0) + (t.w ? 2 : 0) + (t.x ? 1 : 0))
-			.join("")
-	);
+			.join("");
+		return specialDigit ? `${specialDigit}${base}` : base;
+	});
 
 	let symbolic = $derived(
 		trips
-			.map((t) => (t.r ? "r" : "-") + (t.w ? "w" : "-") + (t.x ? "x" : "-"))
+			.map((t, i) => {
+				const r = t.r ? "r" : "-";
+				const w = t.w ? "w" : "-";
+				let x = t.x ? "x" : "-";
+				if (i === 0 && setuid) x = t.x ? "s" : "S";
+				else if (i === 1 && setgid) x = t.x ? "s" : "S";
+				else if (i === 2 && sticky) x = t.x ? "t" : "T";
+				return r + w + x;
+			})
 			.join("")
 	);
 
@@ -46,6 +60,16 @@
 		user = update(Number(digits[0]));
 		group = update(Number(digits[1]));
 		other = update(Number(digits[2]));
+		if (v.length === 4) {
+			const sp = Number(v[0]);
+			setuid = !!(sp & 4);
+			setgid = !!(sp & 2);
+			sticky = !!(sp & 1);
+		} else {
+			setuid = false;
+			setgid = false;
+			sticky = false;
+		}
 	}
 
 	$effect(() => {
@@ -128,6 +152,20 @@
 						</label>
 					</div>
 				{/each}
+			</div>
+			<div class="mt-4 flex flex-wrap gap-4 border-t pt-3 text-sm">
+				<label class="flex cursor-pointer items-center gap-2">
+					<input type="checkbox" bind:checked={setuid} class="h-4 w-4 rounded border" />
+					setuid (4)
+				</label>
+				<label class="flex cursor-pointer items-center gap-2">
+					<input type="checkbox" bind:checked={setgid} class="h-4 w-4 rounded border" />
+					setgid (2)
+				</label>
+				<label class="flex cursor-pointer items-center gap-2">
+					<input type="checkbox" bind:checked={sticky} class="h-4 w-4 rounded border" />
+					sticky (1)
+				</label>
 			</div>
 		</Card.Content>
 	</Card.Root>

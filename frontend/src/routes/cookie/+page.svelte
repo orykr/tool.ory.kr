@@ -14,15 +14,36 @@
 		"sessionId=abc123; theme=dark; preferences=%7B%22lang%22%3A%22en%22%7D"
 	);
 
+	function splitCookies(text: string): string[] {
+		const parts: string[] = [];
+		let current = "";
+		let inQuote = false;
+		for (const ch of text) {
+			if (ch === '"') {
+				inQuote = !inQuote;
+				current += ch;
+			} else if (ch === ";" && !inQuote) {
+				parts.push(current.trim());
+				current = "";
+			} else {
+				current += ch;
+			}
+		}
+		if (current.trim()) parts.push(current.trim());
+		return parts;
+	}
+
 	let parsed = $derived.by(() => {
 		const result: Array<{ name: string; value: string; decoded: string }> = [];
-		const parts = cookieHeader.split(/;\s*/);
-		for (const part of parts) {
+		for (const part of splitCookies(cookieHeader)) {
 			if (!part) continue;
 			const eq = part.indexOf("=");
 			if (eq < 0) continue;
 			const name = part.slice(0, eq).trim();
-			const value = part.slice(eq + 1).trim();
+			let value = part.slice(eq + 1).trim();
+			if (value.startsWith('"') && value.endsWith('"') && value.length >= 2) {
+				value = value.slice(1, -1);
+			}
 			let decoded = value;
 			try {
 				decoded = decodeURIComponent(value);

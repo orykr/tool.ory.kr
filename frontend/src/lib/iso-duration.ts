@@ -45,23 +45,37 @@ export function parseIsoDuration(input: string): Duration {
 }
 
 export function formatIsoDuration(d: Duration): string {
-	const negative =
-		d.years < 0 || d.months < 0 || d.weeks < 0 || d.days < 0 || d.hours < 0 || d.minutes < 0 || d.seconds < 0;
-	const a = (n: number) => Math.abs(n);
+	const fields = [d.years, d.months, d.weeks, d.days, d.hours, d.minutes, d.seconds];
+	const allNegative = fields.every((v) => v <= 0) && fields.some((v) => v < 0);
+	if (allNegative) {
+		return "-" + formatIsoDuration(negate(d));
+	}
 	const date: string[] = [];
-	if (a(d.years)) date.push(`${a(d.years)}Y`);
-	if (a(d.months)) date.push(`${a(d.months)}M`);
-	if (a(d.weeks)) date.push(`${a(d.weeks)}W`);
-	if (a(d.days)) date.push(`${a(d.days)}D`);
+	if (d.years !== 0) date.push(`${d.years}Y`);
+	if (d.months !== 0) date.push(`${d.months}M`);
+	if (d.weeks !== 0) date.push(`${d.weeks}W`);
+	if (d.days !== 0) date.push(`${d.days}D`);
 	const time: string[] = [];
-	if (a(d.hours)) time.push(`${a(d.hours)}H`);
-	if (a(d.minutes)) time.push(`${a(d.minutes)}M`);
-	if (a(d.seconds)) time.push(`${a(d.seconds)}S`);
+	if (d.hours !== 0) time.push(`${d.hours}H`);
+	if (d.minutes !== 0) time.push(`${d.minutes}M`);
+	if (d.seconds !== 0) time.push(`${d.seconds}S`);
 
 	let out = "P" + date.join("");
 	if (time.length) out += "T" + time.join("");
 	if (out === "P") out = "PT0S";
-	return negative ? "-" + out : out;
+	return out;
+}
+
+function negate(d: Duration): Duration {
+	return {
+		years: -d.years,
+		months: -d.months,
+		weeks: -d.weeks,
+		days: -d.days,
+		hours: -d.hours,
+		minutes: -d.minutes,
+		seconds: -d.seconds
+	};
 }
 
 export function totalSeconds(d: Duration): number {
