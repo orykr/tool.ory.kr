@@ -451,6 +451,11 @@
 			href: "/csv-sql",
 			title: "CSV → SQL INSERT",
 			description: "Convert CSV rows into SQL INSERT statements with type inference."
+		},
+		{
+			href: "/vcard",
+			title: "vCard Generator",
+			description: "Build a vCard 4.0 contact file from form fields."
 		}
 	];
 </script>
