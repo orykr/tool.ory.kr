@@ -801,6 +801,11 @@
 			href: "/md-to-csv",
 			title: "Markdown Table → CSV",
 			description: "Convert Markdown pipe tables into properly quoted CSV."
+		},
+		{
+			href: "/cidr-contains",
+			title: "CIDR Contains",
+			description: "Check whether IPv4 / IPv6 addresses fall inside CIDR blocks."
 		}
 	];
 </script>
