@@ -786,6 +786,16 @@
 			href: "/js-to-json",
 			title: "JS Object → JSON",
 			description: "Convert relaxed JS / JSON5 objects to strict JSON."
+		},
+		{
+			href: "/sample-pick",
+			title: "Weighted Random Picker",
+			description: "Pick random items with optional weights and replacement."
+		},
+		{
+			href: "/user-agent",
+			title: "User Agent Strings",
+			description: "Reference of common browser, mobile, bot, and CLI UAs."
 		}
 	];
 </script>
