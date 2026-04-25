@@ -616,6 +616,11 @@
 			href: "/latex",
 			title: "LaTeX Symbol Search",
 			description: "Search math symbols and copy LaTeX commands."
+		},
+		{
+			href: "/cidr-agg",
+			title: "CIDR Aggregator",
+			description: "Merge IPv4 CIDRs/ranges/IPs into the minimal set of CIDRs."
 		}
 	];
 </script>
