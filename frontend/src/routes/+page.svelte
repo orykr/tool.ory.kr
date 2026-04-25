@@ -656,6 +656,11 @@
 			href: "/basic-auth",
 			title: "HTTP Basic Auth",
 			description: "Build and decode HTTP Basic Authorization headers."
+		},
+		{
+			href: "/random-hex",
+			title: "Random Bytes Generator",
+			description: "Generate crypto-grade random bytes in hex, base64, integer."
 		}
 	];
 </script>
