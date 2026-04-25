@@ -61,7 +61,10 @@
 		error = null;
 	}
 
-	let parsedUrl = $state<{ ok: true; parts: Array<{ key: string; value: string }> } | { ok: false; error: string } | null>(null);
+	type UrlPart = { id: string; key: string; value: string };
+	let parsedUrl = $state<{ ok: true; parts: UrlPart[] } | { ok: false; error: string } | null>(
+		null
+	);
 	let urlInput = $state("");
 
 	$effect(() => {
@@ -71,18 +74,19 @@
 		}
 		try {
 			const u = new URL(urlInput);
-			const parts: Array<{ key: string; value: string }> = [
-				{ key: "protocol", value: u.protocol },
-				{ key: "host", value: u.host },
-				{ key: "hostname", value: u.hostname },
-				{ key: "port", value: u.port || "(default)" },
-				{ key: "pathname", value: u.pathname },
-				{ key: "search", value: u.search || "(none)" },
-				{ key: "hash", value: u.hash || "(none)" },
-				{ key: "origin", value: u.origin }
+			const parts: UrlPart[] = [
+				{ id: "protocol", key: "protocol", value: u.protocol },
+				{ id: "host", key: "host", value: u.host },
+				{ id: "hostname", key: "hostname", value: u.hostname },
+				{ id: "port", key: "port", value: u.port || "(default)" },
+				{ id: "pathname", key: "pathname", value: u.pathname },
+				{ id: "search", key: "search", value: u.search || "(none)" },
+				{ id: "hash", key: "hash", value: u.hash || "(none)" },
+				{ id: "origin", key: "origin", value: u.origin }
 			];
+			let i = 0;
 			u.searchParams.forEach((value, key) => {
-				parts.push({ key: `query.${key}`, value });
+				parts.push({ id: `q-${i++}`, key: `query.${key}`, value });
 			});
 			parsedUrl = { ok: true, parts };
 		} catch (e) {
@@ -197,7 +201,7 @@
 
 					{#if parsedUrl?.ok}
 						<dl class="divide-y rounded-md border">
-							{#each parsedUrl.parts as part (part.key)}
+							{#each parsedUrl.parts as part (part.id)}
 								<div class="grid grid-cols-3 gap-4 px-3 py-2 text-sm">
 									<dt class="text-muted-foreground font-mono">{part.key}</dt>
 									<dd class="col-span-2 font-mono break-all">{part.value}</dd>

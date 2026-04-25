@@ -59,9 +59,13 @@
 		let cursor = 0;
 		for (const m of result.matches) {
 			if (m.index > cursor) segments.push({ text: text.slice(cursor, m.index), highlight: false });
-			segments.push({ text: m.match || "(empty match)", highlight: true });
-			cursor = m.index + m.match.length;
-			if (m.match === "") cursor++;
+			if (m.match.length > 0) {
+				segments.push({ text: m.match, highlight: true });
+				cursor = m.index + m.match.length;
+			} else {
+				segments.push({ text: "∅", highlight: true });
+				cursor = m.index;
+			}
 		}
 		if (cursor < text.length) segments.push({ text: text.slice(cursor), highlight: false });
 		return segments;

@@ -22,55 +22,40 @@
 	let secondsInput = $state("");
 	let millisInput = $state("");
 	let isoInput = $state("");
-	let secondsError = $state<string | null>(null);
-	let millisError = $state<string | null>(null);
-	let isoError = $state<string | null>(null);
 
-	let secondsResult = $derived.by(() => {
-		secondsError = null;
-		const v = secondsInput.trim();
-		if (!v) return null;
-		const n = Number(v);
-		if (!Number.isFinite(n)) {
-			secondsError = "Not a number.";
-			return null;
-		}
+	type Parsed = { date: Date | null; error: string | null };
+
+	function parseSeconds(v: string): Parsed {
+		const t = v.trim();
+		if (!t) return { date: null, error: null };
+		const n = Number(t);
+		if (!Number.isFinite(n)) return { date: null, error: "Not a number." };
 		const d = new Date(n * 1000);
-		if (Number.isNaN(d.getTime())) {
-			secondsError = "Out of range.";
-			return null;
-		}
-		return d;
-	});
+		if (Number.isNaN(d.getTime())) return { date: null, error: "Out of range." };
+		return { date: d, error: null };
+	}
 
-	let millisResult = $derived.by(() => {
-		millisError = null;
-		const v = millisInput.trim();
-		if (!v) return null;
-		const n = Number(v);
-		if (!Number.isFinite(n)) {
-			millisError = "Not a number.";
-			return null;
-		}
+	function parseMillis(v: string): Parsed {
+		const t = v.trim();
+		if (!t) return { date: null, error: null };
+		const n = Number(t);
+		if (!Number.isFinite(n)) return { date: null, error: "Not a number." };
 		const d = new Date(n);
-		if (Number.isNaN(d.getTime())) {
-			millisError = "Out of range.";
-			return null;
-		}
-		return d;
-	});
+		if (Number.isNaN(d.getTime())) return { date: null, error: "Out of range." };
+		return { date: d, error: null };
+	}
 
-	let isoResult = $derived.by(() => {
-		isoError = null;
-		const v = isoInput.trim();
-		if (!v) return null;
-		const d = new Date(v);
-		if (Number.isNaN(d.getTime())) {
-			isoError = "Invalid date.";
-			return null;
-		}
-		return d;
-	});
+	function parseIso(v: string): Parsed {
+		const t = v.trim();
+		if (!t) return { date: null, error: null };
+		const d = new Date(t);
+		if (Number.isNaN(d.getTime())) return { date: null, error: "Invalid date." };
+		return { date: d, error: null };
+	}
+
+	let secondsParsed = $derived(parseSeconds(secondsInput));
+	let millisParsed = $derived(parseMillis(millisInput));
+	let isoParsed = $derived(parseIso(isoInput));
 
 	let copied = $state<string | null>(null);
 	async function copyValue(label: string, value: string) {
@@ -145,31 +130,6 @@
 		</Card.Content>
 	</Card.Root>
 
-	{#snippet block(label: string, key: "seconds" | "millis" | "iso", input: string, error: string | null, result: Date | null, placeholder: string)}
-		<Card.Root>
-			<Card.Header class="flex flex-row items-center justify-between">
-				<Card.Title class="text-base">{label}</Card.Title>
-				<Button variant="ghost" size="sm" onclick={() => useNow(key)}>Use now</Button>
-			</Card.Header>
-			<Card.Content class="space-y-3">
-				<Input value={input} {placeholder} class="font-mono" />
-				{#if error}
-					<p class="text-destructive text-xs">{error}</p>
-				{/if}
-				{#if result}
-					{@const info = describe(result)!}
-					<dl class="bg-muted space-y-1 rounded-md p-3 text-xs">
-						<div class="flex justify-between gap-3"><dt>ISO 8601</dt><dd class="font-mono">{info.iso}</dd></div>
-						<div class="flex justify-between gap-3"><dt>UTC</dt><dd class="font-mono">{info.utc}</dd></div>
-						<div class="flex justify-between gap-3"><dt>Local</dt><dd class="font-mono">{info.local}</dd></div>
-						<div class="flex justify-between gap-3"><dt>Seconds</dt><dd class="font-mono">{info.seconds}</dd></div>
-						<div class="flex justify-between gap-3"><dt>Millis</dt><dd class="font-mono">{info.millis}</dd></div>
-					</dl>
-				{/if}
-			</Card.Content>
-		</Card.Root>
-	{/snippet}
-
 	<div class="space-y-4">
 		<Card.Root>
 			<Card.Header class="flex flex-row items-center justify-between">
@@ -181,9 +141,9 @@
 					<Label for="ts-seconds">Seconds</Label>
 					<Input id="ts-seconds" bind:value={secondsInput} placeholder="1700000000" class="font-mono" />
 				</div>
-				{#if secondsError}<p class="text-destructive text-xs">{secondsError}</p>{/if}
-				{#if secondsResult}
-					{@const info = describe(secondsResult)!}
+				{#if secondsParsed.error}<p class="text-destructive text-xs">{secondsParsed.error}</p>{/if}
+				{#if secondsParsed.date}
+					{@const info = describe(secondsParsed.date)!}
 					<dl class="bg-muted space-y-1 rounded-md p-3 text-xs">
 						<div class="flex justify-between gap-3"><dt>ISO 8601</dt><dd class="font-mono">{info.iso}</dd></div>
 						<div class="flex justify-between gap-3"><dt>UTC</dt><dd class="font-mono">{info.utc}</dd></div>
@@ -204,9 +164,9 @@
 					<Label for="ts-millis">Milliseconds</Label>
 					<Input id="ts-millis" bind:value={millisInput} placeholder="1700000000000" class="font-mono" />
 				</div>
-				{#if millisError}<p class="text-destructive text-xs">{millisError}</p>{/if}
-				{#if millisResult}
-					{@const info = describe(millisResult)!}
+				{#if millisParsed.error}<p class="text-destructive text-xs">{millisParsed.error}</p>{/if}
+				{#if millisParsed.date}
+					{@const info = describe(millisParsed.date)!}
 					<dl class="bg-muted space-y-1 rounded-md p-3 text-xs">
 						<div class="flex justify-between gap-3"><dt>ISO 8601</dt><dd class="font-mono">{info.iso}</dd></div>
 						<div class="flex justify-between gap-3"><dt>UTC</dt><dd class="font-mono">{info.utc}</dd></div>
@@ -232,9 +192,9 @@
 						class="font-mono"
 					/>
 				</div>
-				{#if isoError}<p class="text-destructive text-xs">{isoError}</p>{/if}
-				{#if isoResult}
-					{@const info = describe(isoResult)!}
+				{#if isoParsed.error}<p class="text-destructive text-xs">{isoParsed.error}</p>{/if}
+				{#if isoParsed.date}
+					{@const info = describe(isoParsed.date)!}
 					<dl class="bg-muted space-y-1 rounded-md p-3 text-xs">
 						<div class="flex justify-between gap-3"><dt>ISO 8601</dt><dd class="font-mono">{info.iso}</dd></div>
 						<div class="flex justify-between gap-3"><dt>UTC</dt><dd class="font-mono">{info.utc}</dd></div>

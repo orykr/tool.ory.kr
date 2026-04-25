@@ -43,15 +43,22 @@ function parseHex(value: string): RGB | null {
 
 function parseRgbFunc(value: string): RGB | null {
 	const m = value.match(
-		/^rgba?\(\s*([\d.]+)%?\s*[, ]\s*([\d.]+)%?\s*[, ]\s*([\d.]+)%?(?:\s*[/,]\s*([\d.]+%?))?\s*\)$/
+		/^rgba?\(\s*([\d.]+%?)\s*[, ]\s*([\d.]+%?)\s*[, ]\s*([\d.]+%?)(?:\s*[/,]\s*([\d.]+%?))?\s*\)$/
 	);
 	if (!m) return null;
-	const r = clamp255(Number(m[1]));
-	const g = clamp255(Number(m[2]));
-	const b = clamp255(Number(m[3]));
+	const r = parseChannel(m[1]);
+	const g = parseChannel(m[2]);
+	const b = parseChannel(m[3]);
 	const a = m[4] !== undefined ? parseAlpha(m[4]) : 1;
 	if ([r, g, b, a].some((n) => Number.isNaN(n))) return null;
 	return { r, g, b, a };
+}
+
+function parseChannel(input: string): number {
+	if (input.endsWith("%")) {
+		return clamp255((Number(input.slice(0, -1)) / 100) * 255);
+	}
+	return clamp255(Number(input));
 }
 
 function parseHslFunc(value: string): HSL | null {
@@ -100,7 +107,8 @@ export function hslToRgb({ h, s, l, a }: HSL): RGB {
 	const sn = s / 100;
 	const ln = l / 100;
 	const c = (1 - Math.abs(2 * ln - 1)) * sn;
-	const hp = (h % 360) / 60;
+	const hWrapped = ((h % 360) + 360) % 360;
+	const hp = hWrapped / 60;
 	const x = c * (1 - Math.abs((hp % 2) - 1));
 	let r1 = 0;
 	let g1 = 0;

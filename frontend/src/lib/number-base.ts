@@ -17,8 +17,8 @@ const BASE_KEYS: Record<Base, keyof BaseValues> = {
 };
 
 const BASE_PATTERNS: Record<Base, RegExp> = {
-	2: /^[01]+$/,
-	8: /^[0-7]+$/,
+	2: /^-?[01]+$/,
+	8: /^-?[0-7]+$/,
 	10: /^-?\d+$/,
 	16: /^-?[0-9a-fA-F]+$/
 };
