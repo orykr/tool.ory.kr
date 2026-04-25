@@ -37,9 +37,9 @@ function tokenize(path: string): Token[] {
 			if (path[i + 1] === ".") {
 				tokens.push({ kind: "recursive" });
 				i += 2;
-				continue;
+			} else {
+				i++;
 			}
-			i++;
 			let name = "";
 			while (i < path.length && /[A-Za-z0-9_$\-]/.test(path[i])) {
 				name += path[i++];
@@ -49,6 +49,10 @@ function tokenize(path: string): Token[] {
 				i++;
 			} else if (name) {
 				tokens.push({ kind: "key", name });
+			} else if (tokens.length > 0 && tokens[tokens.length - 1].kind === "recursive" && path[i] === "[") {
+				// recursive followed directly by a bracket — leave for next iteration
+			} else if (path[i] === "[") {
+				// recursive followed by bracket without a name
 			} else {
 				throw new Error(`Unexpected token at ${i}.`);
 			}

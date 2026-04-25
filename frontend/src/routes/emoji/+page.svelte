@@ -10,13 +10,18 @@
 	let query = $state("");
 	let recent = $state<string[]>([]);
 
+	function normalizeEmoji(s: string): string {
+		return s.replace(/[️‍]/g, "");
+	}
+
 	let categories = $derived.by(() => {
 		const q = query.trim().toLowerCase();
+		const qNormalized = normalizeEmoji(query.trim());
 		const filter = (e: (typeof EMOJIS)[number]) =>
 			!q ||
 			e.name.toLowerCase().includes(q) ||
 			e.keywords.some((k) => k.includes(q)) ||
-			e.emoji === query.trim();
+			normalizeEmoji(e.emoji) === qNormalized;
 		const map = new Map<string, typeof EMOJIS>();
 		for (const e of EMOJIS) {
 			if (!filter(e)) continue;
