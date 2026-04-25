@@ -26,6 +26,11 @@
 			href: "/base64",
 			title: "Base64 Encoder / Decoder",
 			description: "Encode and decode Base64 text or files entirely in your browser."
+		},
+		{
+			href: "/json",
+			title: "JSON Formatter",
+			description: "Pretty-print, minify, validate, and sort keys in JSON documents."
 		}
 	];
 </script>
