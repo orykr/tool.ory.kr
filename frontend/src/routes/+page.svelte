@@ -56,6 +56,11 @@
 			href: "/hash",
 			title: "Hash Generator",
 			description: "Compute SHA-1/256/384/512 of text or files using the Web Crypto API."
+		},
+		{
+			href: "/timestamp",
+			title: "Unix Timestamp Converter",
+			description: "Convert between Unix epoch (s/ms) and human-readable dates."
 		}
 	];
 </script>
