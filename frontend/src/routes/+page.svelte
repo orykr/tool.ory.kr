@@ -591,6 +591,11 @@
 			href: "/list-sort",
 			title: "List Sort & Shuffle",
 			description: "Sort, shuffle, dedupe, or trim a line-based list."
+		},
+		{
+			href: "/hash-compare",
+			title: "Hash Verifier",
+			description: "Hash a file locally and compare to an expected checksum."
 		}
 	];
 </script>
