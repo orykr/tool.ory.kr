@@ -471,6 +471,11 @@
 			href: "/md-toc",
 			title: "Markdown TOC Generator",
 			description: "Generate a table of contents from Markdown headings."
+		},
+		{
+			href: "/fraction",
+			title: "Decimal → Fraction",
+			description: "Convert decimals to exact fractions or best rational approximation."
 		}
 	];
 </script>
