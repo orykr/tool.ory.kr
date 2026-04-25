@@ -731,6 +731,16 @@
 			href: "/right-tri",
 			title: "Right Triangle Solver",
 			description: "Solve a right triangle from any two known values."
+		},
+		{
+			href: "/spinner",
+			title: "CSS Spinner Generator",
+			description: "Build pure-CSS loading spinners (circle/ring/dots/bars/pulse)."
+		},
+		{
+			href: "/json-ptr",
+			title: "JSON Pointer (RFC 6901)",
+			description: "Resolve and enumerate JSON Pointers with proper escapes."
 		}
 	];
 </script>
