@@ -496,6 +496,11 @@
 			href: "/palette",
 			title: "Color Palette Generator",
 			description: "Generate harmonic palettes (analogous, triadic, tetradic, …)."
+		},
+		{
+			href: "/json-graphql",
+			title: "JSON → GraphQL Types",
+			description: "Infer GraphQL type definitions from a sample JSON document."
 		}
 	];
 </script>
