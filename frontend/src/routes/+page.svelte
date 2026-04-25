@@ -116,6 +116,11 @@
 			href: "/yaml",
 			title: "YAML ↔ JSON Converter",
 			description: "Convert between YAML 1.2 and JSON in your browser."
+		},
+		{
+			href: "/markdown",
+			title: "Markdown Preview",
+			description: "Live GitHub-flavored Markdown preview with DOMPurify sanitization."
 		}
 	];
 </script>
