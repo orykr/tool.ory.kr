@@ -221,6 +221,11 @@
 			href: "/sql",
 			title: "SQL Formatter",
 			description: "Pretty-print SQL for many dialects (PostgreSQL, MySQL, BigQuery, ...)."
+		},
+		{
+			href: "/luhn",
+			title: "Luhn Validator",
+			description: "Validate or compute Luhn checksums for credit cards, IMEI, etc."
 		}
 	];
 </script>
