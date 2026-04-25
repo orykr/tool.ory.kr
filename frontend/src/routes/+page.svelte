@@ -266,6 +266,11 @@
 			href: "/json-types",
 			title: "JSON → TypeScript Types",
 			description: "Infer TypeScript interfaces, types, or Zod schemas from JSON."
+		},
+		{
+			href: "/iban",
+			title: "IBAN Validator",
+			description: "Validate International Bank Account Numbers via mod-97 checksum."
 		}
 	];
 </script>
