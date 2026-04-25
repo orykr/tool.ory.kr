@@ -596,6 +596,11 @@
 			href: "/hash-compare",
 			title: "Hash Verifier",
 			description: "Hash a file locally and compare to an expected checksum."
+		},
+		{
+			href: "/json-sort",
+			title: "JSON Sorter",
+			description: "Sort JSON arrays by property or alphabetize all object keys."
 		}
 	];
 </script>
