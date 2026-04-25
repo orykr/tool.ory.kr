@@ -741,6 +741,11 @@
 			href: "/json-ptr",
 			title: "JSON Pointer (RFC 6901)",
 			description: "Resolve and enumerate JSON Pointers with proper escapes."
+		},
+		{
+			href: "/html-format",
+			title: "HTML Formatter",
+			description: "Pretty-print or minify HTML; preserves pre/script/style."
 		}
 	];
 </script>
