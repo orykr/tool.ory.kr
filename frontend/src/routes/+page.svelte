@@ -171,6 +171,11 @@
 			href: "/random",
 			title: "Random Generator",
 			description: "Numbers, dice, coin flips, and random picks via crypto-grade entropy."
+		},
+		{
+			href: "/roman",
+			title: "Roman Numerals",
+			description: "Convert between integers and Roman numerals (1–3999)."
 		}
 	];
 </script>
