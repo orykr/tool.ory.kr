@@ -551,6 +551,11 @@
 			href: "/geometry",
 			title: "Geometry Calculator",
 			description: "Areas, perimeters, and volumes for circles, triangles, spheres, ..."
+		},
+		{
+			href: "/csv-md",
+			title: "CSV → Markdown Table",
+			description: "Convert CSV into a Markdown table with alignment and padding."
 		}
 	];
 </script>
