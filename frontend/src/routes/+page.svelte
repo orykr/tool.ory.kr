@@ -621,6 +621,11 @@
 			href: "/cidr-agg",
 			title: "CIDR Aggregator",
 			description: "Merge IPv4 CIDRs/ranges/IPs into the minimal set of CIDRs."
+		},
+		{
+			href: "/frontmatter",
+			title: "Markdown Frontmatter",
+			description: "Extract YAML, TOML, or JSON frontmatter from Markdown documents."
 		}
 	];
 </script>
