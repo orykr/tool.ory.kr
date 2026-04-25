@@ -281,6 +281,11 @@
 			href: "/box-shadow",
 			title: "CSS Box Shadow",
 			description: "Build layered CSS box-shadow visually with live preview."
+		},
+		{
+			href: "/jsonpath",
+			title: "JSON Path Query",
+			description: "Query JSON with JSONPath (keys, indexes, wildcards, slices)."
 		}
 	];
 </script>
