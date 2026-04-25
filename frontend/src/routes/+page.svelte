@@ -816,6 +816,11 @@
 			href: "/jwt-verify",
 			title: "JWT Verifier",
 			description: "Verify HMAC-signed JWTs (HS256/384/512) against a secret."
+		},
+		{
+			href: "/data-url",
+			title: "Data URL",
+			description: "Encode files to data: URLs and decode them back to bytes."
 		}
 	];
 </script>
