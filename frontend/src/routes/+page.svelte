@@ -141,6 +141,11 @@
 			href: "/unit",
 			title: "Unit Converter",
 			description: "Convert length, weight, temperature, data size, and time units."
+		},
+		{
+			href: "/http-status",
+			title: "HTTP Status Codes",
+			description: "Searchable reference for common HTTP status codes."
 		}
 	];
 </script>
