@@ -55,9 +55,16 @@
 
 	let stableUid = $state(uid());
 
+	function parseLocalDate(value: string): Date {
+		// "YYYY-MM-DD" inputs are parsed as UTC by Date(), causing TZ shifts. Parse manually.
+		const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+		if (m) return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+		return new Date(value);
+	}
+
 	let ics = $derived.by(() => {
-		const startDate = new Date(start);
-		const endDate = new Date(end);
+		const startDate = allDay ? parseLocalDate(start) : new Date(start);
+		const endDate = allDay ? parseLocalDate(end) : new Date(end);
 		if (Number.isNaN(startDate.getTime()) || Number.isNaN(endDate.getTime())) return "";
 
 		const lines: string[] = [
