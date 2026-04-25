@@ -44,15 +44,22 @@
 		rows = rows.slice(0, -1);
 	}
 
+	function escapePipes(s: string): string {
+		return (s ?? "").replace(/\|/g, "\\|").replace(/\r?\n/g, " ");
+	}
+
 	let table = $derived.by(() => {
-		const widths = headers.map((h, i) => {
+		const escHeaders = headers.map(escapePipes);
+		const escRows = rows.map((r) => r.map(escapePipes));
+
+		const widths = escHeaders.map((h, i) => {
 			let w = h.length;
-			for (const r of rows) w = Math.max(w, (r[i] ?? "").length);
+			for (const r of escRows) w = Math.max(w, (r[i] ?? "").length);
 			return Math.max(3, w);
 		});
 
 		const headerRow =
-			"| " + headers.map((h, i) => h.padEnd(widths[i], " ")).join(" | ") + " |";
+			"| " + escHeaders.map((h, i) => h.padEnd(widths[i], " ")).join(" | ") + " |";
 		const sepRow =
 			"| " +
 			aligns
@@ -64,7 +71,7 @@
 				})
 				.join(" | ") +
 			" |";
-		const bodyRows = rows.map(
+		const bodyRows = escRows.map(
 			(r) =>
 				"| " +
 				r.map((cell, i) => (cell ?? "").padEnd(widths[i], " ")).join(" | ") +

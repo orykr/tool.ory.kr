@@ -69,8 +69,20 @@ function tokenize(input: string): Array<{ type: TokenType; value: string }> {
 				i = end + 3;
 				continue;
 			}
-			const end = input.indexOf(">", i);
-			if (end < 0) throw new Error("Unterminated tag.");
+			let end = i;
+			let inQuote: '"' | "'" | null = null;
+			while (end < len) {
+				const c = input[end];
+				if (inQuote) {
+					if (c === inQuote) inQuote = null;
+				} else if (c === '"' || c === "'") {
+					inQuote = c;
+				} else if (c === ">") {
+					break;
+				}
+				end++;
+			}
+			if (end >= len) throw new Error("Unterminated tag.");
 			const value = input.slice(i, end + 1);
 			let type: TokenType = "open";
 			if (value.startsWith("</")) type = "close";

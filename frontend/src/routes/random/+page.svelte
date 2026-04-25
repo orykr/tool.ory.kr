@@ -13,8 +13,19 @@
 	function randInt(min: number, max: number): number {
 		const range = max - min + 1;
 		if (range <= 0) return min;
+		if (range > 0xffffffff) {
+			const buf = new BigUint64Array(1);
+			const big = BigInt(range);
+			const limit = (1n << 64n) - ((1n << 64n) % big);
+			let v: bigint;
+			do {
+				crypto.getRandomValues(buf);
+				v = buf[0];
+			} while (v >= limit);
+			return min + Number(v % big);
+		}
 		const buf = new Uint32Array(1);
-		const limit = Math.floor(0xffffffff / range) * range;
+		const limit = Math.floor(0x100000000 / range) * range;
 		let v: number;
 		do {
 			crypto.getRandomValues(buf);

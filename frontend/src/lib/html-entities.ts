@@ -26,14 +26,13 @@ export function encodeEntities(input: string, mode: "named" | "numeric" | "minim
 	const out: string[] = [];
 	for (const ch of input) {
 		const code = ch.codePointAt(0)!;
+		const isHtmlSpecial = /[&<>"']/.test(ch);
 		if (mode === "named" && REVERSE_NAMED[ch]) {
 			out.push(REVERSE_NAMED[ch]);
 			continue;
 		}
-		if (code < 0x20 || code > 0x7e) {
+		if (code < 0x20 || code > 0x7e || isHtmlSpecial) {
 			out.push(`&#${code};`);
-		} else if (mode === "named" && /[&<>"']/.test(ch)) {
-			out.push(REVERSE_NAMED[ch] ?? ch);
 		} else {
 			out.push(ch);
 		}
