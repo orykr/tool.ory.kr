@@ -36,6 +36,11 @@
 			href: "/jwt",
 			title: "JWT Decoder",
 			description: "Inspect JWT header, payload, and claims locally without verification."
+		},
+		{
+			href: "/number-base",
+			title: "Number Base Converter",
+			description: "Convert between binary, octal, decimal, and hexadecimal."
 		}
 	];
 </script>
