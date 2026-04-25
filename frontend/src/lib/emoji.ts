@@ -1,0 +1,122 @@
+export interface Emoji {
+	emoji: string;
+	name: string;
+	category: string;
+	keywords: string[];
+}
+
+export const EMOJIS: Emoji[] = [
+	// Smileys
+	{ emoji: "😀", name: "grinning face", category: "Smileys", keywords: ["happy", "smile"] },
+	{ emoji: "😁", name: "beaming face", category: "Smileys", keywords: ["grin", "smile"] },
+	{ emoji: "😂", name: "face with tears of joy", category: "Smileys", keywords: ["laugh", "lol", "tears"] },
+	{ emoji: "🤣", name: "rolling on the floor laughing", category: "Smileys", keywords: ["rofl", "laugh"] },
+	{ emoji: "😊", name: "smiling face with smiling eyes", category: "Smileys", keywords: ["blush", "happy"] },
+	{ emoji: "😇", name: "smiling face with halo", category: "Smileys", keywords: ["angel", "innocent"] },
+	{ emoji: "🙂", name: "slightly smiling face", category: "Smileys", keywords: ["smile"] },
+	{ emoji: "😉", name: "winking face", category: "Smileys", keywords: ["wink"] },
+	{ emoji: "😍", name: "smiling face with heart-eyes", category: "Smileys", keywords: ["love", "heart"] },
+	{ emoji: "🥰", name: "smiling face with hearts", category: "Smileys", keywords: ["love"] },
+	{ emoji: "😘", name: "face blowing a kiss", category: "Smileys", keywords: ["kiss"] },
+	{ emoji: "😋", name: "face savoring food", category: "Smileys", keywords: ["yum"] },
+	{ emoji: "😎", name: "smiling face with sunglasses", category: "Smileys", keywords: ["cool"] },
+	{ emoji: "🤔", name: "thinking face", category: "Smileys", keywords: ["think", "consider"] },
+	{ emoji: "😐", name: "neutral face", category: "Smileys", keywords: ["meh"] },
+	{ emoji: "😴", name: "sleeping face", category: "Smileys", keywords: ["sleep", "tired"] },
+	{ emoji: "😢", name: "crying face", category: "Smileys", keywords: ["cry", "sad"] },
+	{ emoji: "😭", name: "loudly crying face", category: "Smileys", keywords: ["cry", "sob"] },
+	{ emoji: "😡", name: "pouting face", category: "Smileys", keywords: ["angry", "mad"] },
+	{ emoji: "🥺", name: "pleading face", category: "Smileys", keywords: ["plead", "begging"] },
+	{ emoji: "🙃", name: "upside-down face", category: "Smileys", keywords: ["sarcasm"] },
+
+	// People & Hands
+	{ emoji: "👍", name: "thumbs up", category: "People", keywords: ["like", "yes"] },
+	{ emoji: "👎", name: "thumbs down", category: "People", keywords: ["dislike", "no"] },
+	{ emoji: "👏", name: "clapping hands", category: "People", keywords: ["applause"] },
+	{ emoji: "🙌", name: "raising hands", category: "People", keywords: ["celebrate", "praise"] },
+	{ emoji: "🙏", name: "folded hands", category: "People", keywords: ["please", "thanks", "pray"] },
+	{ emoji: "👋", name: "waving hand", category: "People", keywords: ["hello", "hi", "wave"] },
+	{ emoji: "✋", name: "raised hand", category: "People", keywords: ["stop", "high five"] },
+	{ emoji: "👌", name: "OK hand", category: "People", keywords: ["ok", "perfect"] },
+	{ emoji: "✌️", name: "victory hand", category: "People", keywords: ["peace", "victory"] },
+	{ emoji: "🤝", name: "handshake", category: "People", keywords: ["deal", "agreement"] },
+	{ emoji: "💪", name: "flexed biceps", category: "People", keywords: ["strong", "muscle"] },
+
+	// Hearts
+	{ emoji: "❤️", name: "red heart", category: "Hearts", keywords: ["love"] },
+	{ emoji: "🧡", name: "orange heart", category: "Hearts", keywords: ["love"] },
+	{ emoji: "💛", name: "yellow heart", category: "Hearts", keywords: ["love", "friendship"] },
+	{ emoji: "💚", name: "green heart", category: "Hearts", keywords: ["love"] },
+	{ emoji: "💙", name: "blue heart", category: "Hearts", keywords: ["love"] },
+	{ emoji: "💜", name: "purple heart", category: "Hearts", keywords: ["love"] },
+	{ emoji: "🖤", name: "black heart", category: "Hearts", keywords: ["love", "dark"] },
+	{ emoji: "🤍", name: "white heart", category: "Hearts", keywords: ["love"] },
+	{ emoji: "💔", name: "broken heart", category: "Hearts", keywords: ["heartbreak"] },
+	{ emoji: "💖", name: "sparkling heart", category: "Hearts", keywords: ["love", "sparkle"] },
+
+	// Tech
+	{ emoji: "💻", name: "laptop", category: "Tech", keywords: ["computer", "code"] },
+	{ emoji: "🖥️", name: "desktop computer", category: "Tech", keywords: ["computer"] },
+	{ emoji: "🖱️", name: "computer mouse", category: "Tech", keywords: ["click"] },
+	{ emoji: "⌨️", name: "keyboard", category: "Tech", keywords: ["type", "input"] },
+	{ emoji: "📱", name: "mobile phone", category: "Tech", keywords: ["phone"] },
+	{ emoji: "🔋", name: "battery", category: "Tech", keywords: ["power"] },
+	{ emoji: "🔌", name: "electric plug", category: "Tech", keywords: ["power"] },
+	{ emoji: "💾", name: "floppy disk", category: "Tech", keywords: ["save", "storage"] },
+	{ emoji: "💿", name: "optical disk", category: "Tech", keywords: ["cd", "dvd"] },
+	{ emoji: "🛜", name: "wireless", category: "Tech", keywords: ["wifi"] },
+
+	// Symbols
+	{ emoji: "✅", name: "check mark", category: "Symbols", keywords: ["done", "ok", "yes"] },
+	{ emoji: "❌", name: "cross mark", category: "Symbols", keywords: ["no", "wrong"] },
+	{ emoji: "⚠️", name: "warning", category: "Symbols", keywords: ["caution"] },
+	{ emoji: "🚫", name: "prohibited", category: "Symbols", keywords: ["forbidden", "no"] },
+	{ emoji: "💡", name: "light bulb", category: "Symbols", keywords: ["idea", "tip"] },
+	{ emoji: "🔥", name: "fire", category: "Symbols", keywords: ["hot", "lit", "trending"] },
+	{ emoji: "✨", name: "sparkles", category: "Symbols", keywords: ["shine", "magic"] },
+	{ emoji: "⭐", name: "star", category: "Symbols", keywords: ["favorite"] },
+	{ emoji: "🌟", name: "glowing star", category: "Symbols", keywords: ["sparkle"] },
+	{ emoji: "❓", name: "question mark", category: "Symbols", keywords: ["question"] },
+	{ emoji: "❗", name: "exclamation mark", category: "Symbols", keywords: ["alert"] },
+	{ emoji: "💯", name: "hundred points", category: "Symbols", keywords: ["100", "perfect"] },
+	{ emoji: "🎯", name: "bullseye", category: "Symbols", keywords: ["target", "goal"] },
+	{ emoji: "🏆", name: "trophy", category: "Symbols", keywords: ["winner", "award"] },
+	{ emoji: "🎉", name: "party popper", category: "Symbols", keywords: ["celebrate", "party"] },
+	{ emoji: "🚀", name: "rocket", category: "Symbols", keywords: ["launch", "fast", "ship"] },
+
+	// Objects
+	{ emoji: "📦", name: "package", category: "Objects", keywords: ["box", "delivery"] },
+	{ emoji: "📝", name: "memo", category: "Objects", keywords: ["note", "write"] },
+	{ emoji: "📌", name: "pushpin", category: "Objects", keywords: ["pin", "location"] },
+	{ emoji: "📎", name: "paperclip", category: "Objects", keywords: ["attach"] },
+	{ emoji: "🔍", name: "magnifying glass", category: "Objects", keywords: ["search", "find"] },
+	{ emoji: "🔒", name: "locked", category: "Objects", keywords: ["secure", "private"] },
+	{ emoji: "🔓", name: "unlocked", category: "Objects", keywords: ["open"] },
+	{ emoji: "🔑", name: "key", category: "Objects", keywords: ["unlock"] },
+	{ emoji: "🔔", name: "bell", category: "Objects", keywords: ["notification"] },
+	{ emoji: "🔕", name: "bell with slash", category: "Objects", keywords: ["mute"] },
+	{ emoji: "📅", name: "calendar", category: "Objects", keywords: ["date"] },
+	{ emoji: "🗓️", name: "spiral calendar", category: "Objects", keywords: ["schedule"] },
+	{ emoji: "⏰", name: "alarm clock", category: "Objects", keywords: ["time", "alarm"] },
+	{ emoji: "⏳", name: "hourglass with sand", category: "Objects", keywords: ["wait", "time"] },
+	{ emoji: "🛠️", name: "hammer and wrench", category: "Objects", keywords: ["tools", "build"] },
+	{ emoji: "🔧", name: "wrench", category: "Objects", keywords: ["tool", "fix"] },
+	{ emoji: "🔨", name: "hammer", category: "Objects", keywords: ["tool", "build"] },
+	{ emoji: "⚙️", name: "gear", category: "Objects", keywords: ["settings", "config"] },
+
+	// Nature
+	{ emoji: "🌍", name: "globe Europe-Africa", category: "Nature", keywords: ["earth", "world"] },
+	{ emoji: "🌎", name: "globe Americas", category: "Nature", keywords: ["earth"] },
+	{ emoji: "🌏", name: "globe Asia-Australia", category: "Nature", keywords: ["earth"] },
+	{ emoji: "🌞", name: "sun with face", category: "Nature", keywords: ["sun"] },
+	{ emoji: "🌛", name: "first quarter moon face", category: "Nature", keywords: ["moon"] },
+	{ emoji: "☀️", name: "sun", category: "Nature", keywords: ["sun"] },
+	{ emoji: "☁️", name: "cloud", category: "Nature", keywords: ["weather"] },
+	{ emoji: "🌧️", name: "cloud with rain", category: "Nature", keywords: ["rain"] },
+	{ emoji: "⚡", name: "high voltage", category: "Nature", keywords: ["lightning", "fast"] },
+	{ emoji: "❄️", name: "snowflake", category: "Nature", keywords: ["snow", "cold"] },
+	{ emoji: "🌈", name: "rainbow", category: "Nature", keywords: ["colorful"] },
+	{ emoji: "🌳", name: "deciduous tree", category: "Nature", keywords: ["nature"] },
+	{ emoji: "🌲", name: "evergreen tree", category: "Nature", keywords: ["pine"] },
+	{ emoji: "🌸", name: "cherry blossom", category: "Nature", keywords: ["flower", "spring"] }
+];

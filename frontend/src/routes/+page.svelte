@@ -286,6 +286,11 @@
 			href: "/jsonpath",
 			title: "JSON Path Query",
 			description: "Query JSON with JSONPath (keys, indexes, wildcards, slices)."
+		},
+		{
+			href: "/emoji",
+			title: "Emoji Picker",
+			description: "Search and copy emojis by name or keyword."
 		}
 	];
 </script>
