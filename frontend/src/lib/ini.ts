@@ -32,11 +32,22 @@ export function parseIni(input: string): IniData {
 function stripComment(line: string): string {
 	let result = "";
 	let inQuote: '"' | "'" | null = null;
+	let escaping = false;
 	for (let i = 0; i < line.length; i++) {
 		const ch = line[i];
 		if (inQuote) {
-			if (ch === inQuote) inQuote = null;
-			result += ch;
+			if (escaping) {
+				escaping = false;
+				result += ch;
+			} else if (ch === "\\") {
+				escaping = true;
+				result += ch;
+			} else if (ch === inQuote) {
+				inQuote = null;
+				result += ch;
+			} else {
+				result += ch;
+			}
 		} else if (ch === '"' || ch === "'") {
 			inQuote = ch;
 			result += ch;
@@ -49,13 +60,18 @@ function stripComment(line: string): string {
 	return result;
 }
 
+function unescapeIni(value: string): string {
+	return value.replace(/\\(.)/g, "$1");
+}
+
 function parseIniValue(value: string): IniValue {
 	const trimmed = value.trim();
 	if (
-		(trimmed.startsWith('"') && trimmed.endsWith('"')) ||
-		(trimmed.startsWith("'") && trimmed.endsWith("'"))
+		trimmed.length >= 2 &&
+		((trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+			(trimmed.startsWith("'") && trimmed.endsWith("'")))
 	) {
-		return trimmed.slice(1, -1);
+		return unescapeIni(trimmed.slice(1, -1));
 	}
 	if (trimmed === "true") return true;
 	if (trimmed === "false") return false;

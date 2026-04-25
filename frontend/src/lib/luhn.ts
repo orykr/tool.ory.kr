@@ -35,7 +35,7 @@ export function luhnCheckDigit(numberWithoutCheck: string): number {
 
 const CARD_PATTERNS: Array<{ name: string; pattern: RegExp }> = [
 	{ name: "Visa", pattern: /^4\d{12}(\d{3})?(\d{3})?$/ },
-	{ name: "Mastercard", pattern: /^(5[1-5]\d{14}|2(2[2-9][1-9]|2[3-9]\d{2}|[3-6]\d{3}|7[01]\d{2}|720\d)\d{12})$/ },
+	{ name: "Mastercard", pattern: /^(5[1-5]\d{14}|2(2[2-9]\d|2[3-9]\d{2}|[3-6]\d{3}|7[01]\d{2}|720\d)\d{10})$/ },
 	{ name: "American Express", pattern: /^3[47]\d{13}$/ },
 	{ name: "Diners Club", pattern: /^3(0[0-5]|[68]\d)\d{11}$/ },
 	{ name: "Discover", pattern: /^6(011|5\d{2}|4[4-9]\d|22(12[6-9]|1[3-9]\d|[2-8]\d{2}|9([01]\d|2[0-5])))\d{10,13}$/ },

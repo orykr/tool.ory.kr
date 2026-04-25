@@ -29,7 +29,7 @@ export const SIGNATURES: MagicSignature[] = [
 	{ bytes: [0x4f, 0x67, 0x67, 0x53], name: "OGG", mimeType: "audio/ogg" },
 	{ bytes: [0x49, 0x44, 0x33], name: "MP3 (ID3)", mimeType: "audio/mpeg" },
 
-	{ bytes: [0x00, 0x00, 0x00, 0x18, 0x66, 0x74, 0x79, 0x70], name: "MP4/MOV (ftyp)", mimeType: "video/mp4" },
+	{ bytes: [0x66, 0x74, 0x79, 0x70], offset: 4, name: "MP4/MOV (ftyp)", mimeType: "video/mp4" },
 	{ bytes: [0x1a, 0x45, 0xdf, 0xa3], name: "Matroska/WebM", mimeType: "video/webm" },
 
 	{ bytes: [0x4d, 0x5a], name: "Windows EXE/DLL (PE)", mimeType: "application/octet-stream" },
