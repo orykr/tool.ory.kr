@@ -361,6 +361,11 @@
 			href: "/bezier",
 			title: "Cubic-Bezier Visualizer",
 			description: "Build CSS cubic-bezier easing curves with live animation preview."
+		},
+		{
+			href: "/factor",
+			title: "Number Factorizer",
+			description: "Prime check, factorization, divisors, and GCD/LCM with BigInt."
 		}
 	];
 </script>
