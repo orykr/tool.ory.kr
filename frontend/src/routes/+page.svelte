@@ -366,6 +366,11 @@
 			href: "/factor",
 			title: "Number Factorizer",
 			description: "Prime check, factorization, divisors, and GCD/LCM with BigInt."
+		},
+		{
+			href: "/haversine",
+			title: "Haversine Distance",
+			description: "Great-circle distance and bearing between two coordinates."
 		}
 	];
 </script>
