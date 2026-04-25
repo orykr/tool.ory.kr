@@ -261,6 +261,11 @@
 			href: "/file-magic",
 			title: "File Type Detector",
 			description: "Identify file format from magic bytes (no extension dependency)."
+		},
+		{
+			href: "/json-types",
+			title: "JSON → TypeScript Types",
+			description: "Infer TypeScript interfaces, types, or Zod schemas from JSON."
 		}
 	];
 </script>
