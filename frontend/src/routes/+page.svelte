@@ -581,6 +581,11 @@
 			href: "/sitemap",
 			title: "Sitemap.xml Builder",
 			description: "Build Sitemap 0.9 XML from a URL list."
+		},
+		{
+			href: "/json-ld",
+			title: "JSON-LD Generator",
+			description: "Schema.org structured data (Person/Org/Product/Article/FAQ)."
 		}
 	];
 </script>
