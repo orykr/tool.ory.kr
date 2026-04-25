@@ -536,6 +536,11 @@
 			href: "/note-freq",
 			title: "Musical Note ↔ Frequency",
 			description: "Convert between note names, MIDI numbers, and Hz."
+		},
+		{
+			href: "/anagram",
+			title: "Anagram Finder",
+			description: "Find anagrams against a dictionary and enumerate letter permutations."
 		}
 	];
 </script>
