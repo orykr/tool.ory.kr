@@ -326,6 +326,11 @@
 			href: "/semver",
 			title: "Semver Tools",
 			description: "Compare, bump, sort, and check Semantic Versioning ranges."
+		},
+		{
+			href: "/stats",
+			title: "Statistics Calculator",
+			description: "Mean, median, stdev, quartiles, and more for a list of numbers."
 		}
 	];
 </script>
