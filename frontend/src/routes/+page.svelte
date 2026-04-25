@@ -806,6 +806,11 @@
 			href: "/cidr-contains",
 			title: "CIDR Contains",
 			description: "Check whether IPv4 / IPv6 addresses fall inside CIDR blocks."
+		},
+		{
+			href: "/img-colors",
+			title: "Image Color Palette",
+			description: "Extract dominant colors from a local image."
 		}
 	];
 </script>
