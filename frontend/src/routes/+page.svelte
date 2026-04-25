@@ -161,6 +161,11 @@
 			href: "/morse",
 			title: "Morse Code",
 			description: "Translate between text and international Morse code."
+		},
+		{
+			href: "/timezone",
+			title: "Time Zone Converter",
+			description: "Compare a moment in time across multiple IANA time zones."
 		}
 	];
 </script>
