@@ -296,6 +296,11 @@
 			href: "/chmod",
 			title: "chmod Calculator",
 			description: "Convert between octal and symbolic Unix file permissions."
+		},
+		{
+			href: "/gradient",
+			title: "CSS Gradient Generator",
+			description: "Build linear, radial, or conic CSS gradients with color stops."
 		}
 	];
 </script>
