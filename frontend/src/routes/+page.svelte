@@ -456,6 +456,11 @@
 			href: "/vcard",
 			title: "vCard Generator",
 			description: "Build a vCard 4.0 contact file from form fields."
+		},
+		{
+			href: "/ics",
+			title: "iCalendar (.ics) Event",
+			description: "Build VEVENT files for Google/Apple/Outlook calendars."
 		}
 	];
 </script>
