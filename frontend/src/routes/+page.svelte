@@ -181,6 +181,11 @@
 			href: "/hmac",
 			title: "HMAC Generator",
 			description: "Compute HMAC-SHA-1/256/384/512 with hex or base64 output."
+		},
+		{
+			href: "/punycode",
+			title: "Punycode / IDN",
+			description: "Convert internationalized domain names to and from xn-- form."
 		}
 	];
 </script>
