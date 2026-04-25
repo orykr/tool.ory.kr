@@ -36,8 +36,13 @@
 		let p = list.join(separator);
 		if (appendNumber) {
 			const buf = new Uint16Array(1);
-			crypto.getRandomValues(buf);
-			p += separator + (buf[0] % 100);
+			const limit = Math.floor(0x10000 / 100) * 100;
+			let v: number;
+			do {
+				crypto.getRandomValues(buf);
+				v = buf[0];
+			} while (v >= limit);
+			p += separator + (v % 100);
 		}
 		phrase = p;
 	}

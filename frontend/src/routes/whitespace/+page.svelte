@@ -70,7 +70,7 @@
 		let s = input;
 		if (opts.crlfToLf) s = s.replace(/\r\n/g, "\n");
 		if (opts.tabsToSpaces > 0) s = s.replace(/\t/g, " ".repeat(opts.tabsToSpaces));
-		if (opts.trimTrailing) s = s.split("\n").map((l) => l.replace(/[ \t]+$/, "")).join("\n");
+		if (opts.trimTrailing) s = s.replace(/[ \t]+(?=\r?\n|$)/g, "");
 		if (opts.collapseSpaces) s = s.replace(/[ \t]+/g, " ");
 		return s;
 	}

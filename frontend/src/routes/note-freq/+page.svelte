@@ -24,12 +24,16 @@
 		return midiToFreq(midi);
 	}
 
+	function safeA4(): number {
+		return Number.isFinite(a4) && a4 > 0 ? a4 : 440;
+	}
+
 	function midiToFreq(midi: number): number {
-		return a4 * Math.pow(2, (midi - 69) / 12);
+		return safeA4() * Math.pow(2, (midi - 69) / 12);
 	}
 
 	function freqToMidi(f: number): number {
-		return 69 + 12 * Math.log2(f / a4);
+		return 69 + 12 * Math.log2(f / safeA4());
 	}
 
 	function midiToNote(midi: number): { note: string; octave: number; cents: number } {

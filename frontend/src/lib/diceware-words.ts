@@ -37,7 +37,7 @@ export const WORDS: string[] = [
 
 export function diceRollIndex(): number {
 	const max = WORDS.length;
-	const limit = Math.floor(0xffffffff / max) * max;
+	const limit = Math.floor(0x100000000 / max) * max;
 	const buf = new Uint32Array(1);
 	let v: number;
 	do {

@@ -47,7 +47,8 @@
 	}
 
 	let permutations = $derived.by(() => {
-		const cleaned = input.replace(/[^A-Za-z]/g, "");
+		const raw = input.replace(/[^A-Za-z]/g, "");
+		const cleaned = caseInsensitive ? raw.toLowerCase() : raw;
 		if (!cleaned) return [];
 		if (cleaned.length > 8) return null;
 		const set = new Set<string>();
