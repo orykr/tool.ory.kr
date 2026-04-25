@@ -256,6 +256,11 @@
 			href: "/date-diff",
 			title: "Date Difference",
 			description: "Calculate duration between two timestamps in many units."
+		},
+		{
+			href: "/file-magic",
+			title: "File Type Detector",
+			description: "Identify file format from magic bytes (no extension dependency)."
 		}
 	];
 </script>
