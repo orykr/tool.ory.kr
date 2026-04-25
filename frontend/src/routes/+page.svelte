@@ -151,6 +151,11 @@
 			href: "/md-table",
 			title: "Markdown Table Generator",
 			description: "Build Markdown tables interactively with alignment options."
+		},
+		{
+			href: "/cipher",
+			title: "Classical Ciphers",
+			description: "Caesar, ROT13, Atbash, and Vigenère for puzzles and CTFs."
 		}
 	];
 </script>
