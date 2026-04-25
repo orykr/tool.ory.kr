@@ -211,6 +211,11 @@
 			href: "/ip",
 			title: "IP Address Inspector",
 			description: "Validate and decode IPv4/IPv6 with classification."
+		},
+		{
+			href: "/curl",
+			title: "cURL Command Builder",
+			description: "Build a portable cURL command from form inputs (no request is sent)."
 		}
 	];
 </script>
