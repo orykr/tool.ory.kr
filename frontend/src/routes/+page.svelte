@@ -91,6 +91,11 @@
 			href: "/diff",
 			title: "Text Diff",
 			description: "Compare two text snippets line-by-line with LCS diff."
+		},
+		{
+			href: "/qr",
+			title: "QR Code Generator",
+			description: "Generate QR codes from text or URLs and download as PNG or SVG."
 		}
 	];
 </script>
