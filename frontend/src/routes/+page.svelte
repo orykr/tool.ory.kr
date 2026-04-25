@@ -271,6 +271,11 @@
 			href: "/iban",
 			title: "IBAN Validator",
 			description: "Validate International Bank Account Numbers via mod-97 checksum."
+		},
+		{
+			href: "/iso-codes",
+			title: "ISO Code Lookup",
+			description: "ISO 3166 countries, 4217 currencies, and 639 language codes."
 		}
 	];
 </script>
