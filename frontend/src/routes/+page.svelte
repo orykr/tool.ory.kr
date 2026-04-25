@@ -236,6 +236,11 @@
 			href: "/ascii-table",
 			title: "ASCII Table",
 			description: "All 128 ASCII codes in dec/hex/oct/binary with control names."
+		},
+		{
+			href: "/toml",
+			title: "TOML ↔ JSON Converter",
+			description: "Convert between TOML 1.0 and JSON."
 		}
 	];
 </script>
