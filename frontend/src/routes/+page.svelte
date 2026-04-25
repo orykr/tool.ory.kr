@@ -276,6 +276,11 @@
 			href: "/iso-codes",
 			title: "ISO Code Lookup",
 			description: "ISO 3166 countries, 4217 currencies, and 639 language codes."
+		},
+		{
+			href: "/box-shadow",
+			title: "CSS Box Shadow",
+			description: "Build layered CSS box-shadow visually with live preview."
 		}
 	];
 </script>
