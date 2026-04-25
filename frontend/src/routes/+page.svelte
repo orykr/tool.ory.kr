@@ -481,6 +481,11 @@
 			href: "/url-params",
 			title: "URL Params ↔ Object",
 			description: "Convert query strings to JSON objects and back."
+		},
+		{
+			href: "/quadratic",
+			title: "Quadratic Solver",
+			description: "Solve ax² + bx + c = 0 (real or complex roots, vertex)."
 		}
 	];
 </script>
