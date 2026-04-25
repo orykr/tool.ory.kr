@@ -71,6 +71,11 @@
 			href: "/color",
 			title: "Color Converter",
 			description: "Convert HEX/RGB/HSL and check WCAG contrast ratios."
+		},
+		{
+			href: "/text-case",
+			title: "Text Case Converter",
+			description: "camelCase / snake_case / kebab-case / Title Case with stats."
 		}
 	];
 </script>
