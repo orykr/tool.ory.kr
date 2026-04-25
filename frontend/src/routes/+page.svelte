@@ -721,6 +721,11 @@
 			href: "/ascii85",
 			title: "Ascii85 (Base85)",
 			description: "Adobe Ascii85 encode/decode with wrappers and z shorthand."
+		},
+		{
+			href: "/trig",
+			title: "Trigonometry Calculator",
+			description: "sin/cos/tan/inverse with degrees or radians."
 		}
 	];
 </script>
