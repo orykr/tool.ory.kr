@@ -561,6 +561,11 @@
 			href: "/md-links",
 			title: "Markdown Link Extractor",
 			description: "Pull inline, reference, autolink, and bare URLs from Markdown."
+		},
+		{
+			href: "/meta-tags",
+			title: "Meta Tags Generator",
+			description: "Build SEO, Open Graph, and Twitter Card meta tags."
 		}
 	];
 </script>
