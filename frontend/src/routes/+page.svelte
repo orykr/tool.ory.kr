@@ -541,6 +541,11 @@
 			href: "/anagram",
 			title: "Anagram Finder",
 			description: "Find anagrams against a dictionary and enumerate letter permutations."
+		},
+		{
+			href: "/hangul",
+			title: "Hangul Tools",
+			description: "Korean Hangul ↔ Romaja, Jamo split, and Sino-Korean numerals."
 		}
 	];
 </script>
