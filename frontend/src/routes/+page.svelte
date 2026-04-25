@@ -186,6 +186,11 @@
 			href: "/punycode",
 			title: "Punycode / IDN",
 			description: "Convert internationalized domain names to and from xn-- form."
+		},
+		{
+			href: "/mime",
+			title: "MIME Type Lookup",
+			description: "Searchable reference for file extensions and MIME types."
 		}
 	];
 </script>
