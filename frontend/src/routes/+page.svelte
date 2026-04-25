@@ -751,6 +751,11 @@
 			href: "/crc",
 			title: "Checksum Tools",
 			description: "CRC-32, Adler-32, FNV-1a, and DJB2 (non-cryptographic)."
+		},
+		{
+			href: "/url-builder",
+			title: "URL Builder",
+			description: "Compose URLs from parts with auto-encoded query parameters."
 		}
 	];
 </script>
