@@ -376,6 +376,11 @@
 			href: "/ports",
 			title: "TCP/UDP Port Reference",
 			description: "Searchable list of common TCP/UDP port numbers and services."
+		},
+		{
+			href: "/json-schema",
+			title: "JSON Schema Generator",
+			description: "Infer a JSON Schema (Draft 2020-12) from a sample document."
 		}
 	];
 </script>
