@@ -76,6 +76,11 @@
 			href: "/text-case",
 			title: "Text Case Converter",
 			description: "camelCase / snake_case / kebab-case / Title Case with stats."
+		},
+		{
+			href: "/regex",
+			title: "Regex Tester",
+			description: "Test JavaScript regex with live match highlighting and replace."
 		}
 	];
 </script>
