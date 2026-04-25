@@ -686,6 +686,16 @@
 			href: "/matrix",
 			title: "Matrix Calculator",
 			description: "2×2 and 3×3 matrix det, transpose, inverse, multiply."
+		},
+		{
+			href: "/email-valid",
+			title: "Email Validator",
+			description: "Strict syntactic email validation per RFC 5321/5322."
+		},
+		{
+			href: "/email-obfuscate",
+			title: "Email Obfuscator",
+			description: "Hide an email from scrapers via HTML entities and ROT13."
 		}
 	];
 </script>
