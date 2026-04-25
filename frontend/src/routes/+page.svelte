@@ -636,6 +636,11 @@
 			href: "/csv-stats",
 			title: "CSV Column Statistics",
 			description: "Per-column counts, unique values, and numeric statistics."
+		},
+		{
+			href: "/perm-comb",
+			title: "Permutations & Combinations",
+			description: "Factorials, P(n,r), C(n,r) with and without repetition (BigInt)."
 		}
 	];
 </script>
