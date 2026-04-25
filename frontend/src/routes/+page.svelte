@@ -41,6 +41,11 @@
 			href: "/number-base",
 			title: "Number Base Converter",
 			description: "Convert between binary, octal, decimal, and hexadecimal."
+		},
+		{
+			href: "/url-codec",
+			title: "URL Encoder / Decoder",
+			description: "Encode, decode, and parse URLs with query parameter inspection."
 		}
 	];
 </script>
