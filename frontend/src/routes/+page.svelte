@@ -176,6 +176,11 @@
 			href: "/roman",
 			title: "Roman Numerals",
 			description: "Convert between integers and Roman numerals (1–3999)."
+		},
+		{
+			href: "/hmac",
+			title: "HMAC Generator",
+			description: "Compute HMAC-SHA-1/256/384/512 with hex or base64 output."
 		}
 	];
 </script>
