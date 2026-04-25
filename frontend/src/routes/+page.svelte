@@ -811,6 +811,11 @@
 			href: "/img-colors",
 			title: "Image Color Palette",
 			description: "Extract dominant colors from a local image."
+		},
+		{
+			href: "/jwt-verify",
+			title: "JWT Verifier",
+			description: "Verify HMAC-signed JWTs (HS256/384/512) against a secret."
 		}
 	];
 </script>
