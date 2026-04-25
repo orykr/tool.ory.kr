@@ -241,6 +241,11 @@
 			href: "/toml",
 			title: "TOML ↔ JSON Converter",
 			description: "Convert between TOML 1.0 and JSON."
+		},
+		{
+			href: "/ini",
+			title: "INI ↔ JSON Converter",
+			description: "Convert between INI config and JSON."
 		}
 	];
 </script>
