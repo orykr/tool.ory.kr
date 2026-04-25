@@ -166,6 +166,11 @@
 			href: "/timezone",
 			title: "Time Zone Converter",
 			description: "Compare a moment in time across multiple IANA time zones."
+		},
+		{
+			href: "/random",
+			title: "Random Generator",
+			description: "Numbers, dice, coin flips, and random picks via crypto-grade entropy."
 		}
 	];
 </script>
