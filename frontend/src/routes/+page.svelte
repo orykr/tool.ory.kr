@@ -516,6 +516,11 @@
 			href: "/csv-cols",
 			title: "CSV Column Extractor",
 			description: "Pick columns and filter rows from CSV; output is also CSV."
+		},
+		{
+			href: "/html-md",
+			title: "HTML → Markdown",
+			description: "Convert HTML to Markdown via Turndown."
 		}
 	];
 </script>
