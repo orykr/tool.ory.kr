@@ -356,6 +356,11 @@
 			href: "/aspect-ratio",
 			title: "Aspect Ratio Calculator",
 			description: "Compute aspect ratios and resize dimensions while preserving them."
+		},
+		{
+			href: "/bezier",
+			title: "Cubic-Bezier Visualizer",
+			description: "Build CSS cubic-bezier easing curves with live animation preview."
 		}
 	];
 </script>
