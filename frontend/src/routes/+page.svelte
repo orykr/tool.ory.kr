@@ -486,6 +486,11 @@
 			href: "/quadratic",
 			title: "Quadratic Solver",
 			description: "Solve ax² + bx + c = 0 (real or complex roots, vertex)."
+		},
+		{
+			href: "/tw-colors",
+			title: "Tailwind Color Reference",
+			description: "Tailwind 3.x default palette swatches with click-to-copy class names."
 		}
 	];
 </script>
