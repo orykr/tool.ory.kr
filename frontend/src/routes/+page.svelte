@@ -711,6 +711,11 @@
 			href: "/sequences",
 			title: "Number Sequences",
 			description: "Fibonacci, primes, squares, factorials, AP/GP, and more (BigInt)."
+		},
+		{
+			href: "/md5",
+			title: "MD5 Hash",
+			description: "Compute MD5 digest of text or files (non-cryptographic)."
 		}
 	];
 </script>
