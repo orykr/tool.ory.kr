@@ -611,6 +611,11 @@
 			href: "/word-diff",
 			title: "Word-level Diff",
 			description: "Compare two text snippets word by word for prose changes."
+		},
+		{
+			href: "/latex",
+			title: "LaTeX Symbol Search",
+			description: "Search math symbols and copy LaTeX commands."
 		}
 	];
 </script>
