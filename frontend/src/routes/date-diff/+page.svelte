@@ -39,21 +39,30 @@
 		const monthsCalendar =
 			yearsCalendar * 12 + (parsed.end.getMonth() - parsed.start.getMonth());
 
-		// breakdown
-		let years = parsed.end.getFullYear() - parsed.start.getFullYear();
-		let months = parsed.end.getMonth() - parsed.start.getMonth();
+		// breakdown — borrow from larger units to keep all components non-negative
+		let minutes = parsed.end.getMinutes() - parsed.start.getMinutes();
+		let hours = parsed.end.getHours() - parsed.start.getHours();
 		let days = parsed.end.getDate() - parsed.start.getDate();
+		let months = parsed.end.getMonth() - parsed.start.getMonth();
+		let years = parsed.end.getFullYear() - parsed.start.getFullYear();
+
+		if (minutes < 0) {
+			minutes += 60;
+			hours--;
+		}
+		if (hours < 0) {
+			hours += 24;
+			days--;
+		}
 		if (days < 0) {
-			months--;
 			const prevMonth = new Date(parsed.end.getFullYear(), parsed.end.getMonth(), 0);
 			days += prevMonth.getDate();
+			months--;
 		}
 		if (months < 0) {
-			years--;
 			months += 12;
+			years--;
 		}
-		const hours = parsed.end.getHours() - parsed.start.getHours();
-		const minutes = parsed.end.getMinutes() - parsed.start.getMinutes();
 
 		return {
 			ms,
