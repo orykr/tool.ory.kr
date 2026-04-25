@@ -206,6 +206,11 @@
 			href: "/json-xml",
 			title: "JSON ↔ XML Converter",
 			description: "Convert between JSON and XML with attribute support."
+		},
+		{
+			href: "/ip",
+			title: "IP Address Inspector",
+			description: "Validate and decode IPv4/IPv6 with classification."
 		}
 	];
 </script>
