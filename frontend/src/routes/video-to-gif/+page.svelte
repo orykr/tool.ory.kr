@@ -25,23 +25,28 @@
 
 	let isError = $derived(message.toLowerCase().includes("failed"));
 
-	onMount(async () => {
+	let runSeq = 0;
+
+	onMount(() => {
 		const off = onFFmpegProgress((p) => {
 			progress = p;
 			if (isConverting) message = `Converting… ${p}%`;
 		});
-		try {
-			await getFFmpeg();
-			loaded = true;
-			message = "FFmpeg loaded. Ready to convert.";
-		} catch (e) {
-			message = "Failed to load FFmpeg.";
-			console.error(e);
-		}
+		(async () => {
+			try {
+				await getFFmpeg();
+				loaded = true;
+				message = "FFmpeg loaded. Ready to convert.";
+			} catch (e) {
+				message = "Failed to load FFmpeg.";
+				console.error(e);
+			}
+		})();
 		return off;
 	});
 
 	function setVideo(file: File) {
+		runSeq++;
 		if (videoUrl) URL.revokeObjectURL(videoUrl);
 		if (gifUrl) URL.revokeObjectURL(gifUrl);
 		videoFile = file;
@@ -51,6 +56,7 @@
 
 	async function convert() {
 		if (!videoFile || !loaded) return;
+		const seq = ++runSeq;
 		isConverting = true;
 		progress = 0;
 		message = "Starting conversion…";
@@ -58,13 +64,13 @@
 			const ff = await getFFmpeg();
 			await ff.writeFile("input.bin", await fetchFile(videoFile));
 			await ff.exec([
-				"-i", "input.bin",
 				"-ss", String(startTime),
 				"-t", String(duration),
-				"-vf", `fps=${fps},scale=${width}:-1:flags=lanczos`,
-				"-c:v", "gif",
+				"-i", "input.bin",
+				"-filter_complex", `fps=${fps},scale=${width}:-1:flags=lanczos,split[a][b];[a]palettegen[p];[b][p]paletteuse`,
 				"output.gif"
 			]);
+			if (seq !== runSeq) return;
 			const data = await ff.readFile("output.gif");
 			const buf = (data as Uint8Array).buffer;
 			const blob = new Blob([buf], { type: "image/gif" });
@@ -73,9 +79,9 @@
 			message = "Conversion complete!";
 		} catch (e) {
 			console.error(e);
-			message = "Conversion failed.";
+			if (seq === runSeq) message = "Conversion failed.";
 		} finally {
-			isConverting = false;
+			if (seq === runSeq) isConverting = false;
 		}
 	}
 </script>
@@ -111,7 +117,7 @@
 				<Card.Content class="space-y-3">
 					<!-- svelte-ignore a11y_media_has_caption -->
 					<video src={videoUrl} controls class="w-full rounded-md"></video>
-					<Button variant="outline" class="w-full" onclick={() => { videoFile = null; if (videoUrl) URL.revokeObjectURL(videoUrl); videoUrl = null; gifUrl = null; }}>Change Video</Button>
+					<Button variant="outline" class="w-full" onclick={() => { runSeq++; videoFile = null; if (videoUrl) URL.revokeObjectURL(videoUrl); videoUrl = null; if (gifUrl) URL.revokeObjectURL(gifUrl); gifUrl = null; }}>Change Video</Button>
 				</Card.Content>
 			</Card.Root>
 

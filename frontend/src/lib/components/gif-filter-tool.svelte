@@ -44,19 +44,23 @@
 	let isError = $derived(message.toLowerCase().includes("failed"));
 	let runSeq = 0;
 
-	onMount(async () => {
+	onMount(() => {
 		const off = onFFmpegProgress((p) => { progress = p; if (busy) message = `Working… ${p}%`; });
-		try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; }
+		(async () => {
+			try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; }
+		})();
 		return off;
 	});
 
 	function setFile(f: File) {
+		runSeq++;
 		if (inputUrl) URL.revokeObjectURL(inputUrl);
 		if (outUrl) URL.revokeObjectURL(outUrl);
 		file = f; inputUrl = URL.createObjectURL(f); outUrl = null;
 	}
 
 	function reset() {
+		runSeq++;
 		file = null;
 		if (inputUrl) URL.revokeObjectURL(inputUrl);
 		inputUrl = null;

@@ -27,9 +27,9 @@
 	let scalePct = $state(100);
 	let isError = $derived(message.toLowerCase().includes("failed"));
 
-	onMount(async () => {
+	onMount(() => {
 		const off = onFFmpegProgress((p) => { progress = p; if (busy) message = `Compositing… ${p}%`; });
-		try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; }
+		(async () => { try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; } })();
 		return off;
 	});
 

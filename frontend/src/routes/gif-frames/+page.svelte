@@ -24,11 +24,22 @@
 	let defaultDelay = $state(10);
 	let isError = $derived(message.toLowerCase().includes("failed"));
 
-	onMount(async () => {
+	onMount(() => {
 		const off = onFFmpegProgress((p) => { progress = p; if (busy) message = `Working… ${p}%`; });
-		try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; }
+		(async () => { try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; } })();
 		return off;
 	});
+
+	async function cleanFrames(ff: any) {
+		for (let i = 1; i <= FRAME_LIMIT; i++) {
+			const name = `frame_${i.toString().padStart(4, "0")}.png`;
+			try { await ff.deleteFile(name); } catch { break; }
+		}
+		for (let i = 0; i < FRAME_LIMIT; i++) {
+			const name = `kf_${i.toString().padStart(4, "0")}.png`;
+			try { await ff.deleteFile(name); } catch { break; }
+		}
+	}
 
 	function clearFrames() {
 		for (const f of frames) URL.revokeObjectURL(f.url);
@@ -49,6 +60,7 @@
 		clearFrames();
 		try {
 			const ff = await getFFmpeg();
+			await cleanFrames(ff);
 			await ff.writeFile("input.gif", await fetchFile(file));
 			await ff.exec(["-i", "input.gif", "-vsync", "0", "frame_%04d.png"]);
 			const out: Frame[] = [];

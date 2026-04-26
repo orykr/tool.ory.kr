@@ -31,9 +31,9 @@
 	let fontFamily = $state("Impact, Arial Black, sans-serif");
 	let isError = $derived(message.toLowerCase().includes("failed"));
 
-	onMount(async () => {
+	onMount(() => {
 		const off = onFFmpegProgress((p) => { progress = p; if (busy) message = `Adding text… ${p}%`; });
-		try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; }
+		(async () => { try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; } })();
 		return off;
 	});
 

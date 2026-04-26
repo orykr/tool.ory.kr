@@ -26,9 +26,9 @@
 	let h = $state(100);
 	let isError = $derived(message.toLowerCase().includes("failed"));
 
-	onMount(async () => {
+	onMount(() => {
 		const off = onFFmpegProgress((p) => { progress = p; if (busy) message = `Cropping… ${p}%`; });
-		try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; }
+		(async () => { try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; } })();
 		return off;
 	});
 
@@ -61,10 +61,14 @@
 		try {
 			const ff = await getFFmpeg();
 			await ff.writeFile("input.gif", await fetchFile(file));
-			const cw = Math.max(1, Math.min(Number(w), natW - Number(x)));
-			const ch = Math.max(1, Math.min(Number(h), natH - Number(y)));
-			const cx = Math.max(0, Math.min(Number(x), natW - 1));
-			const cy = Math.max(0, Math.min(Number(y), natH - 1));
+			const sx = Number.isFinite(Number(x)) ? Number(x) : 0;
+			const sy = Number.isFinite(Number(y)) ? Number(y) : 0;
+			const sw = Number.isFinite(Number(w)) ? Number(w) : natW;
+			const sh = Number.isFinite(Number(h)) ? Number(h) : natH;
+			const cx = Math.max(0, Math.min(sx, natW - 1));
+			const cy = Math.max(0, Math.min(sy, natH - 1));
+			const cw = Math.max(1, Math.min(sw, natW - cx));
+			const ch = Math.max(1, Math.min(sh, natH - cy));
 			const filter = `crop=${cw}:${ch}:${cx}:${cy},split[a][b];[a]palettegen[p];[b][p]paletteuse`;
 			await ff.exec(["-i", "input.gif", "-filter_complex", filter, "output.gif"]);
 			const data = await ff.readFile("output.gif");

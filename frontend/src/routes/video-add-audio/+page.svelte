@@ -22,9 +22,9 @@
 	let mode = $state<"replace" | "mix">("replace");
 	let isError = $derived(message.toLowerCase().includes("failed"));
 
-	onMount(async () => {
+	onMount(() => {
 		const off = onFFmpegProgress((p) => { progress = p; if (busy) message = `Muxing… ${p}%`; });
-		try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; }
+		(async () => { try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; } })();
 		return off;
 	});
 

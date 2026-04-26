@@ -28,9 +28,9 @@
 	let target = $state<"webp" | "apng">("webp");
 	let isError = $derived(message.toLowerCase().includes("failed"));
 
-	onMount(async () => {
+	onMount(() => {
 		const off = onFFmpegProgress((p) => { progress = p; if (busy) message = `Encoding… ${p}%`; });
-		try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; }
+		(async () => { try { await getFFmpeg(); loaded = true; message = "Ready."; } catch { message = "Failed to load FFmpeg."; } })();
 		return off;
 	});
 
@@ -51,16 +51,38 @@
 		frames = a;
 	}
 
+	async function fileToPng(f: File): Promise<Uint8Array> {
+		const url = URL.createObjectURL(f);
+		try {
+			const img = await new Promise<HTMLImageElement>((res, rej) => {
+				const i = new Image();
+				i.onload = () => res(i);
+				i.onerror = () => rej(new Error("Image load failed"));
+				i.src = url;
+			});
+			const cnv = document.createElement("canvas");
+			cnv.width = img.naturalWidth; cnv.height = img.naturalHeight;
+			const ctx = cnv.getContext("2d");
+			if (!ctx) throw new Error("No 2d context");
+			ctx.drawImage(img, 0, 0);
+			const blob: Blob | null = await new Promise((res) => cnv.toBlob(res, "image/png"));
+			if (!blob) throw new Error("toBlob failed");
+			return new Uint8Array(await blob.arrayBuffer());
+		} finally {
+			URL.revokeObjectURL(url);
+		}
+	}
+
 	async function run() {
 		if (!loaded || !frames.length) return;
 		busy = true; progress = 0; message = "Encoding…";
 		try {
 			const ff = await getFFmpeg();
 			for (let i = 0; i < frames.length; i++) {
-				const ext = frames[i].file.name.split(".").pop()?.toLowerCase() || "png";
-				await ff.writeFile(`f_${i.toString().padStart(4, "0")}.${ext}`, await fetchFile(frames[i].file));
+				const data = await fileToPng(frames[i].file);
+				await ff.writeFile(`f_${i.toString().padStart(4, "0")}.png`, data);
 			}
-			const ext = frames[0].file.name.split(".").pop()?.toLowerCase() || "png";
+			const ext = "png";
 			const fps = Math.max(0.1, 1000 / delayMs);
 			let outName: string;
 			let args: string[];
