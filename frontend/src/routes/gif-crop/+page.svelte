@@ -7,6 +7,7 @@
 	import { Label } from "$lib/components/ui/label/index.js";
 	import { Progress } from "$lib/components/ui/progress/index.js";
 	import FileDrop from "$lib/components/file-drop.svelte";
+	import CropOverlay from "$lib/components/crop-overlay.svelte";
 	import ArrowLeft from "@lucide/svelte/icons/arrow-left";
 	import Download from "@lucide/svelte/icons/download";
 
@@ -98,14 +99,10 @@
 			<Card.Root>
 				<Card.Header><Card.Title class="text-base">Source ({natW}×{natH})</Card.Title></Card.Header>
 				<Card.Content class="space-y-3">
-					<div class="bg-muted relative inline-block w-full overflow-hidden rounded-md">
-						<img bind:this={imgEl} src={inputUrl} alt="source" class="block w-full" onload={onImgLoad} />
-						{#if natW > 0}
-							<div class="border-primary bg-primary/10 pointer-events-none absolute border-2"
-								style="left:{(x / natW) * 100}%;top:{(y / natH) * 100}%;width:{(w / natW) * 100}%;height:{(h / natH) * 100}%"
-							></div>
-						{/if}
-					</div>
+					<CropOverlay bind:natW bind:natH bind:x bind:y bind:w bind:h>
+						<img bind:this={imgEl} src={inputUrl} alt="source" class="pointer-events-none block w-full" onload={onImgLoad} draggable="false" />
+					</CropOverlay>
+					<p class="text-muted-foreground text-xs">Drag the rectangle to move; drag handles to resize; drag empty area to draw a new region.</p>
 					<Button variant="outline" class="w-full" onclick={reset}>Change GIF</Button>
 				</Card.Content>
 			</Card.Root>
