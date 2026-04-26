@@ -88,6 +88,13 @@
 		busy = true; progress = 0; message = "Rendering pages…";
 		try {
 			const ff = await getFFmpeg();
+			for (let i = 0; i < 2000; i++) {
+				const name = `p_${i.toString().padStart(4, "0")}.png`;
+				try { await ff.deleteFile(name); } catch { break; }
+			}
+			for (const n of ["output.gif", "output.mp4"]) {
+				try { await ff.deleteFile(n); } catch { /* ignore */ }
+			}
 			const ab = await file.arrayBuffer();
 			const pdf = await pdfjs.getDocument({ data: ab }).promise;
 			const start = Math.max(1, Math.min(pdf.numPages, Number(firstPage) || 1));
