@@ -27,19 +27,19 @@
 	{#snippet settings()}
 		<div class="space-y-2">
 			<div class="flex items-center justify-between"><Label>Brightness</Label><span class="text-muted-foreground text-sm">{brightness[0].toFixed(2)}</span></div>
-			<Slider type="single" bind:value={brightness} min={-1} max={1} step={0.05} />
+			<Slider type="multiple" bind:value={brightness} min={-1} max={1} step={0.05} />
 		</div>
 		<div class="space-y-2">
 			<div class="flex items-center justify-between"><Label>Contrast</Label><span class="text-muted-foreground text-sm">{contrast[0].toFixed(2)}</span></div>
-			<Slider type="single" bind:value={contrast} min={0} max={3} step={0.05} />
+			<Slider type="multiple" bind:value={contrast} min={0} max={3} step={0.05} />
 		</div>
 		<div class="space-y-2">
 			<div class="flex items-center justify-between"><Label>Saturation</Label><span class="text-muted-foreground text-sm">{saturation[0].toFixed(2)}</span></div>
-			<Slider type="single" bind:value={saturation} min={0} max={3} step={0.05} />
+			<Slider type="multiple" bind:value={saturation} min={0} max={3} step={0.05} />
 		</div>
 		<div class="space-y-2">
 			<div class="flex items-center justify-between"><Label>Hue rotation (deg)</Label><span class="text-muted-foreground text-sm">{hue[0]}</span></div>
-			<Slider type="single" bind:value={hue} min={-180} max={180} step={1} />
+			<Slider type="multiple" bind:value={hue} min={-180} max={180} step={1} />
 		</div>
 		<label class="flex items-center gap-2 text-sm"><input type="checkbox" bind:checked={grayscale} /> Grayscale</label>
 		<label class="flex items-center gap-2 text-sm"><input type="checkbox" bind:checked={sepia} /> Sepia</label>

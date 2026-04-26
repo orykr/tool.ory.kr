@@ -234,7 +234,7 @@
 				<div class="space-y-1.5"><Label for="mg">Margin (px)</Label><Input id="mg" type="number" bind:value={margin} min="0" max="500" /></div>
 				<div class="space-y-2">
 					<div class="flex items-center justify-between"><Label>Opacity</Label><span class="text-muted-foreground text-sm">{(opacity[0] * 100).toFixed(0)}%</span></div>
-					<Slider type="single" bind:value={opacity} min={0} max={1} step={0.05} />
+					<Slider type="multiple" bind:value={opacity} min={0} max={1} step={0.05} />
 				</div>
 				<Button class="w-full" onclick={run} disabled={!loaded || busy || (mode === "image" && !logoFile)}>{busy ? "Working…" : "Apply"}</Button>
 			</Card.Content>

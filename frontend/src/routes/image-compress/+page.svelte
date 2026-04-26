@@ -90,7 +90,7 @@
 					{#if outFormat !== "png"}
 						<div class="space-y-2">
 							<div class="flex items-center justify-between"><Label>Quality</Label><span class="text-muted-foreground text-sm">{quality[0]}</span></div>
-							<Slider type="single" bind:value={quality} min={1} max={100} step={1} />
+							<Slider type="multiple" bind:value={quality} min={1} max={100} step={1} />
 						</div>
 					{/if}
 					<Button class="w-full" onclick={compress}>Compress</Button>

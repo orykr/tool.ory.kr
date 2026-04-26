@@ -81,13 +81,13 @@
 			<Card.Root>
 				<Card.Header><Card.Title class="text-base">Filters</Card.Title></Card.Header>
 				<Card.Content class="space-y-4">
-					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Brightness</Label><span class="text-muted-foreground text-sm">{brightness[0]}%</span></div><Slider type="single" bind:value={brightness} min={0} max={300} step={1} /></div>
-					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Contrast</Label><span class="text-muted-foreground text-sm">{contrast[0]}%</span></div><Slider type="single" bind:value={contrast} min={0} max={300} step={1} /></div>
-					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Saturation</Label><span class="text-muted-foreground text-sm">{saturation[0]}%</span></div><Slider type="single" bind:value={saturation} min={0} max={300} step={1} /></div>
-					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Blur</Label><span class="text-muted-foreground text-sm">{blur[0]}px</span></div><Slider type="single" bind:value={blur} min={0} max={20} step={0.5} /></div>
-					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Grayscale</Label><span class="text-muted-foreground text-sm">{grayscale[0]}%</span></div><Slider type="single" bind:value={grayscale} min={0} max={100} step={1} /></div>
-					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Sepia</Label><span class="text-muted-foreground text-sm">{sepia[0]}%</span></div><Slider type="single" bind:value={sepia} min={0} max={100} step={1} /></div>
-					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Hue rotate</Label><span class="text-muted-foreground text-sm">{hueRotate[0]}°</span></div><Slider type="single" bind:value={hueRotate} min={-180} max={180} step={1} /></div>
+					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Brightness</Label><span class="text-muted-foreground text-sm">{brightness[0]}%</span></div><Slider type="multiple" bind:value={brightness} min={0} max={300} step={1} /></div>
+					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Contrast</Label><span class="text-muted-foreground text-sm">{contrast[0]}%</span></div><Slider type="multiple" bind:value={contrast} min={0} max={300} step={1} /></div>
+					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Saturation</Label><span class="text-muted-foreground text-sm">{saturation[0]}%</span></div><Slider type="multiple" bind:value={saturation} min={0} max={300} step={1} /></div>
+					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Blur</Label><span class="text-muted-foreground text-sm">{blur[0]}px</span></div><Slider type="multiple" bind:value={blur} min={0} max={20} step={0.5} /></div>
+					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Grayscale</Label><span class="text-muted-foreground text-sm">{grayscale[0]}%</span></div><Slider type="multiple" bind:value={grayscale} min={0} max={100} step={1} /></div>
+					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Sepia</Label><span class="text-muted-foreground text-sm">{sepia[0]}%</span></div><Slider type="multiple" bind:value={sepia} min={0} max={100} step={1} /></div>
+					<div class="space-y-2"><div class="flex items-center justify-between"><Label>Hue rotate</Label><span class="text-muted-foreground text-sm">{hueRotate[0]}°</span></div><Slider type="multiple" bind:value={hueRotate} min={-180} max={180} step={1} /></div>
 					<label class="flex items-center gap-2 text-sm"><input type="checkbox" bind:checked={invert} /> Invert colors</label>
 					<div class="space-y-1.5">
 						<Label>Output</Label>

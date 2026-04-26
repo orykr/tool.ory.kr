@@ -25,7 +25,7 @@
 	{#snippet settings()}
 		<div class="space-y-2">
 			<div class="flex items-center justify-between"><Label>Strength</Label><span class="text-muted-foreground text-sm">{strength[0]}</span></div>
-			<Slider type="single" bind:value={strength} min={1} max={20} step={1} />
+			<Slider type="multiple" bind:value={strength} min={1} max={20} step={1} />
 			<p class="text-muted-foreground text-xs">Higher values search for motion across a larger window. Use ~5 for slight shake, ~15 for severe.</p>
 		</div>
 	{/snippet}

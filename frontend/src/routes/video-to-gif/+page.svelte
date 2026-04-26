@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { getFFmpeg, fetchFile, onFFmpegProgress } from "$lib/ffmpeg";
+	import { getFFmpeg, fetchFile, onFFmpegProgress, onFFmpegLog } from "$lib/ffmpeg";
 	import * as Card from "$lib/components/ui/card/index.js";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import { Input } from "$lib/components/ui/input/index.js";
@@ -39,6 +39,7 @@
 			progress = p;
 			if (isConverting) message = `Converting… ${p}%`;
 		});
+		const offLog = onFFmpegLog((line) => console.log("[ffmpeg]", line));
 		(async () => {
 			try {
 				await getFFmpeg();
@@ -49,7 +50,7 @@
 				console.error(e);
 			}
 		})();
-		return off;
+		return () => { off(); offLog(); };
 	});
 
 	function setVideo(file: File) {
@@ -69,14 +70,18 @@
 		message = "Starting conversion…";
 		try {
 			const ff = await getFFmpeg();
-			await ff.writeFile("input.bin", await fetchFile(videoFile));
-			const nColors = Math.max(2, Math.min(256, colors[0]));
-			const loop = Math.max(0, Math.min(65535, Number(loopCount) || 0));
+			const inputExt = (videoFile.name.split(".").pop() || "mp4").toLowerCase();
+			const inputName = `input.${inputExt}`;
+			await ff.writeFile(inputName, await fetchFile(videoFile));
+			const cRaw = Number(colors?.[0]);
+			const nColors = Math.max(2, Math.min(256, Number.isFinite(cRaw) ? cRaw : 128));
+			const loop = Math.max(0, Math.min(65535, Number.isFinite(Number(loopCount)) ? Number(loopCount) : 0));
 			const filter = `fps=${fps},scale=${width}:-1:flags=${scaler},split[a][b];[a]palettegen=max_colors=${nColors}:stats_mode=${statsMode}[p];[b][p]paletteuse=dither=${dither}`;
+			try { await ff.deleteFile("output.gif"); } catch { /* ignore */ }
 			await ff.exec([
 				"-ss", String(startTime),
 				"-t", String(duration),
-				"-i", "input.bin",
+				"-i", inputName,
 				"-filter_complex", filter,
 				"-loop", String(loop === 0 ? 0 : loop - 1),
 				"output.gif"
@@ -159,7 +164,7 @@
 					<div class="space-y-2 border-t pt-3">
 						<p class="text-muted-foreground text-xs font-medium uppercase tracking-wide">Quality</p>
 						<div class="flex items-center justify-between"><Label>Max colors</Label><span class="text-muted-foreground text-sm">{colors[0]}</span></div>
-						<Slider type="single" bind:value={colors} min={2} max={256} step={1} />
+						<Slider type="multiple" bind:value={colors} min={2} max={256} step={1} />
 						<p class="text-muted-foreground text-xs">More colors = better quality, larger file. Default 128.</p>
 					</div>
 

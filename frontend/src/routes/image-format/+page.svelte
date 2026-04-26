@@ -239,7 +239,7 @@
 								<Label>Quality</Label>
 								<span class="text-muted-foreground font-mono text-xs">{Math.round(quality[0] * 100)}%</span>
 							</div>
-							<Slider type="single" bind:value={quality} min={0.1} max={1} step={0.05} />
+							<Slider type="multiple" bind:value={quality} min={0.1} max={1} step={0.05} />
 						</div>
 					{/if}
 

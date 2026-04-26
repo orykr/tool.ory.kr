@@ -106,7 +106,7 @@
 					<Label>Length</Label>
 					<span class="text-muted-foreground font-mono text-sm">{length[0]}</span>
 				</div>
-				<Slider type="single" bind:value={length} min={4} max={64} step={1} />
+				<Slider type="multiple" bind:value={length} min={4} max={64} step={1} />
 			</div>
 
 			<div class="grid grid-cols-2 gap-2 text-sm">

@@ -75,7 +75,7 @@
 							<Label>Shift</Label>
 							<span class="text-muted-foreground font-mono text-sm">{shift[0]}</span>
 						</div>
-						<Slider type="single" bind:value={shift} min={-25} max={25} step={1} />
+						<Slider type="multiple" bind:value={shift} min={-25} max={25} step={1} />
 					</div>
 					<div class="space-y-1.5">
 						<div class="flex items-center justify-between">

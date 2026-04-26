@@ -21,7 +21,7 @@
 				<Label>Max colors</Label>
 				<span class="text-muted-foreground text-sm">{colors[0]}</span>
 			</div>
-			<Slider type="single" bind:value={colors} min={2} max={256} step={1} />
+			<Slider type="multiple" bind:value={colors} min={2} max={256} step={1} />
 		</div>
 		<div class="space-y-1.5">
 			<Label>Dither</Label>

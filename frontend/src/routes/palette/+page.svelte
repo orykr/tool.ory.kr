@@ -165,21 +165,21 @@
 						<Label>Base hue</Label>
 						<span class="text-muted-foreground font-mono text-sm">{baseHue[0]}°</span>
 					</div>
-					<Slider type="single" bind:value={baseHue} min={0} max={359} step={1} />
+					<Slider type="multiple" bind:value={baseHue} min={0} max={359} step={1} />
 				</div>
 				<div class="space-y-2">
 					<div class="flex items-center justify-between">
 						<Label>Saturation</Label>
 						<span class="text-muted-foreground font-mono text-sm">{saturation[0]}%</span>
 					</div>
-					<Slider type="single" bind:value={saturation} min={0} max={100} step={1} />
+					<Slider type="multiple" bind:value={saturation} min={0} max={100} step={1} />
 				</div>
 				<div class="space-y-2">
 					<div class="flex items-center justify-between">
 						<Label>Lightness</Label>
 						<span class="text-muted-foreground font-mono text-sm">{lightness[0]}%</span>
 					</div>
-					<Slider type="single" bind:value={lightness} min={0} max={100} step={1} />
+					<Slider type="multiple" bind:value={lightness} min={0} max={100} step={1} />
 				</div>
 			{/if}
 		</Card.Content>

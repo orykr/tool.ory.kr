@@ -77,7 +77,7 @@
 				<Card.Content class="space-y-4">
 					<div class="space-y-2">
 						<div class="flex items-center justify-between"><Label>Angle</Label><span class="text-muted-foreground text-sm">{angle[0]}°</span></div>
-						<Slider type="single" bind:value={angle} min={-180} max={180} step={1} />
+						<Slider type="multiple" bind:value={angle} min={-180} max={180} step={1} />
 						<Input type="number" bind:value={angle[0]} min={-360} max={360} />
 					</div>
 					<div class="flex flex-wrap gap-2">

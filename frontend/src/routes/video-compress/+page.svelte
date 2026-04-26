@@ -27,7 +27,7 @@
 	{#snippet settings()}
 		<div class="space-y-2">
 			<div class="flex items-center justify-between"><Label>CRF (quality)</Label><span class="text-muted-foreground text-sm">{crf[0]}</span></div>
-			<Slider type="single" bind:value={crf} min={15} max={40} step={1} />
+			<Slider type="multiple" bind:value={crf} min={15} max={40} step={1} />
 			<p class="text-muted-foreground text-xs">Lower = better quality, larger file. Higher = smaller, more loss.</p>
 		</div>
 		<div class="space-y-1.5">

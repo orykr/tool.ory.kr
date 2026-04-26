@@ -30,7 +30,7 @@
 	{#snippet settings()}
 		<div class="space-y-2">
 			<div class="flex items-center justify-between"><Label>Speed multiplier</Label><span class="text-muted-foreground text-sm">{speed[0].toFixed(2)}×</span></div>
-			<Slider type="single" bind:value={speed} min={0.1} max={5} step={0.05} />
+			<Slider type="multiple" bind:value={speed} min={0.1} max={5} step={0.05} />
 		</div>
 		<label class="flex items-center gap-2 text-sm"><input type="checkbox" bind:checked={keepAudio} /> Keep audio (pitch-preserved)</label>
 	{/snippet}

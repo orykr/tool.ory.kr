@@ -122,14 +122,14 @@
 							<Label>Size</Label>
 							<span class="text-muted-foreground text-xs">{size[0]} px</span>
 						</div>
-						<Slider type="single" bind:value={size} min={128} max={1024} step={32} />
+						<Slider type="multiple" bind:value={size} min={128} max={1024} step={32} />
 					</div>
 					<div class="space-y-2">
 						<div class="flex items-center justify-between">
 							<Label>Margin</Label>
 							<span class="text-muted-foreground text-xs">{margin[0]}</span>
 						</div>
-						<Slider type="single" bind:value={margin} min={0} max={8} step={1} />
+						<Slider type="multiple" bind:value={margin} min={0} max={8} step={1} />
 					</div>
 				</div>
 

@@ -20,7 +20,7 @@
 				<Label>Speed multiplier</Label>
 				<span class="text-muted-foreground text-sm">{speed[0].toFixed(2)}×</span>
 			</div>
-			<Slider type="single" bind:value={speed} min={0.1} max={5} step={0.05} />
+			<Slider type="multiple" bind:value={speed} min={0.1} max={5} step={0.05} />
 			<Input type="number" bind:value={speed[0]} min="0.1" max="10" step="0.1" />
 		</div>
 	{/snippet}

@@ -102,7 +102,7 @@
 							<Label>Angle</Label>
 							<span class="text-muted-foreground text-xs">{angle[0]}°</span>
 						</div>
-						<Slider type="single" bind:value={angle} min={0} max={360} step={1} />
+						<Slider type="multiple" bind:value={angle} min={0} max={360} step={1} />
 					</div>
 				{/if}
 

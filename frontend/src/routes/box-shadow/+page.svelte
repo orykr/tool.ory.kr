@@ -118,7 +118,7 @@
 					</div>
 					<div class="space-y-1">
 						<Label>Radius {radius[0]}px</Label>
-						<Slider type="single" bind:value={radius} min={0} max={80} step={1} />
+						<Slider type="multiple" bind:value={radius} min={0} max={80} step={1} />
 					</div>
 				</div>
 			</Card.Content>

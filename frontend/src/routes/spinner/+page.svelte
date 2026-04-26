@@ -173,7 +173,7 @@
 						<Label>Size</Label>
 						<span class="text-muted-foreground text-xs">{size[0]}px</span>
 					</div>
-					<Slider type="single" bind:value={size} min={16} max={120} step={2} />
+					<Slider type="multiple" bind:value={size} min={16} max={120} step={2} />
 				</div>
 
 				<div class="space-y-2">
@@ -181,7 +181,7 @@
 						<Label>Thickness / gap</Label>
 						<span class="text-muted-foreground text-xs">{thickness[0]}px</span>
 					</div>
-					<Slider type="single" bind:value={thickness} min={1} max={16} step={1} />
+					<Slider type="multiple" bind:value={thickness} min={1} max={16} step={1} />
 				</div>
 
 				<div class="space-y-2">
@@ -189,7 +189,7 @@
 						<Label>Speed</Label>
 						<span class="text-muted-foreground text-xs">{speed[0].toFixed(1)}s</span>
 					</div>
-					<Slider type="single" bind:value={speed} min={0.2} max={3} step={0.1} />
+					<Slider type="multiple" bind:value={speed} min={0.2} max={3} step={0.1} />
 				</div>
 
 				<div class="grid gap-2 sm:grid-cols-2">
