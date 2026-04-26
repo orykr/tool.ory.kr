@@ -17,6 +17,7 @@
 	let chunks: Blob[] = [];
 	let outUrl = $state<string | null>(null);
 	let outMime = $state<string>("video/webm");
+	let destroyed = false;
 	let withAudio = $state(true);
 	let resolution = $state<"480" | "720" | "1080">("720");
 	let message = $state("Click Start to enable your camera.");
@@ -60,6 +61,7 @@
 		recorder = new MediaRecorder(stream, { mimeType: chosen });
 		recorder.ondataavailable = (ev) => { if (ev.data.size > 0) chunks.push(ev.data); };
 		recorder.onstop = () => {
+			if (destroyed) return;
 			const blob = new Blob(chunks, { type: chosen.split(";")[0] });
 			if (outUrl) URL.revokeObjectURL(outUrl);
 			outUrl = URL.createObjectURL(blob);
@@ -77,6 +79,8 @@
 	}
 
 	onDestroy(() => {
+		destroyed = true;
+		if (recorder) recorder.onstop = null;
 		stopStream();
 		if (outUrl) URL.revokeObjectURL(outUrl);
 	});

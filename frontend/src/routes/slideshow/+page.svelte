@@ -27,6 +27,7 @@
 	let outW = $state(960);
 	let outH = $state(540);
 	let isError = $derived(message.toLowerCase().includes("failed"));
+	let runSeq = 0;
 
 	onMount(() => {
 		const off = onFFmpegProgress((p) => { progress = p; if (busy) message = `Encoding… ${p}%`; });
@@ -74,26 +75,29 @@
 
 	async function run() {
 		if (!loaded || frames.length < 1) return;
+		const seq = ++runSeq;
+		const snapshot = frames.slice();
 		busy = true; progress = 0; message = "Preparing frames…";
 		try {
 			const ff = await getFFmpeg();
-			for (let i = 0; i < frames.length; i++) {
-				const data = await fileToPng(frames[i].file);
+			for (let i = 0; i < snapshot.length; i++) {
+				if (seq !== runSeq) return;
+				const data = await fileToPng(snapshot[i].file);
 				await ff.writeFile(`s_${i.toString().padStart(4, "0")}.png`, data);
 			}
 			const dd = Math.max(0.2, Number(displayDur) || 2);
 			const cf = Math.max(0, Math.min(dd - 0.05, Number(crossfade) || 0));
 			let outName: string;
 			let args: string[];
-			if (frames.length === 1 || cf === 0) {
+			if (snapshot.length === 1 || cf === 0) {
 				outName = target === "gif" ? "output.gif" : "output.mp4";
 				const concatArgs: string[] = [];
-				for (let i = 0; i < frames.length; i++) {
+				for (let i = 0; i < snapshot.length; i++) {
 					concatArgs.push("-loop", "1", "-t", dd.toFixed(3), "-i", `s_${i.toString().padStart(4, "0")}.png`);
 				}
 				const filterParts: string[] = [];
-				for (let i = 0; i < frames.length; i++) filterParts.push(`[${i}:v]`);
-				const concat = `${filterParts.join("")}concat=n=${frames.length}:v=1:a=0[v]`;
+				for (let i = 0; i < snapshot.length; i++) filterParts.push(`[${i}:v]`);
+				const concat = `${filterParts.join("")}concat=n=${snapshot.length}:v=1:a=0[v]`;
 				if (target === "gif") {
 					args = [...concatArgs, "-filter_complex", `${concat};[v]split[a][b];[a]palettegen[p];[b][p]paletteuse[out]`, "-map", "[out]", outName];
 				} else {
@@ -102,20 +106,20 @@
 			} else {
 				outName = target === "gif" ? "output.gif" : "output.mp4";
 				const concatArgs: string[] = [];
-				for (let i = 0; i < frames.length; i++) {
+				for (let i = 0; i < snapshot.length; i++) {
 					concatArgs.push("-loop", "1", "-t", dd.toFixed(3), "-i", `s_${i.toString().padStart(4, "0")}.png`);
 				}
 				let last = "[0:v]";
 				const parts: string[] = [];
 				let curOffset = dd - cf;
-				for (let i = 1; i < frames.length; i++) {
-					const tag = i === frames.length - 1 ? "[v]" : `[x${i}]`;
+				for (let i = 1; i < snapshot.length; i++) {
+					const tag = i === snapshot.length - 1 ? "[v]" : `[x${i}]`;
 					parts.push(`${last}[${i}:v]xfade=transition=fade:duration=${cf.toFixed(3)}:offset=${curOffset.toFixed(3)}${tag}`);
 					last = tag;
 					curOffset += dd - cf;
 				}
 				let xf = parts.join(";");
-				if (frames.length === 1) xf = "[0:v]copy[v]";
+				if (snapshot.length === 1) xf = "[0:v]copy[v]";
 				if (target === "gif") {
 					args = [...concatArgs, "-filter_complex", `${xf};[v]split[a][b];[a]palettegen[p];[b][p]paletteuse[out]`, "-map", "[out]", outName];
 				} else {
@@ -124,12 +128,19 @@
 			}
 			message = "Encoding…";
 			await ff.exec(args);
+			if (seq !== runSeq) return;
 			const data = await ff.readFile(outName) as Uint8Array;
 			const buf = data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
+			if (seq !== runSeq) return;
 			if (outUrl) URL.revokeObjectURL(outUrl);
 			outUrl = URL.createObjectURL(new Blob([buf], { type: target === "gif" ? "image/gif" : "video/mp4" }));
 			message = "Done.";
-		} catch (e) { console.error(e); message = "Failed."; } finally { busy = false; }
+		} catch (e) {
+			console.error(e);
+			if (seq === runSeq) message = "Failed.";
+		} finally {
+			if (seq === runSeq) busy = false;
+		}
 	}
 </script>
 
