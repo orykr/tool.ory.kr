@@ -176,14 +176,33 @@ export const categories: ToolCategory[] = [
 			{ href: "/image-editor", title: "Image Editor", description: "Crop, rotate, resize, and optimize images directly in your browser." },
 			{ href: "/image-format", title: "Image Format Converter", description: "Convert PNG ↔ JPEG ↔ WebP via canvas, with quality and resize." },
 			{ href: "/img-colors", title: "Image Color Palette", description: "Extract dominant colors from a local image." },
-			{ href: "/gif-maker", title: "GIF Maker", description: "Create animated GIFs from multiple images with custom speed and size." },
-			{ href: "/video-to-gif", title: "Video to GIF", description: "Convert video files to optimized animated GIFs directly in your browser." },
 			{ href: "/qr", title: "QR Code Generator", description: "Generate QR codes from text or URLs and download as PNG or SVG." },
 			{ href: "/hex-dump", title: "Hex Dump", description: "View text or files as a side-by-side hex / ASCII dump." },
 			{ href: "/data-url", title: "Data URL", description: "Encode files to data: URLs and decode them back to bytes." },
 			{ href: "/file-magic", title: "File Type Detector", description: "Identify file format from magic bytes (no extension dependency)." },
 			{ href: "/filesize", title: "File Size Converter", description: "Parse human file sizes and break bytes into KiB/KB units." },
 			{ href: "/compress", title: "String Compression", description: "Compress / decompress text with gzip, deflate, or deflate-raw." }
+		]
+	},
+	{
+		id: "gifvideo",
+		label: "GIF / Video / Animation",
+		tools: [
+			{ href: "/gif-maker", title: "GIF Maker", description: "Create animated GIFs from multiple images with custom speed and size." },
+			{ href: "/gif-resize", title: "Resize GIF", description: "Resize an animated GIF by pixels or percent with palette optimization." },
+			{ href: "/gif-crop", title: "Crop GIF", description: "Crop an animated GIF to a rectangle." },
+			{ href: "/gif-rotate", title: "Rotate / Flip GIF", description: "Rotate a GIF 90/180/270° and flip horizontally or vertically." },
+			{ href: "/gif-reverse", title: "Reverse GIF", description: "Play an animated GIF in reverse." },
+			{ href: "/gif-speed", title: "Change GIF Speed", description: "Speed up or slow down a GIF by a multiplier." },
+			{ href: "/gif-cut", title: "Cut / Trim GIF", description: "Trim an animated GIF to a time range." },
+			{ href: "/gif-optimize", title: "Optimize GIF", description: "Reduce file size by quantizing palette colors and choosing dither." },
+			{ href: "/gif-effects", title: "GIF Effects", description: "Brightness, contrast, saturation, hue, grayscale, sepia, invert." },
+			{ href: "/gif-text", title: "Add Text to GIF", description: "Caption a GIF with custom text rendered via the browser font engine." },
+			{ href: "/gif-overlay", title: "Overlay Image on GIF", description: "Composite a static image over an animated GIF with opacity." },
+			{ href: "/gif-censor", title: "Censor GIF", description: "Mask a region of a GIF with blur or solid fill." },
+			{ href: "/gif-split", title: "Split GIF into Frames", description: "Extract every frame as a separate PNG (with ZIP download)." },
+			{ href: "/gif-frames", title: "GIF Frame Editor", description: "View, delete, and re-time frames of a GIF, then re-encode." },
+			{ href: "/video-to-gif", title: "Video to GIF", description: "Convert video files to optimized animated GIFs directly in your browser." }
 		]
 	},
 	{
