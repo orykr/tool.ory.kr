@@ -881,6 +881,11 @@
 			href: "/ansi-decode",
 			title: "ANSI Escape Decoder",
 			description: "Render terminal output with SGR colors or strip ANSI codes."
+		},
+		{
+			href: "/filesize",
+			title: "File Size Converter",
+			description: "Parse human file sizes and break bytes into KiB/KB units."
 		}
 	];
 </script>
