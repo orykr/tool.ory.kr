@@ -229,7 +229,11 @@ export const categories: ToolCategory[] = [
 			{ href: "/gif-border", title: "Add Border to GIF", description: "Pad a GIF with a colored border." },
 			{ href: "/audio-cut", title: "Audio Cutter", description: "Trim an audio file to a time range, with format conversion." },
 			{ href: "/audio-extract", title: "Extract Audio from Video", description: "Pull the audio track out of a video as MP3/WAV/OGG/M4A." },
-			{ href: "/audio-convert", title: "Audio Format Converter", description: "Convert between MP3, WAV, OGG, M4A, FLAC." }
+			{ href: "/audio-convert", title: "Audio Format Converter", description: "Convert between MP3, WAV, OGG, M4A, FLAC." },
+			{ href: "/audio-speed", title: "Audio Speed Changer", description: "Speed up or slow down audio with pitch-preserved atempo." },
+			{ href: "/audio-reverse", title: "Audio Reverser", description: "Play an audio file backwards." },
+			{ href: "/video-merger", title: "Video Merger", description: "Concatenate multiple videos into one MP4 with size normalization." },
+			{ href: "/screen-record", title: "Screen Recorder", description: "Capture your screen via the Screen Capture API. Output is WebM." }
 		]
 	},
 	{
