@@ -6,6 +6,8 @@
 	import { Input } from "$lib/components/ui/input/index.js";
 	import { Label } from "$lib/components/ui/label/index.js";
 	import { Progress } from "$lib/components/ui/progress/index.js";
+	import { Slider } from "$lib/components/ui/slider/index.js";
+	import * as Select from "$lib/components/ui/select/index.js";
 	import FileDrop from "$lib/components/file-drop.svelte";
 	import ArrowLeft from "@lucide/svelte/icons/arrow-left";
 	import Download from "@lucide/svelte/icons/download";
@@ -22,6 +24,11 @@
 	let width = $state(320);
 	let startTime = $state(0);
 	let duration = $state(5);
+	let colors = $state([128]);
+	let dither = $state("sierra2_4a");
+	let scaler = $state("lanczos");
+	let statsMode = $state("full");
+	let loopCount = $state(0);
 
 	let isError = $derived(message.toLowerCase().includes("failed"));
 
@@ -63,11 +70,15 @@
 		try {
 			const ff = await getFFmpeg();
 			await ff.writeFile("input.bin", await fetchFile(videoFile));
+			const nColors = Math.max(2, Math.min(256, colors[0]));
+			const loop = Math.max(0, Math.min(65535, Number(loopCount) || 0));
+			const filter = `fps=${fps},scale=${width}:-1:flags=${scaler},split[a][b];[a]palettegen=max_colors=${nColors}:stats_mode=${statsMode}[p];[b][p]paletteuse=dither=${dither}`;
 			await ff.exec([
 				"-ss", String(startTime),
 				"-t", String(duration),
 				"-i", "input.bin",
-				"-filter_complex", `fps=${fps},scale=${width}:-1:flags=lanczos,split[a][b];[a]palettegen[p];[b][p]paletteuse`,
+				"-filter_complex", filter,
+				"-loop", String(loop === 0 ? 0 : loop - 1),
 				"output.gif"
 			]);
 			if (seq !== runSeq) return;
@@ -137,13 +148,64 @@
 						</div>
 						<div class="space-y-1.5">
 							<Label for="fps">FPS</Label>
-							<Input id="fps" type="number" bind:value={fps} min="1" max="30" />
+							<Input id="fps" type="number" bind:value={fps} min="1" max="60" />
 						</div>
 						<div class="space-y-1.5">
 							<Label for="vid-width">Width (px)</Label>
 							<Input id="vid-width" type="number" bind:value={width} min="50" step="10" />
 						</div>
 					</div>
+
+					<div class="space-y-2 border-t pt-3">
+						<p class="text-muted-foreground text-xs font-medium uppercase tracking-wide">Quality</p>
+						<div class="flex items-center justify-between"><Label>Max colors</Label><span class="text-muted-foreground text-sm">{colors[0]}</span></div>
+						<Slider type="single" bind:value={colors} min={2} max={256} step={1} />
+						<p class="text-muted-foreground text-xs">More colors = better quality, larger file. Default 128.</p>
+					</div>
+
+					<div class="grid grid-cols-2 gap-3">
+						<div class="space-y-1.5">
+							<Label>Dither</Label>
+							<Select.Root type="single" bind:value={dither}>
+								<Select.Trigger class="w-full">{dither}</Select.Trigger>
+								<Select.Content>
+									<Select.Item value="sierra2_4a">sierra2_4a (default)</Select.Item>
+									<Select.Item value="sierra2">sierra2</Select.Item>
+									<Select.Item value="floyd_steinberg">floyd_steinberg</Select.Item>
+									<Select.Item value="bayer">bayer (cross-hatch)</Select.Item>
+									<Select.Item value="none">none (banded)</Select.Item>
+								</Select.Content>
+							</Select.Root>
+						</div>
+						<div class="space-y-1.5">
+							<Label>Scaler</Label>
+							<Select.Root type="single" bind:value={scaler}>
+								<Select.Trigger class="w-full">{scaler}</Select.Trigger>
+								<Select.Content>
+									<Select.Item value="lanczos">lanczos (best)</Select.Item>
+									<Select.Item value="bicubic">bicubic</Select.Item>
+									<Select.Item value="bilinear">bilinear</Select.Item>
+									<Select.Item value="neighbor">neighbor (pixel art)</Select.Item>
+								</Select.Content>
+							</Select.Root>
+						</div>
+						<div class="space-y-1.5">
+							<Label>Palette mode</Label>
+							<Select.Root type="single" bind:value={statsMode}>
+								<Select.Trigger class="w-full">{statsMode}</Select.Trigger>
+								<Select.Content>
+									<Select.Item value="full">full (whole clip)</Select.Item>
+									<Select.Item value="diff">diff (motion-aware)</Select.Item>
+									<Select.Item value="single">single (per-frame)</Select.Item>
+								</Select.Content>
+							</Select.Root>
+						</div>
+						<div class="space-y-1.5">
+							<Label for="loop">Loop count (0 = ∞)</Label>
+							<Input id="loop" type="number" bind:value={loopCount} min="0" max="65535" />
+						</div>
+					</div>
+
 					<Button class="w-full" onclick={convert} disabled={!loaded || isConverting}>
 						{isConverting ? "Converting…" : "Convert to GIF"}
 					</Button>
