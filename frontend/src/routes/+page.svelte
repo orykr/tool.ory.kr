@@ -871,6 +871,11 @@
 			href: "/json-go",
 			title: "JSON → Go struct",
 			description: "Generate Go structs with JSON tags from a sample."
+		},
+		{
+			href: "/color-mix",
+			title: "Color Mixer",
+			description: "Blend colors with custom weights (sRGB / linear / HSL)."
 		}
 	];
 </script>
