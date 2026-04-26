@@ -1,7 +1,7 @@
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile, toBlobURL } from "@ffmpeg/util";
 
-const CORE_BASE = "https://unpkg.com/@ffmpeg/core@0.12.10/dist/umd";
+const CORE_BASE = "https://unpkg.com/@ffmpeg/core@0.12.10/dist/esm";
 
 let instance: FFmpeg | null = null;
 let loadPromise: Promise<FFmpeg> | null = null;
@@ -25,8 +25,8 @@ export async function getFFmpeg(): Promise<FFmpeg> {
 			for (const cb of logListeners) cb(message);
 		});
 		await ff.load({
-			coreURL: await toBlobURL(`${CORE_BASE}/ffmpeg-core.js`, "text/javascript"),
-			wasmURL: await toBlobURL(`${CORE_BASE}/ffmpeg-core.wasm`, "application/wasm")
+			coreURL: `${CORE_BASE}/ffmpeg-core.js`,
+			wasmURL: `${CORE_BASE}/ffmpeg-core.wasm`
 		});
 		instance = ff;
 		return ff;
