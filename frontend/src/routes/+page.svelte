@@ -856,6 +856,11 @@
 			href: "/html-table-json",
 			title: "HTML Table → JSON",
 			description: "Extract <table> rows as JSON objects."
+		},
+		{
+			href: "/aes-gcm",
+			title: "AES-GCM Encrypt / Decrypt",
+			description: "AES-GCM with PBKDF2 key derivation, all in-browser."
 		}
 	];
 </script>
