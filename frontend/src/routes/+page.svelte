@@ -876,6 +876,11 @@
 			href: "/color-mix",
 			title: "Color Mixer",
 			description: "Blend colors with custom weights (sRGB / linear / HSL)."
+		},
+		{
+			href: "/ansi-decode",
+			title: "ANSI Escape Decoder",
+			description: "Render terminal output with SGR colors or strip ANSI codes."
 		}
 	];
 </script>
