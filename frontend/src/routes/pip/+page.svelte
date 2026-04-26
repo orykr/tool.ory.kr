@@ -52,7 +52,7 @@
 			else if (position === "tr") pos = `main_w-overlay_w-${m}:${m}`;
 			else if (position === "bl") pos = `${m}:main_h-overlay_h-${m}`;
 			else pos = `main_w-overlay_w-${m}:main_h-overlay_h-${m}`;
-			const filter = `[1:v]scale=iw*${sf}:-1[pip];[0:v][pip]overlay=${pos}:shortest=1`;
+			const filter = `[1:v]scale=iw*${sf}:-1[pip];[0:v][pip]overlay=${pos}:eof_action=pass`;
 			await ff.exec([
 				"-i", `base.${baseExt}`,
 				"-i", `pip.${pipExt}`,

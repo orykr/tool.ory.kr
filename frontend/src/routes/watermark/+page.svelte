@@ -96,8 +96,9 @@
 			const baseExt = baseFile.name.split(".").pop()?.toLowerCase() || (isVideo ? "mp4" : "png");
 			await ff.writeFile(`base.${baseExt}`, await fetchFile(baseFile));
 			let outputName: string, outputType: string;
+			const isGif = baseFile.type === "image/gif" || baseFile.name.toLowerCase().endsWith(".gif");
 			if (isVideo) { outputName = "output.mp4"; outputType = "video/mp4"; outName = "watermarked.mp4"; }
-			else if (baseFile.type === "image/gif") { outputName = "output.gif"; outputType = "image/gif"; outName = "watermarked.gif"; }
+			else if (isGif) { outputName = "output.gif"; outputType = "image/gif"; outName = "watermarked.gif"; }
 			else { outputName = "output.png"; outputType = "image/png"; outName = "watermarked.png"; }
 
 			let wmIn: string;
