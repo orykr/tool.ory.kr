@@ -222,7 +222,14 @@ export const categories: ToolCategory[] = [
 			{ href: "/video-crop", title: "Video Cropper", description: "Crop a video to a rectangle." },
 			{ href: "/video-converter", title: "Video Format Converter", description: "Convert between MP4, WebM, MOV, AVI, MKV." },
 			{ href: "/video-frames", title: "Extract Video Frames", description: "Extract still frames from a video at a chosen FPS." },
-			{ href: "/video-add-audio", title: "Add Audio to Video", description: "Replace or mix an audio track onto a video." }
+			{ href: "/video-add-audio", title: "Add Audio to Video", description: "Replace or mix an audio track onto a video." },
+			{ href: "/video-stabilize", title: "Stabilize Video", description: "Reduce camera shake using ffmpeg's deshake filter." },
+			{ href: "/webcam-capture", title: "Webcam Capture", description: "Record your webcam and microphone entirely in the browser (WebM)." },
+			{ href: "/slideshow", title: "Slideshow Maker", description: "Combine images into MP4 or GIF with crossfade transitions." },
+			{ href: "/gif-border", title: "Add Border to GIF", description: "Pad a GIF with a colored border." },
+			{ href: "/audio-cut", title: "Audio Cutter", description: "Trim an audio file to a time range, with format conversion." },
+			{ href: "/audio-extract", title: "Extract Audio from Video", description: "Pull the audio track out of a video as MP3/WAV/OGG/M4A." },
+			{ href: "/audio-convert", title: "Audio Format Converter", description: "Convert between MP3, WAV, OGG, M4A, FLAC." }
 		]
 	},
 	{
