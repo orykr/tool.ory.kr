@@ -202,6 +202,14 @@ export const categories: ToolCategory[] = [
 			{ href: "/gif-censor", title: "Censor GIF", description: "Mask a region of a GIF with blur or solid fill." },
 			{ href: "/gif-split", title: "Split GIF into Frames", description: "Extract every frame as a separate PNG (with ZIP download)." },
 			{ href: "/gif-frames", title: "GIF Frame Editor", description: "View, delete, and re-time frames of a GIF, then re-encode." },
+			{ href: "/gif-to-mp4", title: "GIF to MP4", description: "Convert an animated GIF to an MP4 (H.264) video." },
+			{ href: "/gif-to-webp", title: "GIF to WebP", description: "Convert a GIF to an animated WebP (smaller file size)." },
+			{ href: "/gif-to-apng", title: "GIF to APNG", description: "Convert a GIF to an animated PNG (full color, no quantization)." },
+			{ href: "/webp-to-gif", title: "WebP to GIF", description: "Convert an animated WebP back to GIF." },
+			{ href: "/apng-to-gif", title: "APNG to GIF", description: "Convert an animated PNG back to GIF." },
+			{ href: "/jpg-to-gif", title: "JPG / PNG to GIF", description: "Wrap a static image as a single-frame GIF." },
+			{ href: "/webp-maker", title: "Animated WebP Maker", description: "Build an animated WebP from a sequence of images." },
+			{ href: "/apng-maker", title: "APNG Maker", description: "Build an animated PNG from a sequence of images." },
 			{ href: "/video-to-gif", title: "Video to GIF", description: "Convert video files to optimized animated GIFs directly in your browser." }
 		]
 	},
