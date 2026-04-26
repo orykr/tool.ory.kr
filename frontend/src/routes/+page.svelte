@@ -886,6 +886,11 @@
 			href: "/filesize",
 			title: "File Size Converter",
 			description: "Parse human file sizes and break bytes into KiB/KB units."
+		},
+		{
+			href: "/compress",
+			title: "String Compression",
+			description: "Compress / decompress text with gzip, deflate, or deflate-raw."
 		}
 	];
 </script>
