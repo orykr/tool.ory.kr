@@ -9,6 +9,7 @@
 
 	let open = $state(false);
 	let query = $state("");
+	let categoryFilter = $state<string | null>(null);
 	let inputEl = $state<HTMLInputElement | null>(null);
 	let panelEl = $state<HTMLDivElement | null>(null);
 	let triggerEl = $state<HTMLButtonElement | null>(null);
@@ -19,11 +20,12 @@
 
 	let filtered = $derived.by<Filtered[]>(() => {
 		const q = query.trim().toLowerCase();
-		if (!q) {
-			return categories.map((c) => ({ id: c.id, label: c.label, tools: c.tools }));
-		}
+		const scoped = categoryFilter
+			? categories.filter((c) => c.id === categoryFilter)
+			: categories;
+		if (!q) return scoped.map((c) => ({ id: c.id, label: c.label, tools: c.tools }));
 		const out: Filtered[] = [];
-		for (const c of categories) {
+		for (const c of scoped) {
 			const matches = c.tools.filter(
 				(t) =>
 					t.title.toLowerCase().includes(q) ||
@@ -47,6 +49,12 @@
 	function close() {
 		open = false;
 		query = "";
+		categoryFilter = null;
+	}
+
+	function selectCategory(id: string | null) {
+		categoryFilter = id;
+		queueMicrotask(() => inputEl?.focus());
 	}
 
 	function onWindowKey(ev: KeyboardEvent) {
@@ -112,13 +120,15 @@
 			role="dialog"
 			aria-label="Tool switcher"
 		>
-			<div class="border-b p-2">
+			<div class="space-y-2 border-b p-2">
 				<div class="relative">
 					<Search class="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" />
 					<Input
 						bind:ref={inputEl}
 						bind:value={query}
-						placeholder="Search 178 tools by name…"
+						placeholder={categoryFilter
+							? `Search in ${categories.find((c) => c.id === categoryFilter)?.label ?? ""}…`
+							: `Search ${allTools.length} tools by name…`}
 						class="pl-8 pr-8"
 					/>
 					{#if query}
@@ -131,6 +141,26 @@
 							<X class="h-4 w-4" />
 						</button>
 					{/if}
+				</div>
+				<div class="flex flex-wrap gap-1">
+					<button
+						type="button"
+						onclick={() => selectCategory(null)}
+						class="rounded-full border px-2 py-0.5 text-xs transition-colors {categoryFilter === null ? 'bg-primary text-primary-foreground border-primary' : 'border-input hover:bg-accent hover:text-accent-foreground'}"
+					>
+						All
+						<span class="opacity-70">{allTools.length}</span>
+					</button>
+					{#each categories as cat (cat.id)}
+						<button
+							type="button"
+							onclick={() => selectCategory(cat.id)}
+							class="rounded-full border px-2 py-0.5 text-xs transition-colors {categoryFilter === cat.id ? 'bg-primary text-primary-foreground border-primary' : 'border-input hover:bg-accent hover:text-accent-foreground'}"
+						>
+							{cat.label}
+							<span class="opacity-70">{cat.tools.length}</span>
+						</button>
+					{/each}
 				</div>
 			</div>
 
@@ -158,11 +188,25 @@
 				{/if}
 			</div>
 
-			<div class="text-muted-foreground border-t px-3 py-2 text-xs">
-				{#if activeCategory && !query}
-					Currently viewing: <span class="font-medium">{activeCategory.label}</span>
-				{:else}
-					{totalMatches} of {allTools.length} tools
+			<div class="text-muted-foreground flex items-center justify-between border-t px-3 py-2 text-xs">
+				<span>
+					{#if categoryFilter || query}
+						{totalMatches} of {allTools.length} tools
+					{:else if activeCategory}
+						Viewing: <span class="font-medium">{activeCategory.label}</span>
+					{:else}
+						{allTools.length} tools
+					{/if}
+				</span>
+				{#if categoryFilter}
+					<button
+						type="button"
+						onclick={() => selectCategory(null)}
+						class="hover:text-foreground inline-flex items-center gap-1"
+					>
+						<X class="h-3 w-3" />
+						Clear category
+					</button>
 				{/if}
 			</div>
 		</div>
