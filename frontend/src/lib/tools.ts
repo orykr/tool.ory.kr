@@ -176,6 +176,8 @@ export const categories: ToolCategory[] = [
 			{ href: "/image-editor", title: "Image Editor", description: "Crop, rotate, resize, and optimize images directly in your browser." },
 			{ href: "/image-format", title: "Image Format Converter", description: "Convert PNG ↔ JPEG ↔ WebP via canvas, with quality and resize." },
 			{ href: "/img-colors", title: "Image Color Palette", description: "Extract dominant colors from a local image." },
+			{ href: "/image-effects", title: "Image Effects / Filters", description: "Brightness, contrast, saturation, blur, sepia, hue, invert, grayscale." },
+			{ href: "/sprite-cutter", title: "Sprite Sheet Cutter", description: "Slice a sprite sheet into tiles by grid or by tile size." },
 			{ href: "/qr", title: "QR Code Generator", description: "Generate QR codes from text or URLs and download as PNG or SVG." },
 			{ href: "/hex-dump", title: "Hex Dump", description: "View text or files as a side-by-side hex / ASCII dump." },
 			{ href: "/data-url", title: "Data URL", description: "Encode files to data: URLs and decode them back to bytes." },
