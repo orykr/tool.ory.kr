@@ -210,7 +210,17 @@ export const categories: ToolCategory[] = [
 			{ href: "/jpg-to-gif", title: "JPG / PNG to GIF", description: "Wrap a static image as a single-frame GIF." },
 			{ href: "/webp-maker", title: "Animated WebP Maker", description: "Build an animated WebP from a sequence of images." },
 			{ href: "/apng-maker", title: "APNG Maker", description: "Build an animated PNG from a sequence of images." },
-			{ href: "/video-to-gif", title: "Video to GIF", description: "Convert video files to optimized animated GIFs directly in your browser." }
+			{ href: "/video-to-gif", title: "Video to GIF", description: "Convert video files to optimized animated GIFs directly in your browser." },
+			{ href: "/video-cut", title: "Video Cutter", description: "Trim a video to a time range without re-encoding." },
+			{ href: "/video-resize", title: "Video Resizer", description: "Resize a video and re-encode to MP4." },
+			{ href: "/video-rotate", title: "Video Rotator", description: "Rotate or flip a video and re-encode to MP4." },
+			{ href: "/video-reverse", title: "Video Reverser", description: "Reverse a video; optionally also reverse audio." },
+			{ href: "/video-speed", title: "Video Speed Changer", description: "Speed up or slow down a video, with pitch-preserved audio." },
+			{ href: "/video-mute", title: "Mute Video", description: "Strip the audio track from a video." },
+			{ href: "/video-crop", title: "Video Cropper", description: "Crop a video to a rectangle." },
+			{ href: "/video-converter", title: "Video Format Converter", description: "Convert between MP4, WebM, MOV, AVI, MKV." },
+			{ href: "/video-frames", title: "Extract Video Frames", description: "Extract still frames from a video at a chosen FPS." },
+			{ href: "/video-add-audio", title: "Add Audio to Video", description: "Replace or mix an audio track onto a video." }
 		]
 	},
 	{
