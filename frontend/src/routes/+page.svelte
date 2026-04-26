@@ -866,6 +866,11 @@
 			href: "/geohash",
 			title: "Geohash",
 			description: "Encode lat/lon to geohash and decode it back to a centroid."
+		},
+		{
+			href: "/json-go",
+			title: "JSON → Go struct",
+			description: "Generate Go structs with JSON tags from a sample."
 		}
 	];
 </script>
