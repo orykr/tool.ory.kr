@@ -861,6 +861,11 @@
 			href: "/aes-gcm",
 			title: "AES-GCM Encrypt / Decrypt",
 			description: "AES-GCM with PBKDF2 key derivation, all in-browser."
+		},
+		{
+			href: "/geohash",
+			title: "Geohash",
+			description: "Encode lat/lon to geohash and decode it back to a centroid."
 		}
 	];
 </script>
