@@ -239,7 +239,11 @@ export const categories: ToolCategory[] = [
 			{ href: "/video-compress", title: "Video Compressor", description: "Re-encode video at higher CRF for smaller file size." },
 			{ href: "/image-compress", title: "Image Compressor", description: "Compress JPG / PNG / WebP images by re-encoding with chosen quality." },
 			{ href: "/pip", title: "Picture-in-Picture (Video)", description: "Composite a smaller video on top of a base video." },
-			{ href: "/watermark", title: "Watermark Tool", description: "Add a text or logo watermark to images, GIFs, or videos." }
+			{ href: "/watermark", title: "Watermark Tool", description: "Add a text or logo watermark to images, GIFs, or videos." },
+			{ href: "/image-rotate", title: "Rotate Image", description: "Rotate a static image at any angle with auto canvas resize." },
+			{ href: "/pdf-to-gif", title: "PDF to GIF / MP4", description: "Render PDF pages to a slideshow GIF or MP4 (PDF.js loaded from CDN)." },
+			{ href: "/mp3-to-mp4", title: "Audio + Image → MP4", description: "Combine an audio file with a still image into a video." },
+			{ href: "/subtitles", title: "Burn-in Subtitles", description: "Hard-burn an SRT subtitle track into a video." }
 		]
 	},
 	{
